@@ -16,7 +16,7 @@
 
   <!-- 页面元数据 -->
   
-  <title>Hello World - CallMe_star</title>
+  <title>CallMe_star</title>
   
 
   
@@ -387,8 +387,8 @@
  
  
 <div id="pjax-data" style="display: none"> 
-  <div id="pjax-ispage">true</div> 
-  <div id="pjax-pageTitle">Hello World</div> 
+  <div id="pjax-ispage">false</div> 
+  <div id="pjax-pageTitle"></div> 
   <div id="pjax-enable-cover">true</div> 
   <div id="pjax-comment-path">none</div> 
   <div id="pjax-comment-placeholder">none</div> 
@@ -436,8 +436,8 @@
         
           
   <h1 class="title">
-    <a href="/callme-star.github.io/2020/08/14/hello-world/">
-      Hello World
+    <a href="/callme-star.github.io/2020/08/10/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%E2%80%94%E2%80%94%E5%82%85%E9%87%8C%E5%8F%B6%E5%8F%98%E6%8D%A2/">
+      Aug 10, 2020
     </a>
   </h1>
 
@@ -467,7 +467,7 @@
               <div class="new-meta-item date">
   <a class='notlink'>
     <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
-    <p>发布于：Aug 14, 2020</p>
+    <p>发布于：Aug 10, 2020</p>
   </a>
 </div>
 
@@ -491,19 +491,65 @@
         <div class="article-entry" itemprop="articleBody">
           
           
-          <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
+          <h2 id="1-傅里叶变换的理解"><a href="#1-傅里叶变换的理解" class="headerlink" title="1.傅里叶变换的理解"></a>1.傅里叶变换的理解</h2><p>傅里叶变换的相关数学公式目前还没有搞懂，先不整那个东西，我们主要是研究傅里叶变换的一些思想和应用。这个思想起源于牛顿研究那个三棱镜，白光透过棱镜之后会被分解为七种颜色的光，这些光叠加又能形成白光，所以说可以把一种事物分解成好几种事物的加和。</p>
+<p>后来傅里叶就提出了**<em>傅里叶级数**</em>，一个等幅度不同频或者等频不同幅的波形可以由一组正弦波余弦波的加和得到（原话：任何连续周期信号可以由一组适当的正弦曲线组合而成）</p>
+<h2 id="2-傅里叶级数"><a href="#2-傅里叶级数" class="headerlink" title="2.傅里叶级数"></a>2.傅里叶级数</h2><p>可以这么理解：原图像相当于在时间域中的一个曲线，坐标图是个二维坐标系，横轴是时间，纵轴是幅值的一个曲线，我们通过傅里叶变换可以把这条曲线变成多条正余弦函数相加的形式：傅里叶变换之后形成的是一个三维坐标系，他的x轴是频率（w），y轴是相位（因为每个正余弦函数的起点不同，有的是从零点开始，有的不是，这个曲线开始的那个幅值就是相位，相位就是后公式中的φ），z轴是振幅高度，。这样可以把一个图像从空间域转换到频率域，因为两者等价，所以可以逆变换回去。但这个傅里叶级数只能针对周期型函数才能拆分成多个正余弦函数相加，所以后来有了傅里叶变换。<br>$$<br>f(t) = \frac{a_n}{2}+\sum a_n*sin（nwt+φ_n）<br>$$</p>
+<h2 id="3-傅里叶变换"><a href="#3-傅里叶变换" class="headerlink" title="3.傅里叶变换"></a>3.傅里叶变换</h2><p>其中推导公式中用到了欧拉公式，<br>$$<br>\cos(x)+i*sin(x) = e^{ix}\<br>x = wt\<br>x = wt  表示在单位圆逆时针旋转\<br>\<br>F_T = \int_{-\infty}^{+\infty}f(t)e^{jwt}dt<br>$$<br>然后通过逆变换可以再变回去。通过傅里叶变换就可以把一个随机的曲线，转换到频率域，只不过这次的三维坐标系对应的w和幅值的函数图像不再是离散的图像了，而是一个连续图像。y轴所对应的相位意义没变。</p>
+<h2 id="4-应用"><a href="#4-应用" class="headerlink" title="4.应用"></a>4.应用</h2><h4 id="声音"><a href="#声音" class="headerlink" title="- 声音"></a>- 声音</h4><p>通过分析频率域，可以分析出低频可能是男生说话，高频可能是女生说话，再高的频率就是噪音了，除去这些高频信号，然后通过逆变换就可以得到处理后的音频。</p>
+<p>在声音中，那刚才的傅里叶变换之前的x轴就是时间，y轴就是声音的振幅</p>
+<p>如下图（copy from 知乎Heinrich）</p>
+<p><img src="/Users/star/Desktop/%E5%82%85%E9%87%8C%E5%8F%B6.jpg"></p>
+<h4 id="图像"><a href="#图像" class="headerlink" title="- 图像"></a>- 图像</h4><p>通过分析频率域，他的低频部分可能就是画像的主体部分，高频部分可能是图像中的噪点，比如说是画面中的斑点噪音，旧照片中的斑点，通过去掉高频信号，然后逆变换回去，就得到去除噪点之后的图像。</p>
+<p>在图像中，傅里叶变换之前的x轴就是图像的空间坐标位置，y轴就是他的灰度？？？</p>
+<h2 id="5-OpenCV-，Numpy中的操作一下"><a href="#5-OpenCV-，Numpy中的操作一下" class="headerlink" title="5.OpenCV ，Numpy中的操作一下"></a>5.OpenCV ，Numpy中的操作一下</h2><h4 id="numpy中操作"><a href="#numpy中操作" class="headerlink" title="-numpy中操作"></a>-numpy中操作</h4><ol>
+<li><p>np.fft.fft2</p>
+<p>实现傅里叶变换并且返回一个复数数组</p>
+</li>
+<li><p>np.fft.fftshift</p>
+<p>将零频率分量移动到频谱的中心</p>
+</li>
+<li><p>np.log（np.abs(fshift)）</p>
+<p>刚才返回的复数数组没办法用图像的形式展示出来需要用以上函数转换到[0, 255]范围</p>
+</li>
+<li><p>np.fft.ifftshift</p>
+<p>把中心化的频谱再移动回左上角</p>
+</li>
+<li><p>np.fft.ifft2</p>
+<p>实现逆变换，返回一个复数数组</p>
+</li>
+<li><p>np.abs（逆傅里叶变换的结果）</p>
+</li>
+</ol>
+<p>​        变回能显示的[0, 255]的可显示图像</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> cv2</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"></span><br><span class="line"><span class="comment"># 直接读为灰度图像</span></span><br><span class="line">img = cv2.imread(<span class="string">&#x27;你电脑本地的图像路径&#x27;</span>, <span class="number">0</span>)  </span><br><span class="line">f = np.fft.fft2(img)</span><br><span class="line">fshift = np.fft.fftshift(f)</span><br><span class="line"><span class="comment"># 取绝对值：将复数变化成实数</span></span><br><span class="line"><span class="comment"># 取对数的目的为了将数据变化到0-255</span></span><br><span class="line">s1 = np.log(np.abs(fshift))</span><br><span class="line">plt.subplot(<span class="number">131</span>), plt.imshow(img, cmap=<span class="string">&#x27;gray&#x27;</span>, interpolation=<span class="string">&#x27;bicubic&#x27;</span>), plt.title(<span class="string">&#x27;original&#x27;</span>)</span><br><span class="line">plt.xticks([]), plt.yticks([])</span><br><span class="line">plt.subplot(<span class="number">132</span>), plt.imshow(s1, <span class="string">&#x27;gray&#x27;</span>, interpolation=<span class="string">&#x27;bicubic&#x27;</span>), plt.title(<span class="string">&#x27;center&#x27;</span>)</span><br><span class="line">plt.xticks([]), plt.yticks([])</span><br><span class="line"><span class="comment"># 逆变换</span></span><br><span class="line">f1shift = np.fft.ifftshift(fshift)</span><br><span class="line">img_back = np.fft.ifft2(f1shift)</span><br><span class="line"><span class="comment"># 出来的是复数，无法显示</span></span><br><span class="line">img_back = np.abs(img_back)</span><br><span class="line">plt.subplot(<span class="number">133</span>), plt.imshow(img_back, cmap=<span class="string">&#x27;gray&#x27;</span>, interpolation=<span class="string">&#x27;bicubic&#x27;</span>), plt.title(<span class="string">&#x27;img back&#x27;</span>)</span><br><span class="line">plt.xticks([]), plt.yticks([])</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
 
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
 
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
 
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+<h4 id="OpenCV中操作"><a href="#OpenCV中操作" class="headerlink" title="OpenCV中操作"></a>OpenCV中操作</h4><ol>
+<li><p>返回结果 = cv2.dft(原始图像， 转换标识)</p>
+<p>返回结果是双通道的，第一通道是结果的实数部分，第二通道是虚数部分</p>
+<p>原始图像一般是整型八位位图，要转换成32位的（np.float32(img)）</p>
+<p>转换标识一般flags = cv2.DFT_COMPLEX_OUTPUT,输出一个复数阵列</p>
+</li>
+<li><p>np.fft.fftshift</p>
+<p>将零频率分量转换频谱中心</p>
+</li>
+<li><p>返回值 =  cv2.magnitude（参数1，参数2）</p>
+<p>参数1：浮点的X坐标，也就是实部</p>
+<p>参数2：浮点的Y坐标，也就是虚部</p>
+<p>通过这个函数，将那个复数转换到[0, 255]</p>
+</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> cv2</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"></span><br><span class="line">img = cv2.imread(<span class="string">&#x27;电脑本地的图像地址&#x27;</span>， <span class="number">0</span>)</span><br><span class="line">dft = cv2.dft(np.float32(img), flags = cv2.DFT_COMPLEX_OUTPUT)</span><br><span class="line">dftshift = np.fft.fftshift(dft)</span><br><span class="line">result = <span class="number">20</span>*np.log(cv2.magnitude(dftshift[:,:,<span class="number">0</span>], dftshift[:,:,<span class="number">1</span>]))</span><br><span class="line">ishift = np.fft.ifftshift(dftshift)</span><br><span class="line">iimg = cv2.idft(ishift)</span><br><span class="line">iimg = cv2.magnitude(iimg[:, :, <span class="number">0</span>], iimg[:, :, <span class="number">1</span>])</span><br><span class="line">plt.subplot(<span class="number">221</span>), plt.imshow(img,<span class="string">&#x27;gray&#x27;</span>)</span><br><span class="line">plt.title(<span class="string">&#x27;img&#x27;</span>), plt.axis(<span class="string">&#x27;off&#x27;</span>)</span><br><span class="line">plt.subplot(<span class="number">222</span>), plt.imshow(result,<span class="string">&#x27;gray&#x27;</span>)</span><br><span class="line">plt.title(<span class="string">&#x27;result&#x27;</span>), plt.axis(<span class="string">&#x27;off&#x27;</span>)</span><br><span class="line">plt.subplot(<span class="number">223</span>), plt.imshow(img, <span class="string">&#x27;gray&#x27;</span>)</span><br><span class="line">plt.title(<span class="string">&#x27;img&#x27;</span>), plt.axis(<span class="string">&#x27;off&#x27;</span>)</span><br><span class="line">plt.subplot(<span class="number">224</span>), plt.imshow(iimg, <span class="string">&#x27;gray&#x27;</span>)</span><br><span class="line">plt.title(<span class="string">&#x27;result&#x27;</span>), plt.axis(<span class="string">&#x27;off&#x27;</span>)</span><br><span class="line">plt.show()</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+<h4 id="低通滤波"><a href="#低通滤波" class="headerlink" title="低通滤波"></a>低通滤波</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> cv2</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"></span><br><span class="line">img = cv2.imread(<span class="string">&#x27;/Users/star/learning_python/picture/2.png&#x27;</span>, <span class="number">0</span>)</span><br><span class="line">dft = cv2.dft(np.float32(img), flags=cv2.DFT_COMPLEX_OUTPUT)</span><br><span class="line">dshift = np.fft.fftshift(dft)</span><br><span class="line">rows, cols = img.shape</span><br><span class="line">row, col = int(rows/<span class="number">2</span>), int(cols/<span class="number">2</span>)</span><br><span class="line">mask = np.zeros((rows, cols, <span class="number">2</span>), np.uint8)</span><br><span class="line">mask[row<span class="number">-50</span>:row+<span class="number">50</span>, col<span class="number">-50</span>:col+<span class="number">50</span>] = <span class="number">1</span></span><br><span class="line">dst = dshift * mask</span><br><span class="line">idst = np.fft.ifftshift(dst)</span><br><span class="line">ishift = cv2.idft(idst)</span><br><span class="line">idst = cv2.magnitude(ishift[:, :, <span class="number">0</span>], ishift[:, :, <span class="number">1</span>])</span><br><span class="line">plt.subplot(<span class="number">121</span>), plt.imshow(img, <span class="string">&#x27;gray&#x27;</span>)</span><br><span class="line">plt.title(<span class="string">&#x27;img&#x27;</span>), plt.axis(<span class="string">&#x27;off&#x27;</span>)</span><br><span class="line">plt.subplot(<span class="number">122</span>), plt.imshow(idst, <span class="string">&#x27;gray&#x27;</span>)</span><br><span class="line">plt.title(<span class="string">&#x27;img&#x27;</span>), plt.axis(<span class="string">&#x27;off&#x27;</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="高通滤波"><a href="#高通滤波" class="headerlink" title="高通滤波"></a>高通滤波</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> cv2</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"></span><br><span class="line">img = cv2.imread(<span class="string">&#x27;电脑本地的图像地址&#x27;</span>， <span class="number">0</span>)</span><br><span class="line">f = np.fft.fft2(img)</span><br><span class="line">fshift = np.fft.fftshift(f)        </span><br><span class="line">rows,cols = img.shape[:<span class="number">2</span>]</span><br><span class="line">crow,ccol = int(rows/<span class="number">2</span>), int(cols/<span class="number">2</span>)</span><br><span class="line">fshift[crow<span class="number">-30</span>:crow+<span class="number">30</span>, ccol<span class="number">-30</span>:ccol+<span class="number">30</span>] = <span class="number">0</span></span><br><span class="line">ishift = np.fft.ifftshift(fshift)</span><br><span class="line">iimg = np.fft.ifft2(ishift)</span><br><span class="line">iimg = np.abs(iimg)</span><br><span class="line">plt.subplot(<span class="number">121</span>),plt.imshow(img, <span class="string">&#x27;gray&#x27;</span>)</span><br><span class="line">plt.title(<span class="string">&#x27;img&#x27;</span>),plt.axis(<span class="string">&#x27;off&#x27;</span>)</span><br><span class="line">plt.subplot(<span class="number">122</span>),plt.imshow(iimg, <span class="string">&#x27;gray&#x27;</span>)</span><br><span class="line">plt.title(<span class="string">&#x27;iimg&#x27;</span>),plt.axis(<span class="string">&#x27;off&#x27;</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+
+
+
 
           
             <div class='article_footer'>
@@ -540,7 +586,7 @@
           
         
           
-            <p>本文永久链接是：<a href=http://yoursite.com/2020/08/14/hello-world/>http://yoursite.com/2020/08/14/hello-world/</a></p>
+            <p>本文永久链接是：<a href=http://yoursite.com/2020/08/10/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%E2%80%94%E2%80%94%E5%82%85%E9%87%8C%E5%8F%B6%E5%8F%98%E6%8D%A2/>http://yoursite.com/2020/08/10/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%E2%80%94%E2%80%94%E5%82%85%E9%87%8C%E5%8F%B6%E5%8F%98%E6%8D%A2/</a></p>
           
         
       </blockquote>
@@ -591,10 +637,10 @@
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-08-14T08:51:48+08:00">
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-08-12T15:52:59+08:00">
   <a class='notlink'>
     <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
-    <p>更新于：Aug 14, 2020</p>
+    <p>更新于：Aug 12, 2020</p>
   </a>
 </div>
 
@@ -618,7 +664,7 @@
       
         <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2020/08/14/hello-world/&title=Hello World - CallMe_star&summary="
+          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2020/08/10/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%E2%80%94%E2%80%94%E5%82%85%E9%87%8C%E5%8F%B6%E5%8F%98%E6%8D%A2/&title= - CallMe_star&summary="
           
           >
           
@@ -630,7 +676,7 @@
       
         <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://yoursite.com/2020/08/14/hello-world/&title=Hello World - CallMe_star&summary="
+          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://yoursite.com/2020/08/10/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%E2%80%94%E2%80%94%E5%82%85%E9%87%8C%E5%8F%B6%E5%8F%98%E6%8D%A2/&title= - CallMe_star&summary="
           
           >
           
@@ -642,7 +688,7 @@
       
         <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2020/08/14/hello-world/&title=Hello World - CallMe_star&summary="
+          target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2020/08/10/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%E2%80%94%E2%80%94%E5%82%85%E9%87%8C%E5%8F%B6%E5%8F%98%E6%8D%A2/&title= - CallMe_star&summary="
           
           >
           
@@ -666,11 +712,11 @@
         
           <div class="prev-next">
             
-            
-              <a class='next' href='/callme-star.github.io/2020/08/10/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%E2%80%94%E2%80%94%E5%82%85%E9%87%8C%E5%8F%B6%E5%8F%98%E6%8D%A2/'>
-                <p class='title'><i class="fas fa-chevron-right" aria-hidden="true"></i></p>
-                <p class='content'>1.傅里叶变换的理解傅里叶变换的相关数学公式目前还没有搞懂，先不整那个东西，我们主要是研究傅里叶变换的一些思想和应用。这个思想起源于牛顿研究那个三棱镜，白光透过棱镜之后会被分解为七种颜色的光，这...</p>
+              <a class='prev' href='/callme-star.github.io/2020/08/14/hello-world/'>
+                <p class='title'><i class="fas fa-chevron-left" aria-hidden="true"></i>Hello World</p>
+                <p class='content'>Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any ...</p>
               </a>
+            
             
           </div>
         
@@ -724,7 +770,7 @@
 
 
     <div class='content'>
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Quick-Start"><span class="toc-text">Quick Start</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Create-a-new-post"><span class="toc-text">Create a new post</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Run-server"><span class="toc-text">Run server</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Generate-static-files"><span class="toc-text">Generate static files</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Deploy-to-remote-sites"><span class="toc-text">Deploy to remote sites</span></a></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E5%82%85%E9%87%8C%E5%8F%B6%E5%8F%98%E6%8D%A2%E7%9A%84%E7%90%86%E8%A7%A3"><span class="toc-text">1.傅里叶变换的理解</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E5%82%85%E9%87%8C%E5%8F%B6%E7%BA%A7%E6%95%B0"><span class="toc-text">2.傅里叶级数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E5%82%85%E9%87%8C%E5%8F%B6%E5%8F%98%E6%8D%A2"><span class="toc-text">3.傅里叶变换</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-%E5%BA%94%E7%94%A8"><span class="toc-text">4.应用</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%A3%B0%E9%9F%B3"><span class="toc-text">- 声音</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9B%BE%E5%83%8F"><span class="toc-text">- 图像</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-OpenCV-%EF%BC%8CNumpy%E4%B8%AD%E7%9A%84%E6%93%8D%E4%BD%9C%E4%B8%80%E4%B8%8B"><span class="toc-text">5.OpenCV ，Numpy中的操作一下</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#numpy%E4%B8%AD%E6%93%8D%E4%BD%9C"><span class="toc-text">-numpy中操作</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#OpenCV%E4%B8%AD%E6%93%8D%E4%BD%9C"><span class="toc-text">OpenCV中操作</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BD%8E%E9%80%9A%E6%BB%A4%E6%B3%A2"><span class="toc-text">低通滤波</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%AB%98%E9%80%9A%E6%BB%A4%E6%B3%A2"><span class="toc-text">高通滤波</span></a></li></ol></li></ol></li></ol>
     </div>
   </section>
 
