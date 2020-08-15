@@ -5,8 +5,6 @@
   <!-- SEO相关 -->
   
     
-      <meta name="robots" content="noindex,follow">
-    
   
   <!-- 渲染优化 -->
   <meta name="renderer" content="webkit">
@@ -18,7 +16,7 @@
 
   <!-- 页面元数据 -->
   
-  <title>归档 - CallMe_star</title>
+  <title>图像处理 - CallMe_star</title>
   
 
   
@@ -79,7 +77,7 @@
   
   
   <div class="cover-wrapper">
-    <cover class='cover ' style="display: none;">
+    <cover class='cover page' style="display: none;">
       <div class='cover-body'>
   <div class='a'>
     
@@ -387,7 +385,7 @@
   
 
 
-  <div class="l_body">
+  <div class="l_body nocover">
     <div class='body-wrapper' id="pjax-container">
       
         <!--此文件用来存放一些不方便取值的变量--> 
@@ -406,16 +404,16 @@
  
 <script> 
   // 处理封面 此时 jquery 还没加载 
-  if ("blog" == "none") { // 移除封面 
+  if ("none" == "none") { // 移除封面 
     document.getElementsByClassName('cover')[0].style.display = "none"; 
     document.getElementsByClassName('l_body')[0].classList.add("nocover"); 
     document.getElementsByClassName('l_header', 'cover-wrapper')[0].classList.add("show"); 
   } else { 
-    if ("blog" == "blog") { // 半屏 
+    if ("none" == "blog") { // 半屏 
       document.getElementsByClassName('cover')[0].classList.remove("full"); 
       document.getElementsByClassName('cover')[0].classList.add("half"); 
       document.getElementsByClassName('scroll-down')[0].style.display = "none"; 
-    } else if ("blog" == "docs") { // 全屏 
+    } else if ("none" == "docs") { // 全屏 
       document.getElementsByClassName('cover')[0].classList.remove("half"); 
       document.getElementsByClassName('cover')[0].classList.add("full"); 
       document.getElementsByClassName('scroll-down')[0].style.display = ""; 
@@ -430,215 +428,206 @@
       
 
 <div class='l_main'>
-	
-	  <article id="archive-page" class="post article white-box reveal shadow">
-	    <section class="archive">
-	      
-	        
-	          
-						
-							
-		            
-			          <div class="archive-item archive-year mark">
-			            <h2>2020</h2>
-			          </div>
-		      		
-		          <div class="archive-item archive-post mark">
-		            <a class='ai' href="/callme-star.github.io/2020/08/13/%E5%AD%A6%E4%B9%A0java%E7%AC%AC%E4%B8%80%E5%A4%A9%E2%80%94%E2%80%94%E8%AF%AD%E8%A8%80%E7%B1%BB%E5%9E%8B/">
-		              <time>08-13</time>
-		              <span class="title">
-		                
-		                  学习java第一天——语言类型
-		                
-		                
-										
-										
-		              </span>
-		            </a>
-		          </div>
-						
-	      
-	          
-						
-							
-		          <div class="archive-item archive-post mark">
-		            <a class='ai' href="/callme-star.github.io/2020/08/13/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%E2%80%94%E2%80%94%E5%82%85%E9%87%8C%E5%8F%B6%E5%8F%98%E6%8D%A2/">
-		              <time>08-13</time>
-		              <span class="title">
-		                
-		                  傅里叶变换
-		                
-		                
-										
-										
-		              </span>
-		            </a>
-		          </div>
-						
-	      
-	          
-						
-							
-		            
-			          <div class="archive-item archive-year mark">
-			            <h2>2017</h2>
-			          </div>
-		      		
-		          <div class="archive-item archive-post mark">
-		            <a class='ai' href="/callme-star.github.io/2017/05/26/test/">
-		              <time>05-26</time>
-		              <span class="title">
-		                
-		                  2017-05-26
-		                
-		                
-										
-										
-		              </span>
-		            </a>
-		          </div>
-						
-	      
-	    </section>
-	  </article>
-	
+  
+
+  
+    <article id="page" class="post white-box reveal shadow article-type-page" itemscope itemprop="blogPost">
+      
+
+
+  <section class='meta'>
+    
+      
+      
+      <div class="meta" id="header-meta">
+        
+          
+  <h1 class="title">
+    <a href="/callme-star.github.io/categories/index.html">
+      图像处理
+    </a>
+  </h1>
+
+
+        
+        <div class='new-meta-box'>
+          
+            
+          
+            
+              
+<div class='new-meta-item author'>
+  <a class='author' target="_blank" href="https://blog.csdn.net/m0_46439571" rel="nofollow noopener">
+    <img no-lazy src="https://cdn.jsdelivr.net/gh/CallMe-star/picbed/pai11.jpg">
+    <p>CallMe_star</p>
+  </a>
+</div>
+
+            
+          
+            
+              
+
+            
+          
+            
+              <div class="new-meta-item date">
+  <a class='notlink'>
+    <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
+    <p>发布于：2020年8月15日</p>
+  </a>
+</div>
+
+            
+          
+            
+              
+
+            
+          
+        </div>
+        
+          <hr>
+        
+      </div>
+    
+  </section>
+
+
+      <section class="article typo">
+        <div class="article-entry" itemprop="articleBody">
+          
+          
+          
+          
+        </div>
+        
+          
+
+
+  <section class='meta' id="footer-meta">
+    <div class='new-meta-box'>
+      
+        
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-08-15T17:28:35+08:00">
+  <a class='notlink'>
+    <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
+    <p>更新于：2020年8月15日</p>
+  </a>
+</div>
+
+        
+      
+        
+          
+
+        
+      
+        
+          
+
+        
+      
+        
+          
+  <div class="new-meta-item share -mob-share-list">
+  <div class="-mob-share-list share-body">
+    
+      
+        <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/categories/index.html&title=图像处理 - CallMe_star&summary="
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qq.png">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://yoursite.com/categories/index.html&title=图像处理 - CallMe_star&summary="
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qzone.png">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/categories/index.html&title=图像处理 - CallMe_star&summary="
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/weibo.png">
+          
+        </a>
+      
+    
+  </div>
+</div>
+
+
+
+        
+      
+    </div>
+  </section>
+
+
+        
+        
+      </section>
+    </article>
+  
+
+  
+    
+
+  <article class="post white-box reveal comments shadow">
+    <section class="article typo">
+      <p ct><i class='fas fa-comments'></i> 评论</p>
+      
+      <section id="comments">
+        <div id="valine_container" class="valine_thread">
+  <i class="fas fa-cog fa-spin fa-fw fa-2x"></i>
+</div>
+
+      </section>
+    </section>
+  </article>
+
+
+  
+
+
+
+
+<!-- 根据页面mathjax变量决定是否加载MathJax数学公式js -->
+
+
 </div>
 <aside class='l_side'>
   
   
-    
-    
-
-<section class="widget blogger shadow desktop mobile">
-  <div class='content'>
-    
-      
-        <a class='avatar flat-box rectangle' href='/callme-star.github.io/about/'>
-          <img no-lazy src='https://cdn.jsdelivr.net/gh/CallMe-star/picbed/pai11.jpg'/>
-        </a>
-      
-    
-    
-      <div class='text'>
-        
-        
-        
-          <p><span id="jinrishici-sentence">CallMe_star</span></p>
-          <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
-        
-      </div>
-    
-    
-      <div class="social-wrapper">
-        
-          
-            <a href="https://twitter.com/CallMe_starstar"
-              class="social fab fa-twitter flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-            </a>
-          
-        
-          
-            <a href="mailto:qinggang372422@gmail.com"
-              class="social fas fa-envelope flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-            </a>
-          
-        
-          
-            <a href="https://github.com/CallMe-star/"
-              class="social fab fa-github flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-            </a>
-          
-        
-          
-            <a href="https://www.instagram.com/callme_starstar/"
-              class="social fab fa-instagram flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-            </a>
-          
-        
-      </div>
-    
-  </div>
-</section>
-
-  
 
   
     
     
-  
-
-  <section class="widget category shadow desktop">
-    
-  <header>
-    
-      <a href='/blog/categories/'><i class="fas fa-folder-open fa-fw" aria-hidden="true"></i><span class='name'>文章分类</span></a>
-    
-  </header>
 
 
-    <div class='content'>
-      <ul class="entry navigation">
-        
-          <li><a class="flat-box"
-            title="/callme-star.github.io/categories/web%E5%89%8D%E7%AB%AF/" href="/callme-star.github.io/categories/web%E5%89%8D%E7%AB%AF/"
-            id="callme-stargithubiocategorieswebE5898DE7ABAF"
-            ><div class='name'>web前端</div><div class='badge'>(1)</div></a></li>
-        
-          <li><a class="flat-box"
-            title="/callme-star.github.io/categories/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%E7%AC%94%E8%AE%B0/" href="/callme-star.github.io/categories/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%E7%AC%94%E8%AE%B0/"
-            id="callme-stargithubiocategoriesE59BBEE5838FE5A484E79086E7AC94E8AEB0"
-            ><div class='name'>图像处理笔记</div><div class='badge'>(1)</div></a></li>
-        
-      </ul>
-    </div>
-  </section>
 
-
-  
-
-  
-    
-    
-  
-
-  <section class="widget tagcloud shadow desktop mobile">
-    
-  <header>
-    
-      <a href='/blog/tags/'><i class="fas fa-tags fa-fw" aria-hidden="true"></i><span class='name'>热门标签</span></a>
-    
-  </header>
-
-
-    <div class='content'>
-      <a href="/callme-star.github.io/tags/java%E7%AC%94%E8%AE%B0/" style="font-size: 14px; color: #999">java笔记</a>
-    </div>
-  </section>
-
-
-  
 
   
 
 
 </aside>
 
-
-
-
-
-	<!-- 根据主题中的设置决定是否在archive中针对摘要部分的MathJax公式加载mathjax.js文件 -->
-	
-
-	
 
 
     </div>
