@@ -18,7 +18,7 @@
 
   <!-- 页面元数据 -->
   
-  <title>归档：2020 - CallMe_star</title>
+  <title>分类：图像处理笔记 - CallMe_star</title>
   
 
   
@@ -387,7 +387,7 @@
   
 
 
-  <div class="l_body">
+  <div class="l_body nocover">
     <div class='body-wrapper' id="pjax-container">
       
         <!--此文件用来存放一些不方便取值的变量--> 
@@ -406,16 +406,16 @@
  
 <script> 
   // 处理封面 此时 jquery 还没加载 
-  if ("blog" == "none") { // 移除封面 
+  if ("none" == "none") { // 移除封面 
     document.getElementsByClassName('cover')[0].style.display = "none"; 
     document.getElementsByClassName('l_body')[0].classList.add("nocover"); 
     document.getElementsByClassName('l_header', 'cover-wrapper')[0].classList.add("show"); 
   } else { 
-    if ("blog" == "blog") { // 半屏 
+    if ("none" == "blog") { // 半屏 
       document.getElementsByClassName('cover')[0].classList.remove("full"); 
       document.getElementsByClassName('cover')[0].classList.add("half"); 
       document.getElementsByClassName('scroll-down')[0].style.display = "none"; 
-    } else if ("blog" == "docs") { // 全屏 
+    } else if ("none" == "docs") { // 全屏 
       document.getElementsByClassName('cover')[0].classList.remove("half"); 
       document.getElementsByClassName('cover')[0].classList.add("full"); 
       document.getElementsByClassName('scroll-down')[0].style.display = ""; 
@@ -429,14 +429,14 @@
       
       
 
+
 <div class='l_main'>
-	
-		
+  
+    
+      
   <section class="post-list ">
     
       
-        
-          
         
           
         
@@ -616,93 +616,6 @@
           </div>
         
       
-        
-          <div class='post-wrapper'>
-            <article class="post white-box shadow reveal ">
-  
-
-
-  <section class='meta'>
-    
-      
-      
-      <div class="meta" id="header-meta">
-        
-          
-  <h2 class="title">
-    <a href="/callme-star.github.io/2020/08/13/%E5%AD%A6%E4%B9%A0java%E7%AC%AC%E4%B8%80%E5%A4%A9%E2%80%94%E2%80%94%E8%AF%AD%E8%A8%80%E7%B1%BB%E5%9E%8B/">
-      学习java第一天——语言类型
-    </a>
-  </h2>
-
-
-        
-        <div class='new-meta-box'>
-          
-            
-          
-            
-              
-<div class='new-meta-item author'>
-  <a class='author' target="_blank" href="https://blog.csdn.net/m0_46439571" rel="nofollow noopener">
-    <img no-lazy src="https://cdn.jsdelivr.net/gh/CallMe-star/picbed/pai11.jpg">
-    <p>CallMe_star</p>
-  </a>
-</div>
-
-            
-          
-            
-              <div class="new-meta-item date">
-  <a class='notlink'>
-    <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
-    <p>发布于：2020年8月13日</p>
-  </a>
-</div>
-
-            
-          
-            
-              
-  
-  <div class='new-meta-item category'>
-    <a href='/callme-star.github.io/categories/java%E7%AC%94%E8%AE%B0/' rel="nofollow">
-      <i class="fas fa-folder-open fa-fw" aria-hidden="true"></i>
-      <p>java笔记</p>
-    </a>
-  </div>
-
-
-            
-          
-        </div>
-        
-          <hr>
-        
-      </div>
-    
-  </section>
-
-
-  <section class="article typo">
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="解释型语言"><a href="#解释型语言" class="headerlink" title="解释型语言"></a>解释型语言</h2><p>解释型语言的典型：python、JavaScript、Ruby等。</p>
-      
-    </div>
-    
-      
-        <a class= "readmore" href="/callme-star.github.io/2020/08/13/%E5%AD%A6%E4%B9%A0java%E7%AC%AC%E4%B8%80%E5%A4%A9%E2%80%94%E2%80%94%E8%AF%AD%E8%A8%80%E7%B1%BB%E5%9E%8B/">
-          阅读全文 <i class="fas fa-chevron-right"></i>
-        </a>
-      
-    
-  </section>
-</article>
-
-          </div>
-        
-      
     
   </section>
   
@@ -714,7 +627,9 @@
   
 
 
-	
+    
+  
+
 </div>
 <aside class='l_side'>
   
@@ -844,14 +759,6 @@
 
 </aside>
 
-
-
-
-
-	<!-- 根据主题中的设置决定是否在archive中针对摘要部分的MathJax公式加载mathjax.js文件 -->
-	
-
-	
 
 
     </div>
