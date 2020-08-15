@@ -42,19 +42,38 @@
     
     
     <entry>
-      <title></title>
-      <link href="/callme-star.github.io/2017/05/26/test/"/>
-      <url>/callme-star.github.io/2017/05/26/test/</url>
+      <title>所有分类</title>
+      <link href="/callme-star.github.io/2017/05/26/%E7%9B%AE%E5%BD%95/"/>
+      <url>/callme-star.github.io/2017/05/26/%E7%9B%AE%E5%BD%95/</url>
       
-        <content type="html"><![CDATA[<p>看看有没有目录</p><p>你可以显示到哪里</p><h2 id="的按说"><a href="#的按说" class="headerlink" title="的按说"></a>的按说</h2>]]></content>
+        <content type="html"><![CDATA[]]></content>
       
       
       <categories>
           
-          <category> web前端 </category>
+          <category> 目录 </category>
           
       </categories>
       
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>所有标签</title>
+      <link href="/callme-star.github.io/2017/05/26/%E6%A0%87%E7%AD%BE/"/>
+      <url>/callme-star.github.io/2017/05/26/%E6%A0%87%E7%AD%BE/</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> 标签 </tag>
+            
+        </tags>
       
     </entry>
     
