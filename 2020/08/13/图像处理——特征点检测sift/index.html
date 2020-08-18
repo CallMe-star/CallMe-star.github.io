@@ -22,6 +22,10 @@
   
 
   
+    <meta name="description" content="###　通俗的大致理解
+
+首先，理解同一幅图像在不同的空间中有不同的表达方式。比如在RGB空间中，图像中的像素点可以用颜色值(r,g,b)来表示；在灰度空间中，图像中的像素点可以用灰度值来表示。类似的，你可以把梯度图像认为是图像在梯度空间中的一种表达，图像中的像素点可以用梯度方向来表示，即，梯度图像中的像素点表达...">
+  
 
   <!-- feed -->
   
@@ -598,17 +602,19 @@
           
           
           <p>###　通俗的大致理解</p>
-<p>作者：大道至简知不语<br>链接：<a target="_blank" rel="noopener" href="https://www.zhihu.com/question/40736560/answer/358547318">https://www.zhihu.com/question/40736560/answer/358547318</a><br>来源：知乎</p>
 <ol>
 <li>首先，理解同一幅<strong>图像在不同的空间中有不同的表达方式</strong>。比如在RGB空间中，图像中的像素点可以用颜色值(r,g,b)来表示；在灰度空间中，图像中的像素点可以用灰度值来表示。类似的，你可以把梯度图像认为是图像在<strong>梯度空间</strong>中的一种表达，图像中的像素点可以<strong>用梯度方向</strong>来表示，即，梯度图像中的像素点表达的是该点的梯度方向（而不是灰度值/颜色值）。</li>
+</ol>
+<a id="more"></a>
+
+<ol>
 <li>其次，理解图像的<strong>灰度直方图是什么</strong>。图像的灰度直方图就是把<strong>灰度图像中灰度值分别为0,1,…,255的像素的个数统计起来</strong>，得到的一个一维向量。类似的，图像的梯度直方图就是把<strong>梯度图像中梯度方向分别为0°到360°的像素的个数统计起来</strong>，得到一个一维向量。</li>
 </ol>
 <p>SIFT是什么？简单来说就是图像中某个局部区域（如16*16像素的一个区域）对应的梯度直方图，这就是最简单直观的理解。当然，SIFT还包括各种细节，如量化，尺度金字塔、旋转不变性、局部归一化等，这些东西很多博客上都有“教科书般”的介绍。</p>
 <p>SURF是什么？SURF本身不是什么新的descriptor，而是对SIFT实现上的加速，核心点在于采用<strong>积分图</strong>对计算加速。</p>
+<p>作者：大道至简知不语<br>链接：<a target="_blank" rel="noopener" href="https://www.zhihu.com/question/40736560/answer/358547318">https://www.zhihu.com/question/40736560/answer/358547318</a><br>来源：知乎</p>
 <p><strong>知识点：积分图</strong></p>
-<h3 id="sift深度剖析"><a href="#sift深度剖析" class="headerlink" title="sift深度剖析"></a>sift深度剖析</h3><p>作者: lowkeyway</p>
-<p>转载自: <a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/90122194">https://zhuanlan.zhihu.com/p/90122194</a></p>
-<h4 id="1、明确学习目的"><a href="#1、明确学习目的" class="headerlink" title="1、明确学习目的"></a>1、明确学习目的</h4><p>不管是Harris还是Shi-Tomas，角点检测检测即便做得再优化，也总是有不可克服的缺点：</p>
+<h3 id="sift深度剖析"><a href="#sift深度剖析" class="headerlink" title="sift深度剖析"></a>sift深度剖析</h3><h4 id="1、明确学习目的"><a href="#1、明确学习目的" class="headerlink" title="1、明确学习目的"></a>1、明确学习目的</h4><p>不管是Harris还是Shi-Tomas，角点检测检测即便做得再优化，也总是有不可克服的缺点：</p>
 <ul>
 <li><strong>对尺度很敏感，不具有尺度不变性</strong></li>
 <li><strong>需要设计角点匹配算法</strong></li>
@@ -698,6 +704,8 @@
 <p><img src="https://picb.zhimg.com/80/v2-295c77fc626560a0421be89e19516d6d_720w.jpg" alt="img"></p>
 <p><img src="https://pic4.zhimg.com/80/v2-aac36afb03c30320918b8d3d9f7f986a_720w.jpg" alt="img"></p>
 <p><img src="https://pic1.zhimg.com/80/v2-799a944fce5797047a6e8a18fb624d2e_720w.jpg" alt="img"></p>
+<p>作者: lowkeyway</p>
+<p>转载自: <a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/90122194">https://zhuanlan.zhihu.com/p/90122194</a></p>
 
           
             <div class='article_footer'>
@@ -786,7 +794,7 @@
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-08-18T20:49:31+08:00">
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-08-18T20:51:55+08:00">
   <a class='notlink'>
     <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
     <p>更新于：2020年8月18日</p>
@@ -811,7 +819,10 @@
       
         <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2020/08/13/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%E2%80%94%E2%80%94%E7%89%B9%E5%BE%81%E7%82%B9%E6%A3%80%E6%B5%8Bsift/&title=理解边缘检测sift - CallMe_star&summary="
+          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2020/08/13/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%E2%80%94%E2%80%94%E7%89%B9%E5%BE%81%E7%82%B9%E6%A3%80%E6%B5%8Bsift/&title=理解边缘检测sift - CallMe_star&summary=###　通俗的大致理解
+
+首先，理解同一幅图像在不同的空间中有不同的表达方式。比如在RGB空间中，图像中的像素点可以用颜色值(r,g,b)来表示；在灰度空间中，图像中的像素点可以用灰度值来表示。类似的，你可以把梯度图像认为是图像在梯度空间中的一种表达，图像中的像素点可以用梯度方向来表示，即，梯度图像中的像素点表达的是该点的梯度方向（而不是灰度值/颜色值）。
+"
           
           >
           
@@ -823,7 +834,10 @@
       
         <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://yoursite.com/2020/08/13/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%E2%80%94%E2%80%94%E7%89%B9%E5%BE%81%E7%82%B9%E6%A3%80%E6%B5%8Bsift/&title=理解边缘检测sift - CallMe_star&summary="
+          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://yoursite.com/2020/08/13/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%E2%80%94%E2%80%94%E7%89%B9%E5%BE%81%E7%82%B9%E6%A3%80%E6%B5%8Bsift/&title=理解边缘检测sift - CallMe_star&summary=###　通俗的大致理解
+
+首先，理解同一幅图像在不同的空间中有不同的表达方式。比如在RGB空间中，图像中的像素点可以用颜色值(r,g,b)来表示；在灰度空间中，图像中的像素点可以用灰度值来表示。类似的，你可以把梯度图像认为是图像在梯度空间中的一种表达，图像中的像素点可以用梯度方向来表示，即，梯度图像中的像素点表达的是该点的梯度方向（而不是灰度值/颜色值）。
+"
           
           >
           
@@ -835,7 +849,10 @@
       
         <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2020/08/13/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%E2%80%94%E2%80%94%E7%89%B9%E5%BE%81%E7%82%B9%E6%A3%80%E6%B5%8Bsift/&title=理解边缘检测sift - CallMe_star&summary="
+          target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2020/08/13/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%E2%80%94%E2%80%94%E7%89%B9%E5%BE%81%E7%82%B9%E6%A3%80%E6%B5%8Bsift/&title=理解边缘检测sift - CallMe_star&summary=###　通俗的大致理解
+
+首先，理解同一幅图像在不同的空间中有不同的表达方式。比如在RGB空间中，图像中的像素点可以用颜色值(r,g,b)来表示；在灰度空间中，图像中的像素点可以用灰度值来表示。类似的，你可以把梯度图像认为是图像在梯度空间中的一种表达，图像中的像素点可以用梯度方向来表示，即，梯度图像中的像素点表达的是该点的梯度方向（而不是灰度值/颜色值）。
+"
           
           >
           
