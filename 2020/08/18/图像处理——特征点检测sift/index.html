@@ -16,14 +16,15 @@
 
   <!-- 页面元数据 -->
   
-  <title>傅里叶变换 - CallMe_star</title>
+  <title>理解边缘检测sift - CallMe_star</title>
   
     <meta name="keywords" content="图像处理笔记">
   
 
   
-    <meta name="description" content="图像处理——傅里叶
-1.傅里叶变换的理解傅里叶变换的相关数学公式目前还没有搞懂，先不整那个东西，我们主要是研究傅里叶变换的一些思想和应用。这个思想起源于牛顿研究那个三棱镜，白光透过棱镜之后会被分解为七种颜色的光，这些光叠加又能形成白光，所以说可以把一种事物分解成好几种事物的加和。">
+    <meta name="description" content="图像处理——sift理解
+通俗的大致理解
+首先，理解同一幅图像在不同的空间中有不同的表达方式。比如在RGB空间中，图像中的像素点可以用颜色值(r,g,b)来表示；在灰度空间中，图像中的像素点可以用灰度值来表示。类似的，你可以把梯度图像认为是图像在梯度空间中的一种表达，图像中的像素点可以用梯度方向来表示，即，梯度图...">
   
 
   <!-- feed -->
@@ -494,7 +495,7 @@
  
 <div id="pjax-data" style="display: none"> 
   <div id="pjax-ispage">true</div> 
-  <div id="pjax-pageTitle">傅里叶变换</div> 
+  <div id="pjax-pageTitle">理解边缘检测sift</div> 
   <div id="pjax-enable-cover">true</div> 
   <div id="pjax-comment-path">none</div> 
   <div id="pjax-comment-placeholder">none</div> 
@@ -542,8 +543,8 @@
         
           
   <h1 class="title">
-    <a href="/callme-star.github.io/2020/08/13/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%E2%80%94%E2%80%94%E5%82%85%E9%87%8C%E5%8F%B6%E5%8F%98%E6%8D%A2/">
-      傅里叶变换
+    <a href="/callme-star.github.io/2020/08/18/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%E2%80%94%E2%80%94%E7%89%B9%E5%BE%81%E7%82%B9%E6%A3%80%E6%B5%8Bsift/">
+      理解边缘检测sift
     </a>
   </h1>
 
@@ -568,7 +569,7 @@
               <div class="new-meta-item date">
   <a class='notlink'>
     <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
-    <p>发布于：2020年8月13日</p>
+    <p>发布于：2020年8月18日</p>
   </a>
 </div>
 
@@ -600,70 +601,111 @@
         <div class="article-entry" itemprop="articleBody">
           
           
-          <p>图像处理——傅里叶</p>
-<h2 id="1-傅里叶变换的理解"><a href="#1-傅里叶变换的理解" class="headerlink" title="1.傅里叶变换的理解"></a>1.傅里叶变换的理解</h2><p>傅里叶变换的相关数学公式目前还没有搞懂，先不整那个东西，我们主要是研究傅里叶变换的一些思想和应用。这个思想起源于牛顿研究那个三棱镜，白光透过棱镜之后会被分解为七种颜色的光，这些光叠加又能形成白光，所以说可以把一种事物分解成好几种事物的加和。</p>
+          <p>图像处理——sift理解</p>
+<h3 id="通俗的大致理解"><a href="#通俗的大致理解" class="headerlink" title="通俗的大致理解"></a>通俗的大致理解</h3><ol>
+<li>首先，理解同一幅<strong>图像在不同的空间中有不同的表达方式</strong>。比如在RGB空间中，图像中的像素点可以用颜色值(r,g,b)来表示；在灰度空间中，图像中的像素点可以用灰度值来表示。类似的，你可以把梯度图像认为是图像在<strong>梯度空间</strong>中的一种表达，图像中的像素点可以<strong>用梯度方向</strong>来表示，即，梯度图像中的像素点表达的是该点的梯度方向（而不是灰度值/颜色值）。</li>
+</ol>
 <a id="more"></a>
 
-<p>后来傅里叶就提出了**<em>傅里叶级数**</em>，一个等幅度不同频或者等频不同幅的波形可以由一组正弦波余弦波的加和得到（原话：任何连续周期信号可以由一组适当的正弦曲线组合而成）</p>
-<h2 id="2-傅里叶级数"><a href="#2-傅里叶级数" class="headerlink" title="2.傅里叶级数"></a>2.傅里叶级数</h2><p>可以这么理解：原图像相当于在时间域中的一个曲线，坐标图是个二维坐标系，横轴是时间，纵轴是幅值的一个曲线，我们通过傅里叶变换可以把这条曲线变成多条正余弦函数相加的形式：傅里叶变换之后形成的是一个三维坐标系，他的x轴是频率（w），y轴是相位（因为每个正余弦函数的起点不同，有的是从零点开始，有的不是，这个曲线开始的那个幅值就是相位，相位就是后公式中的φ），z轴是振幅高度，。这样可以把一个图像从空间域转换到频率域，因为两者等价，所以可以逆变换回去。但这个傅里叶级数只能针对周期型函数才能拆分成多个正余弦函数相加，所以后来有了傅里叶变换。<br>$$<br>f(t) = \frac{a_n}{2}+\sum a_n*sin（nwt+φ_n）<br>$$</p>
-<h2 id="3-傅里叶变换"><a href="#3-傅里叶变换" class="headerlink" title="3.傅里叶变换"></a>3.傅里叶变换</h2><p>其中推导公式中用到了欧拉公式，<br>$$<br>cos(x)+i*sin(x) = e^{ix}\<br>$$<br>$$<br>x = wt<br>$$</p>
-<p>$$<br>F_T = \int_{-\infty}^{+\infty}f(t)e^{jwt}dt\<br>$$</p>
-<p>然后通过逆变换可以再变回去。通过傅里叶变换就可以把一个随机的曲线，转换到频率域，只不过这次的三维坐标系对应的w和幅值的函数图像不再是离散的图像了，而是一个连续图像。y轴所对应的相位意义没变。</p>
-<h2 id="4-应用"><a href="#4-应用" class="headerlink" title="4.应用"></a>4.应用</h2><h4 id="声音"><a href="#声音" class="headerlink" title="- 声音"></a>- 声音</h4><p>通过分析频率域，可以分析出低频可能是男生说话，高频可能是女生说话，再高的频率就是噪音了，除去这些高频信号，然后通过逆变换就可以得到处理后的音频。</p>
-<p>在声音中，那刚才的傅里叶变换之前的x轴就是时间，y轴就是声音的振幅</p>
-<p>如下图（copy from 知乎Heinrich）</p>
-<p><img src="https://cdn.jsdelivr.net/gh/CallMe-star/picbed@master/fuliye1.jpg"></p>
-<h4 id="图像"><a href="#图像" class="headerlink" title="- 图像"></a>- 图像</h4><p>通过分析频率域，他的低频部分可能就是画像的主体部分，高频部分可能是图像中的噪点，比如说是画面中的斑点噪音，旧照片中的斑点，通过去掉高频信号，然后逆变换回去，就得到去除噪点之后的图像。</p>
-<p>在图像中，傅里叶变换之前的x轴就是图像的空间坐标位置，y轴就是他的灰度？？？</p>
-<h2 id="5-OpenCV-，Numpy中的操作一下"><a href="#5-OpenCV-，Numpy中的操作一下" class="headerlink" title="5.OpenCV ，Numpy中的操作一下"></a>5.OpenCV ，Numpy中的操作一下</h2><h4 id="numpy中操作"><a href="#numpy中操作" class="headerlink" title="-numpy中操作"></a>-numpy中操作</h4><ol>
-<li><p>np.fft.fft2</p>
-<p>实现傅里叶变换并且返回一个复数数组</p>
-</li>
-<li><p>np.fft.fftshift</p>
-<p>将零频率分量移动到频谱的中心</p>
-</li>
-<li><p>np.log（np.abs(fshift)）</p>
-<p>刚才返回的复数数组没办法用图像的形式展示出来需要用以上函数转换到[0, 255]范围</p>
-</li>
-<li><p>np.fft.ifftshift</p>
-<p>把中心化的频谱再移动回左上角</p>
-</li>
-<li><p>np.fft.ifft2</p>
-<p>实现逆变换，返回一个复数数组</p>
-</li>
-<li><p>np.abs（逆傅里叶变换的结果）</p>
-</li>
+<ol>
+<li>其次，理解图像的<strong>灰度直方图是什么</strong>。图像的灰度直方图就是把<strong>灰度图像中灰度值分别为0,1,…,255的像素的个数统计起来</strong>，得到的一个一维向量。类似的，图像的梯度直方图就是把<strong>梯度图像中梯度方向分别为0°到360°的像素的个数统计起来</strong>，得到一个一维向量。</li>
 </ol>
-<p>​        变回能显示的[0, 255]的可显示图像</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> cv2</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"></span><br><span class="line"><span class="comment"># 直接读为灰度图像</span></span><br><span class="line">img = cv2.imread(<span class="string">&#x27;你电脑本地的图像路径&#x27;</span>, <span class="number">0</span>)  </span><br><span class="line">f = np.fft.fft2(img)</span><br><span class="line">fshift = np.fft.fftshift(f)</span><br><span class="line"><span class="comment"># 取绝对值：将复数变化成实数</span></span><br><span class="line"><span class="comment"># 取对数的目的为了将数据变化到0-255</span></span><br><span class="line">s1 = np.log(np.abs(fshift))</span><br><span class="line">plt.subplot(<span class="number">131</span>), plt.imshow(img, cmap=<span class="string">&#x27;gray&#x27;</span>, interpolation=<span class="string">&#x27;bicubic&#x27;</span>), plt.title(<span class="string">&#x27;original&#x27;</span>)</span><br><span class="line">plt.xticks([]), plt.yticks([])</span><br><span class="line">plt.subplot(<span class="number">132</span>), plt.imshow(s1, <span class="string">&#x27;gray&#x27;</span>, interpolation=<span class="string">&#x27;bicubic&#x27;</span>), plt.title(<span class="string">&#x27;center&#x27;</span>)</span><br><span class="line">plt.xticks([]), plt.yticks([])</span><br><span class="line"><span class="comment"># 逆变换</span></span><br><span class="line">f1shift = np.fft.ifftshift(fshift)</span><br><span class="line">img_back = np.fft.ifft2(f1shift)</span><br><span class="line"><span class="comment"># 出来的是复数，无法显示</span></span><br><span class="line">img_back = np.abs(img_back)</span><br><span class="line">plt.subplot(<span class="number">133</span>), plt.imshow(img_back, cmap=<span class="string">&#x27;gray&#x27;</span>, interpolation=<span class="string">&#x27;bicubic&#x27;</span>), plt.title(<span class="string">&#x27;img back&#x27;</span>)</span><br><span class="line">plt.xticks([]), plt.yticks([])</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+<p>SIFT是什么？简单来说就是图像中某个局部区域（如16*16像素的一个区域）对应的梯度直方图，这就是最简单直观的理解。当然，SIFT还包括各种细节，如量化，尺度金字塔、旋转不变性、局部归一化等，这些东西很多博客上都有“教科书般”的介绍。</p>
+<p>SURF是什么？SURF本身不是什么新的descriptor，而是对SIFT实现上的加速，核心点在于采用<strong>积分图</strong>对计算加速。</p>
+<p>作者：大道至简知不语<br>链接：<a target="_blank" rel="noopener" href="https://www.zhihu.com/question/40736560/answer/358547318">https://www.zhihu.com/question/40736560/answer/358547318</a><br>来源：知乎</p>
+<p><strong>知识点：积分图</strong></p>
+<h3 id="sift深度剖析"><a href="#sift深度剖析" class="headerlink" title="sift深度剖析"></a>sift深度剖析</h3><h4 id="1、明确学习目的"><a href="#1、明确学习目的" class="headerlink" title="1、明确学习目的"></a>1、明确学习目的</h4><p>不管是Harris还是Shi-Tomas，角点检测检测即便做得再优化，也总是有不可克服的缺点：</p>
+<ul>
+<li><strong>对尺度很敏感，不具有尺度不变性</strong></li>
+<li><strong>需要设计角点匹配算法</strong></li>
+</ul>
+<p>而SIFT算法是一种基于局部兴趣点的算法，因此</p>
+<ul>
+<li><strong>不仅对图片大小和旋转不敏感</strong></li>
+<li><strong>而且对光照、噪声等影响的抗击能力也非常优秀</strong></li>
+</ul>
+<p>因此，该算法在性能和适用范围方面较于之前的算法有着质的改变。</p>
+<p>在学习sift算法之前，我们先得搞明白这个算法目的是为了干什么，无非就是找到图像中的特征点，找到优质的特征点。</p>
+<p>优质的特征点有什么特征呢？</p>
+<ul>
+<li><strong>尺度不变性：</strong>人类在识别一个物体时，不管这个物体或远或近，都能对它进行正确的辨认，这就是所谓的尺度不变性。</li>
+</ul>
+<p><img src="https://cdn.jsdelivr.net/gh/CallMe-star/picbed@master/cat_scale.jpg"></p>
+<ul>
+<li><strong>旋转不变性：</strong>当这个物体发生旋转时，我们照样可以正确地辨认它，这就是所谓的旋转不变性。</li>
+</ul>
+<p><img src="https://cdn.jsdelivr.net/gh/CallMe-star/picbed@master/cat_direct.jpg"></p>
+<h4 id="2、sift过程"><a href="#2、sift过程" class="headerlink" title="2、sift过程"></a>2、sift过程</h4><h5 id="构建多尺度的高斯金字塔"><a href="#构建多尺度的高斯金字塔" class="headerlink" title="构建多尺度的高斯金字塔"></a>构建多尺度的高斯金字塔</h5><blockquote>
+<p>①构建单尺度的空间，单尺度空间有6张图，六张图分别是经过方差大小不同的高斯滤波处理的图</p>
+</blockquote>
+<blockquote>
+<p>②然后对同一尺度的一组照片中的相邻滤波处理的照片做差得到的就是图像的轮廓，轮廓就是我们要得到的最基本的特征。做差得出的图像就叫做DoG。</p>
+</blockquote>
+<blockquote>
+<p>③然后再分成多个尺度，小尺度是通过上一层大尺度的第三张照片作为原图再次进行高斯滤波得到的。这一步就是要解决尺度的问题：构建金字塔，将特征值拓展到多分辨率上。</p>
+<p><strong><em>我的疑惑点：这么多尺度的图像他是怎样提取不同尺度的图像，然后融合在一起的</em></strong></p>
+</blockquote>
+<h5 id="检测尺度空间的极值点"><a href="#检测尺度空间的极值点" class="headerlink" title="检测尺度空间的极值点"></a>检测尺度空间的极值点</h5><blockquote>
+<p>直接遍历找出极值点，极值点不但要根这个点周围的八个点比较，还要跟同一层相邻的另外两张图像作比较。一共比较26个点。注意做完这一步之后，应该就可以在原图上画出来极值点坐标了示意图了。</p>
+</blockquote>
+<h5 id="精确定位极值点"><a href="#精确定位极值点" class="headerlink" title="精确定位极值点"></a>精确定位极值点</h5><blockquote>
+<p>上一步我们已经找到了相关的特征点的大致坐标，接下来就要确定他们的准确位置，这里牵涉到很多数学运算。</p>
+</blockquote>
+<p><img src="https://cdn.jsdelivr.net/gh/CallMe-star/picbed@master/jingqueweizhi.jpg"></p>
+<h5 id="选取特征点的方向"><a href="#选取特征点的方向" class="headerlink" title="选取特征点的方向"></a>选取特征点的方向</h5><blockquote>
+<p>对我们已经用金字塔解决了尺度不变性问题，下面就要通过确定特征点的方向来解决旋转不变性问题。完成关键点的梯度计算后，使用直方图统计邻域内像素的梯度和方向。梯度直方图将0~360度的方向范围分为36个柱(bins)，其中每柱10度。如图所示，直方图的峰值方向代表了关键点的主方向，(为简化，图中只画了八个方向的直方图)。</p>
+</blockquote>
+<p><img src="https://cdn.jsdelivr.net/gh/CallMe-star/picbed@master/direction.jpg"></p>
+<blockquote>
+<p><strong>直方图的峰值则代表了该关键点处邻域梯度的主方向，即作为该关键点的方向；其他的达到最大值80%的方向可作为辅助方向。</strong>到这里我们已经检测出的含有位置、尺度和方向的关键点即是该图像的SIFT特征点。</p>
+</blockquote>
+<h5 id="生成关键描述子"><a href="#生成关键描述子" class="headerlink" title="生成关键描述子"></a>生成关键描述子</h5><p>到这里还没有结束</p>
+<p>金字塔保证特征点的空间不变性， 严格删选保证了特征点的准确性， 方向信息保证了特征点的旋转不变性。我们如何把所有信息作为属性附加给关键点呢？</p>
+<p>①为什么要添加描述子：通过上面的步骤，对于每一个关键点，拥有三个信息：<strong>位置、尺度以及方向</strong>。接下来就是为每个关键点建立一个描述符，用一组向量将这个关键点描述出来，使其不随各种变化而改变，比如光照变化、视角变化等等。这个描述子不但包括关键点，也包含关键点周围对其有贡献的像素点，并且描述符应该有较高的独特性，以便于提高特征点正确匹配的概率。</p>
+<p>②添加过程：<strong>1) 确定计算描述子所需的图像区域</strong>特征描述子与特征点所在的尺度有关，因此，对梯度的求取应在特征点对应的高斯图像上进行。将关键点附近的邻域划分为d*d(Lowe建议d=4)个子区域，每个子区域做为一个种子点，每个种子点有8个方向。每个子区域的大小与关键点方向分配时相同。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/CallMe-star/picbed@master/miaoshuziimg.jpg"></p>
+<p>以关键点为中心，4*4格为一个种子点，每个种子点8个方向。</p>
+<p>每一个小格都代表了特征点邻域所在的尺度空间的一个像素 ，箭头方向代表了像素梯度方向，箭头长度代表该像素的幅值。然后在4×4的窗口内计算8个方向的梯度方向直方图。绘制每个梯度方向的累加可形成一个种子点。</p>
+<ul>
+<li><strong>2) 将坐标轴旋转为关键点的方向，以确保旋转不变性</strong></li>
+</ul>
+<p><img src="https://cdn.jsdelivr.net/gh/CallMe-star/picbed@master/xuanzhuanxy.jpg"></p>
+<ul>
+<li><strong>3) 将邻域内的采样点分配到对应的子区域内，将子区域内的梯度值分配到8个方向上，计算其权值</strong></li>
+</ul>
+<p><img src="https://www.zhihu.com/equation?tex=w=m(a+x,+b+y)+*+e%5E%7B-%5Cfrac%7B%5Cleft(x%5E%7B%5Cprime%7D%5Cright)%5E%7B2%7D+%5Cleft(y%5E%7B%5Cprime%7D%5Cright)%5E%7B2%7D%7D%7B2+%5Ctimes(0.5+d)%5E%7B2%7D%7D%7D" alt="[公式]"></p>
+<p>其中a，b为关键点在高斯金字塔图像中的位置坐标。</p>
+<ul>
+<li><strong>4) 插值计算每个种子点八个方向的梯度</strong></li>
+</ul>
+<p><img src="https://cdn.jsdelivr.net/gh/CallMe-star/picbed@master/zhongzitidu.jpg"></p>
+<ul>
+<li><strong>5) 归一化</strong></li>
+</ul>
+<p>如上统计的4<em>4</em>8=128个梯度信息即为该关键点的特征向量。特征向量形成后，为了去除光照变化的影响，需要对它们进行归一化处理，对于图像灰度值整体漂移，图像各点的梯度是邻域像素相减得到，所以也能去除。</p>
+<ul>
+<li><strong>6） 向量门限</strong></li>
+</ul>
+<p>描述子向量门限。非线性光照，相机饱和度变化对造成某些方向的梯度值过大，而对方向的影响微弱。因此设置门限值(向量归一化后，一般取0.2)截断较大的梯度值。然后，再进行一次归一化处理，提高特征的鉴别性。</p>
+<ul>
+<li><strong>7） 排序</strong></li>
+</ul>
+<p>按特征点的尺度对特征描述向量进行排序。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/CallMe-star/picbed@master/paixu.jpg"></p>
+<p>在每个4<em>4的1/16象限中，通过加权梯度值加到直方图8个方向区间中的一个，计算出一个梯度方向直方图。这样就可以对每个feature形成一个4</em>4<em>8=128维的描述子，每一维都可以表示4</em>4个格子中一个的scale/orientation. 将这个向量归一化之后，就进一步去除了光照的影响。</p>
+<h4 id="3-sift怎么匹配"><a href="#3-sift怎么匹配" class="headerlink" title="3.sift怎么匹配"></a>3.sift怎么匹配</h4><p><strong>1、 首先还是要对图片生成特征点</strong></p>
+<p>一张图经过SIFT算法后，会得到多个特征点，每个特征点有128维的描述子属性。那么，匹配特征点都简单多啦！</p>
+<p>生成了A、B两幅图的描述子，（分别是k1<em>128维和k2</em>128维），就将两图中各个scale（所有scale）的描述子进行匹配，匹配上128维即可表示两个特征点match上了。</p>
+<p><strong>2、 然后考虑怎么匹配</strong></p>
+<p>当两幅图像的SIFT特征向量生成后，下一步我们采用关键点特征向量的欧式距离来作为两幅图像中关键点的相似性判定度量。取图像1中的某个关键点，并找出其与图像2中欧式距离最近的前两个关键点，在这两个关键点中，如果最近的距离除以次近的距离少于某个比例阈值，则接受这一对匹配点。降低这个比例阈值，SIFT匹配点数目会减少，但更加稳定。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;opencv2/opencv.hpp&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;opencv2/xfeatures2d.hpp&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> cv;</span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> cv::xfeatures2d;</span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">char</span>** argv)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    Mat cat = imread(<span class="string">&quot;cat.png&quot;</span>);</span><br><span class="line">    Mat smallCat = imread(<span class="string">&quot;smallCat.png&quot;</span>);</span><br><span class="line">    imshow(<span class="string">&quot;cat image&quot;</span>, cat);</span><br><span class="line">    imshow(<span class="string">&quot;smallCat image&quot;</span>, smallCat);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">auto</span> detector = SIFT::create();</span><br><span class="line">    <span class="built_in">vector</span>&lt;KeyPoint&gt; keypoints_cat, keypoints_smallCat;</span><br><span class="line">    Mat descriptor_cat, descriptor_smallCat;</span><br><span class="line">    detector-&gt;detectAndCompute(cat, Mat(), keypoints_cat, descriptor_cat);</span><br><span class="line">    detector-&gt;detectAndCompute(smallCat, Mat(), keypoints_smallCat, descriptor_smallCat);</span><br><span class="line"></span><br><span class="line">    Ptr&lt;FlannBasedMatcher&gt; matcher = FlannBasedMatcher::create();</span><br><span class="line">    <span class="built_in">vector</span>&lt;DMatch&gt; matches;</span><br><span class="line">    matcher-&gt;match(descriptor_cat, descriptor_smallCat, matches);</span><br><span class="line">    Mat dst;</span><br><span class="line">    drawMatches(cat, keypoints_cat, smallCat, keypoints_smallCat, matches, dst);</span><br><span class="line">    imshow(<span class="string">&quot;match-demo&quot;</span>, dst);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    waitKey(<span class="number">0</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 
-
-<h4 id="OpenCV中操作"><a href="#OpenCV中操作" class="headerlink" title="OpenCV中操作"></a>OpenCV中操作</h4><ol>
-<li><p>返回结果 = cv2.dft(原始图像， 转换标识)</p>
-<p>返回结果是双通道的，第一通道是结果的实数部分，第二通道是虚数部分</p>
-<p>原始图像一般是整型八位位图，要转换成32位的（np.float32(img)）</p>
-<p>转换标识一般flags = cv2.DFT_COMPLEX_OUTPUT,输出一个复数阵列</p>
-</li>
-<li><p>np.fft.fftshift</p>
-<p>将零频率分量转换频谱中心</p>
-</li>
-<li><p>返回值 =  cv2.magnitude（参数1，参数2）</p>
-<p>参数1：浮点的X坐标，也就是实部</p>
-<p>参数2：浮点的Y坐标，也就是虚部</p>
-<p>通过这个函数，将那个复数转换到[0, 255]</p>
-</li>
-</ol>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> cv2</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"></span><br><span class="line">img = cv2.imread(<span class="string">&#x27;电脑本地的图像地址&#x27;</span>， <span class="number">0</span>)</span><br><span class="line">dft = cv2.dft(np.float32(img), flags = cv2.DFT_COMPLEX_OUTPUT)</span><br><span class="line">dftshift = np.fft.fftshift(dft)</span><br><span class="line">result = <span class="number">20</span>*np.log(cv2.magnitude(dftshift[:,:,<span class="number">0</span>], dftshift[:,:,<span class="number">1</span>]))</span><br><span class="line">ishift = np.fft.ifftshift(dftshift)</span><br><span class="line">iimg = cv2.idft(ishift)</span><br><span class="line">iimg = cv2.magnitude(iimg[:, :, <span class="number">0</span>], iimg[:, :, <span class="number">1</span>])</span><br><span class="line">plt.subplot(<span class="number">221</span>), plt.imshow(img,<span class="string">&#x27;gray&#x27;</span>)</span><br><span class="line">plt.title(<span class="string">&#x27;img&#x27;</span>), plt.axis(<span class="string">&#x27;off&#x27;</span>)</span><br><span class="line">plt.subplot(<span class="number">222</span>), plt.imshow(result,<span class="string">&#x27;gray&#x27;</span>)</span><br><span class="line">plt.title(<span class="string">&#x27;result&#x27;</span>), plt.axis(<span class="string">&#x27;off&#x27;</span>)</span><br><span class="line">plt.subplot(<span class="number">223</span>), plt.imshow(img, <span class="string">&#x27;gray&#x27;</span>)</span><br><span class="line">plt.title(<span class="string">&#x27;img&#x27;</span>), plt.axis(<span class="string">&#x27;off&#x27;</span>)</span><br><span class="line">plt.subplot(<span class="number">224</span>), plt.imshow(iimg, <span class="string">&#x27;gray&#x27;</span>)</span><br><span class="line">plt.title(<span class="string">&#x27;result&#x27;</span>), plt.axis(<span class="string">&#x27;off&#x27;</span>)</span><br><span class="line">plt.show()</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h4 id="低通滤波"><a href="#低通滤波" class="headerlink" title="低通滤波"></a>低通滤波</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> cv2</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"></span><br><span class="line">img = cv2.imread(<span class="string">&#x27;/Users/star/learning_python/picture/2.png&#x27;</span>, <span class="number">0</span>)</span><br><span class="line">dft = cv2.dft(np.float32(img), flags=cv2.DFT_COMPLEX_OUTPUT)</span><br><span class="line">dshift = np.fft.fftshift(dft)</span><br><span class="line">rows, cols = img.shape</span><br><span class="line">row, col = int(rows/<span class="number">2</span>), int(cols/<span class="number">2</span>)</span><br><span class="line">mask = np.zeros((rows, cols, <span class="number">2</span>), np.uint8)</span><br><span class="line">mask[row<span class="number">-50</span>:row+<span class="number">50</span>, col<span class="number">-50</span>:col+<span class="number">50</span>] = <span class="number">1</span></span><br><span class="line">dst = dshift * mask</span><br><span class="line">idst = np.fft.ifftshift(dst)</span><br><span class="line">ishift = cv2.idft(idst)</span><br><span class="line">idst = cv2.magnitude(ishift[:, :, <span class="number">0</span>], ishift[:, :, <span class="number">1</span>])</span><br><span class="line">plt.subplot(<span class="number">121</span>), plt.imshow(img, <span class="string">&#x27;gray&#x27;</span>)</span><br><span class="line">plt.title(<span class="string">&#x27;img&#x27;</span>), plt.axis(<span class="string">&#x27;off&#x27;</span>)</span><br><span class="line">plt.subplot(<span class="number">122</span>), plt.imshow(idst, <span class="string">&#x27;gray&#x27;</span>)</span><br><span class="line">plt.title(<span class="string">&#x27;img&#x27;</span>), plt.axis(<span class="string">&#x27;off&#x27;</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
-
-
-
-<h4 id="高通滤波"><a href="#高通滤波" class="headerlink" title="高通滤波"></a>高通滤波</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> cv2</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"></span><br><span class="line">img = cv2.imread(<span class="string">&#x27;电脑本地的图像地址&#x27;</span>， <span class="number">0</span>)</span><br><span class="line">f = np.fft.fft2(img)</span><br><span class="line">fshift = np.fft.fftshift(f)        </span><br><span class="line">rows,cols = img.shape[:<span class="number">2</span>]</span><br><span class="line">crow,ccol = int(rows/<span class="number">2</span>), int(cols/<span class="number">2</span>)</span><br><span class="line">fshift[crow<span class="number">-30</span>:crow+<span class="number">30</span>, ccol<span class="number">-30</span>:ccol+<span class="number">30</span>] = <span class="number">0</span></span><br><span class="line">ishift = np.fft.ifftshift(fshift)</span><br><span class="line">iimg = np.fft.ifft2(ishift)</span><br><span class="line">iimg = np.abs(iimg)</span><br><span class="line">plt.subplot(<span class="number">121</span>),plt.imshow(img, <span class="string">&#x27;gray&#x27;</span>)</span><br><span class="line">plt.title(<span class="string">&#x27;img&#x27;</span>),plt.axis(<span class="string">&#x27;off&#x27;</span>)</span><br><span class="line">plt.subplot(<span class="number">122</span>),plt.imshow(iimg, <span class="string">&#x27;gray&#x27;</span>)</span><br><span class="line">plt.title(<span class="string">&#x27;iimg&#x27;</span>),plt.axis(<span class="string">&#x27;off&#x27;</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
-
-
-
+<p><img src="https://picb.zhimg.com/80/v2-295c77fc626560a0421be89e19516d6d_720w.jpg" alt="img"></p>
+<p><img src="https://pic4.zhimg.com/80/v2-aac36afb03c30320918b8d3d9f7f986a_720w.jpg" alt="img"></p>
+<p><img src="https://pic1.zhimg.com/80/v2-799a944fce5797047a6e8a18fb624d2e_720w.jpg" alt="img"></p>
+<p>作者: lowkeyway</p>
+<p>转载自: <a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/90122194">https://zhuanlan.zhihu.com/p/90122194</a></p>
 
           
             <div class='article_footer'>
@@ -752,7 +794,7 @@
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-08-18T20:55:55+08:00">
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-08-18T22:48:02+08:00">
   <a class='notlink'>
     <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
     <p>更新于：2020年8月18日</p>
@@ -777,8 +819,10 @@
       
         <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2020/08/13/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%E2%80%94%E2%80%94%E5%82%85%E9%87%8C%E5%8F%B6%E5%8F%98%E6%8D%A2/&title=傅里叶变换 - CallMe_star&summary=图像处理——傅里叶
-1.傅里叶变换的理解傅里叶变换的相关数学公式目前还没有搞懂，先不整那个东西，我们主要是研究傅里叶变换的一些思想和应用。这个思想起源于牛顿研究那个三棱镜，白光透过棱镜之后会被分解为七种颜色的光，这些光叠加又能形成白光，所以说可以把一种事物分解成好几种事物的加和。"
+          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2020/08/18/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%E2%80%94%E2%80%94%E7%89%B9%E5%BE%81%E7%82%B9%E6%A3%80%E6%B5%8Bsift/&title=理解边缘检测sift - CallMe_star&summary=图像处理——sift理解
+通俗的大致理解
+首先，理解同一幅图像在不同的空间中有不同的表达方式。比如在RGB空间中，图像中的像素点可以用颜色值(r,g,b)来表示；在灰度空间中，图像中的像素点可以用灰度值来表示。类似的，你可以把梯度图像认为是图像在梯度空间中的一种表达，图像中的像素点可以用梯度方向来表示，即，梯度图像中的像素点表达的是该点的梯度方向（而不是灰度值/颜色值）。
+"
           
           >
           
@@ -790,8 +834,10 @@
       
         <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://yoursite.com/2020/08/13/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%E2%80%94%E2%80%94%E5%82%85%E9%87%8C%E5%8F%B6%E5%8F%98%E6%8D%A2/&title=傅里叶变换 - CallMe_star&summary=图像处理——傅里叶
-1.傅里叶变换的理解傅里叶变换的相关数学公式目前还没有搞懂，先不整那个东西，我们主要是研究傅里叶变换的一些思想和应用。这个思想起源于牛顿研究那个三棱镜，白光透过棱镜之后会被分解为七种颜色的光，这些光叠加又能形成白光，所以说可以把一种事物分解成好几种事物的加和。"
+          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://yoursite.com/2020/08/18/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%E2%80%94%E2%80%94%E7%89%B9%E5%BE%81%E7%82%B9%E6%A3%80%E6%B5%8Bsift/&title=理解边缘检测sift - CallMe_star&summary=图像处理——sift理解
+通俗的大致理解
+首先，理解同一幅图像在不同的空间中有不同的表达方式。比如在RGB空间中，图像中的像素点可以用颜色值(r,g,b)来表示；在灰度空间中，图像中的像素点可以用灰度值来表示。类似的，你可以把梯度图像认为是图像在梯度空间中的一种表达，图像中的像素点可以用梯度方向来表示，即，梯度图像中的像素点表达的是该点的梯度方向（而不是灰度值/颜色值）。
+"
           
           >
           
@@ -803,8 +849,10 @@
       
         <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2020/08/13/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%E2%80%94%E2%80%94%E5%82%85%E9%87%8C%E5%8F%B6%E5%8F%98%E6%8D%A2/&title=傅里叶变换 - CallMe_star&summary=图像处理——傅里叶
-1.傅里叶变换的理解傅里叶变换的相关数学公式目前还没有搞懂，先不整那个东西，我们主要是研究傅里叶变换的一些思想和应用。这个思想起源于牛顿研究那个三棱镜，白光透过棱镜之后会被分解为七种颜色的光，这些光叠加又能形成白光，所以说可以把一种事物分解成好几种事物的加和。"
+          target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2020/08/18/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%E2%80%94%E2%80%94%E7%89%B9%E5%BE%81%E7%82%B9%E6%A3%80%E6%B5%8Bsift/&title=理解边缘检测sift - CallMe_star&summary=图像处理——sift理解
+通俗的大致理解
+首先，理解同一幅图像在不同的空间中有不同的表达方式。比如在RGB空间中，图像中的像素点可以用颜色值(r,g,b)来表示；在灰度空间中，图像中的像素点可以用灰度值来表示。类似的，你可以把梯度图像认为是图像在梯度空间中的一种表达，图像中的像素点可以用梯度方向来表示，即，梯度图像中的像素点表达的是该点的梯度方向（而不是灰度值/颜色值）。
+"
           
           >
           
@@ -828,20 +876,11 @@
         
           <div class="prev-next">
             
-              <a class='prev' href='/callme-star.github.io/2020/08/13/%E5%AD%A6%E4%B9%A0java%E7%AC%AC%E4%B8%80%E5%A4%A9%E2%80%94%E2%80%94%E8%AF%AD%E8%A8%80%E7%B1%BB%E5%9E%8B/'>
-                <p class='title'><i class="fas fa-chevron-left" aria-hidden="true"></i>学习java第一天——语言类型</p>
-                <p class='content'>解释型语言解释型语言的典型：python、JavaScript、Ruby等。
-
-
-解释型语言的特点，我理解的就是解释一句跑一句子，如果下边语句有错误，并不会影响上边语句的执行。要想写小的程序，基...</p>
-              </a>
             
-            
-              <a class='next' href='/callme-star.github.io/2020/08/13/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%E2%80%94%E2%80%94%E7%89%B9%E5%BE%81%E7%82%B9%E6%A3%80%E6%B5%8Bsift/'>
-                <p class='title'>理解边缘检测sift<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
-                <p class='content'>图像处理——sift理解
-通俗的大致理解
-首先，理解同一幅图像在不同的空间中有不同的表达方式。比如在RGB空间中，图像中的像素点可以用颜色值(r,g,b)来表示；在灰度空间中，图像中的像素点可以...</p>
+              <a class='next' href='/callme-star.github.io/2020/08/10/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%E2%80%94%E2%80%94%E5%82%85%E9%87%8C%E5%8F%B6%E5%8F%98%E6%8D%A2/'>
+                <p class='title'>傅里叶变换<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
+                <p class='content'>图像处理——傅里叶
+1.傅里叶变换的理解傅里叶变换的相关数学公式目前还没有搞懂，先不整那个东西，我们主要是研究傅里叶变换的一些思想和应用。这个思想起源于牛顿研究那个三棱镜，白光透过棱镜之后会被分...</p>
               </a>
             
           </div>
@@ -874,59 +913,6 @@
 
 <!-- 根据页面mathjax变量决定是否加载MathJax数学公式js -->
 
-  <script>
-  // https://github.com/theme-next/hexo-theme-next/blob/master/layout/_third-party/math/mathjax.swig
-  if (typeof MathJax === 'undefined') {
-    window.MathJax = {
-      loader: {
-        source: {
-          '[tex]/amsCd': '[tex]/amscd',
-          '[tex]/AMScd': '[tex]/amscd'
-        }
-      },
-      tex: {
-        inlineMath: {'[+]': [['$', '$']]},
-        tags: 'ams'
-      },
-      options: {
-        renderActions: {
-          findScript: [10, doc => {
-            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
-              const display = !!node.type.match(/; *mode=display/);
-              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
-              const text = document.createTextNode('');
-              node.parentNode.replaceChild(text, node);
-              math.start = {node: text, delim: '', n: 0};
-              math.end = {node: text, delim: '', n: 0};
-              doc.math.push(math);
-            });
-          }, '', false],
-          insertedScript: [200, () => {
-            document.querySelectorAll('mjx-container').forEach(node => {
-              let target = node.parentNode;
-              if (target.nodeName.toLowerCase() === 'li') {
-                target.parentNode.classList.add('has-jax');
-              }
-            });
-          }, '', false]
-        }
-      }
-    };
-    (function () {
-      var script = document.createElement('script');
-      script.src = 'https://cdn.jsdelivr.net/npm/mathjax@3.0/es5/tex-mml-chtml.js';
-      script.defer = true;
-      document.head.appendChild(script);
-    })();
-  } else {
-    // 文章章节标题不能为 “MathJax” ，否则会报错。
-    MathJax.startup.document.state(0);
-    MathJax.texReset();
-    MathJax.typeset();
-  }
-</script>
-
-
 
 </div>
 <aside class='l_side'>
@@ -949,7 +935,7 @@
 
 
     <div class='content'>
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E5%82%85%E9%87%8C%E5%8F%B6%E5%8F%98%E6%8D%A2%E7%9A%84%E7%90%86%E8%A7%A3"><span class="toc-text">1.傅里叶变换的理解</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E5%82%85%E9%87%8C%E5%8F%B6%E7%BA%A7%E6%95%B0"><span class="toc-text">2.傅里叶级数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E5%82%85%E9%87%8C%E5%8F%B6%E5%8F%98%E6%8D%A2"><span class="toc-text">3.傅里叶变换</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-%E5%BA%94%E7%94%A8"><span class="toc-text">4.应用</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%A3%B0%E9%9F%B3"><span class="toc-text">- 声音</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9B%BE%E5%83%8F"><span class="toc-text">- 图像</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-OpenCV-%EF%BC%8CNumpy%E4%B8%AD%E7%9A%84%E6%93%8D%E4%BD%9C%E4%B8%80%E4%B8%8B"><span class="toc-text">5.OpenCV ，Numpy中的操作一下</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#numpy%E4%B8%AD%E6%93%8D%E4%BD%9C"><span class="toc-text">-numpy中操作</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#OpenCV%E4%B8%AD%E6%93%8D%E4%BD%9C"><span class="toc-text">OpenCV中操作</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BD%8E%E9%80%9A%E6%BB%A4%E6%B3%A2"><span class="toc-text">低通滤波</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%AB%98%E9%80%9A%E6%BB%A4%E6%B3%A2"><span class="toc-text">高通滤波</span></a></li></ol></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%80%9A%E4%BF%97%E7%9A%84%E5%A4%A7%E8%87%B4%E7%90%86%E8%A7%A3"><span class="toc-text">通俗的大致理解</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#sift%E6%B7%B1%E5%BA%A6%E5%89%96%E6%9E%90"><span class="toc-text">sift深度剖析</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1%E3%80%81%E6%98%8E%E7%A1%AE%E5%AD%A6%E4%B9%A0%E7%9B%AE%E7%9A%84"><span class="toc-text">1、明确学习目的</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2%E3%80%81sift%E8%BF%87%E7%A8%8B"><span class="toc-text">2、sift过程</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%9E%84%E5%BB%BA%E5%A4%9A%E5%B0%BA%E5%BA%A6%E7%9A%84%E9%AB%98%E6%96%AF%E9%87%91%E5%AD%97%E5%A1%94"><span class="toc-text">构建多尺度的高斯金字塔</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%A3%80%E6%B5%8B%E5%B0%BA%E5%BA%A6%E7%A9%BA%E9%97%B4%E7%9A%84%E6%9E%81%E5%80%BC%E7%82%B9"><span class="toc-text">检测尺度空间的极值点</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E7%B2%BE%E7%A1%AE%E5%AE%9A%E4%BD%8D%E6%9E%81%E5%80%BC%E7%82%B9"><span class="toc-text">精确定位极值点</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E9%80%89%E5%8F%96%E7%89%B9%E5%BE%81%E7%82%B9%E7%9A%84%E6%96%B9%E5%90%91"><span class="toc-text">选取特征点的方向</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E7%94%9F%E6%88%90%E5%85%B3%E9%94%AE%E6%8F%8F%E8%BF%B0%E5%AD%90"><span class="toc-text">生成关键描述子</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-sift%E6%80%8E%E4%B9%88%E5%8C%B9%E9%85%8D"><span class="toc-text">3.sift怎么匹配</span></a></li></ol></li></ol>
     </div>
   </section>
 
