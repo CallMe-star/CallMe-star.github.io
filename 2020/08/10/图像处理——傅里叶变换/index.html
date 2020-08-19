@@ -601,21 +601,21 @@
           
           
           <p>图像处理——傅里叶</p>
-<h2 id="1-傅里叶变换的理解"><a href="#1-傅里叶变换的理解" class="headerlink" title="1.傅里叶变换的理解"></a>1.傅里叶变换的理解</h2><p>傅里叶变换的相关数学公式目前还没有搞懂，先不整那个东西，我们主要是研究傅里叶变换的一些思想和应用。这个思想起源于牛顿研究那个三棱镜，白光透过棱镜之后会被分解为七种颜色的光，这些光叠加又能形成白光，所以说可以把一种事物分解成好几种事物的加和。</p>
+<h3 id="1-傅里叶变换的理解"><a href="#1-傅里叶变换的理解" class="headerlink" title="1.傅里叶变换的理解"></a>1.傅里叶变换的理解</h3><p>傅里叶变换的相关数学公式目前还没有搞懂，先不整那个东西，我们主要是研究傅里叶变换的一些思想和应用。这个思想起源于牛顿研究那个三棱镜，白光透过棱镜之后会被分解为七种颜色的光，这些光叠加又能形成白光，所以说可以把一种事物分解成好几种事物的加和。</p>
 <a id="more"></a>
 
 <p>后来傅里叶就提出了**<em>傅里叶级数**</em>，一个等幅度不同频或者等频不同幅的波形可以由一组正弦波余弦波的加和得到（原话：任何连续周期信号可以由一组适当的正弦曲线组合而成）</p>
-<h2 id="2-傅里叶级数"><a href="#2-傅里叶级数" class="headerlink" title="2.傅里叶级数"></a>2.傅里叶级数</h2><p>可以这么理解：原图像相当于在时间域中的一个曲线，坐标图是个二维坐标系，横轴是时间，纵轴是幅值的一个曲线，我们通过傅里叶变换可以把这条曲线变成多条正余弦函数相加的形式：傅里叶变换之后形成的是一个三维坐标系，他的x轴是频率（w），y轴是相位（因为每个正余弦函数的起点不同，有的是从零点开始，有的不是，这个曲线开始的那个幅值就是相位，相位就是后公式中的φ），z轴是振幅高度，。这样可以把一个图像从空间域转换到频率域，因为两者等价，所以可以逆变换回去。但这个傅里叶级数只能针对周期型函数才能拆分成多个正余弦函数相加，所以后来有了傅里叶变换。<br>$$<br>f(t) = \frac{a_n}{2}+\sum a_n*sin（nwt+φ_n）<br>$$</p>
-<h2 id="3-傅里叶变换"><a href="#3-傅里叶变换" class="headerlink" title="3.傅里叶变换"></a>3.傅里叶变换</h2><p>其中推导公式中用到了欧拉公式，<br>$$<br>cos(x)+i*sin(x) = e^{ix}\<br>$$<br>$$<br>x = wt<br>$$</p>
+<h3 id="2-傅里叶级数"><a href="#2-傅里叶级数" class="headerlink" title="2.傅里叶级数"></a>2.傅里叶级数</h3><p>可以这么理解：原图像相当于在时间域中的一个曲线，坐标图是个二维坐标系，横轴是时间，纵轴是幅值的一个曲线，我们通过傅里叶变换可以把这条曲线变成多条正余弦函数相加的形式：傅里叶变换之后形成的是一个三维坐标系，他的x轴是频率（w），y轴是相位（因为每个正余弦函数的起点不同，有的是从零点开始，有的不是，这个曲线开始的那个幅值就是相位，相位就是后公式中的φ），z轴是振幅高度，。这样可以把一个图像从空间域转换到频率域，因为两者等价，所以可以逆变换回去。但这个傅里叶级数只能针对周期型函数才能拆分成多个正余弦函数相加，所以后来有了傅里叶变换。<br>$$<br>f(t) = \frac{a_n}{2}+\sum a_n*sin（nwt+φ_n）<br>$$</p>
+<h3 id="3-傅里叶变换"><a href="#3-傅里叶变换" class="headerlink" title="3.傅里叶变换"></a>3.傅里叶变换</h3><p>其中推导公式中用到了欧拉公式，<br>$$<br>cos(x)+i*sin(x) = e^{ix}\<br>$$<br>$$<br>x = wt<br>$$</p>
 <p>$$<br>F_T = \int_{-\infty}^{+\infty}f(t)e^{jwt}dt\<br>$$</p>
 <p>然后通过逆变换可以再变回去。通过傅里叶变换就可以把一个随机的曲线，转换到频率域，只不过这次的三维坐标系对应的w和幅值的函数图像不再是离散的图像了，而是一个连续图像。y轴所对应的相位意义没变。</p>
-<h2 id="4-应用"><a href="#4-应用" class="headerlink" title="4.应用"></a>4.应用</h2><h4 id="声音"><a href="#声音" class="headerlink" title="- 声音"></a>- 声音</h4><p>通过分析频率域，可以分析出低频可能是男生说话，高频可能是女生说话，再高的频率就是噪音了，除去这些高频信号，然后通过逆变换就可以得到处理后的音频。</p>
+<h3 id="应用"><a href="#应用" class="headerlink" title="应用"></a>应用</h3><h4 id="声音"><a href="#声音" class="headerlink" title="- 声音"></a>- 声音</h4><p>通过分析频率域，可以分析出低频可能是男生说话，高频可能是女生说话，再高的频率就是噪音了，除去这些高频信号，然后通过逆变换就可以得到处理后的音频。</p>
 <p>在声音中，那刚才的傅里叶变换之前的x轴就是时间，y轴就是声音的振幅</p>
 <p>如下图（copy from 知乎Heinrich）</p>
 <p><img src="https://cdn.jsdelivr.net/gh/CallMe-star/picbed@master/fuliye1.jpg"></p>
 <h4 id="图像"><a href="#图像" class="headerlink" title="- 图像"></a>- 图像</h4><p>通过分析频率域，他的低频部分可能就是画像的主体部分，高频部分可能是图像中的噪点，比如说是画面中的斑点噪音，旧照片中的斑点，通过去掉高频信号，然后逆变换回去，就得到去除噪点之后的图像。</p>
 <p>在图像中，傅里叶变换之前的x轴就是图像的空间坐标位置，y轴就是他的灰度？？？</p>
-<h2 id="5-OpenCV-，Numpy中的操作一下"><a href="#5-OpenCV-，Numpy中的操作一下" class="headerlink" title="5.OpenCV ，Numpy中的操作一下"></a>5.OpenCV ，Numpy中的操作一下</h2><h4 id="numpy中操作"><a href="#numpy中操作" class="headerlink" title="-numpy中操作"></a>-numpy中操作</h4><ol>
+<h3 id="5-OpenCV-，Numpy中操作一下"><a href="#5-OpenCV-，Numpy中操作一下" class="headerlink" title="5.OpenCV ，Numpy中操作一下"></a>5.OpenCV ，Numpy中操作一下</h3><h4 id="numpy中操作"><a href="#numpy中操作" class="headerlink" title="-numpy中操作"></a>-numpy中操作</h4><ol>
 <li><p>np.fft.fft2</p>
 <p>实现傅里叶变换并且返回一个复数数组</p>
 </li>
@@ -752,10 +752,10 @@
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-08-18T22:48:48+08:00">
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-08-19T09:54:36+08:00">
   <a class='notlink'>
     <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
-    <p>更新于：2020年8月18日</p>
+    <p>更新于：2020年8月19日</p>
   </a>
 </div>
 
@@ -949,7 +949,7 @@
 
 
     <div class='content'>
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E5%82%85%E9%87%8C%E5%8F%B6%E5%8F%98%E6%8D%A2%E7%9A%84%E7%90%86%E8%A7%A3"><span class="toc-text">1.傅里叶变换的理解</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E5%82%85%E9%87%8C%E5%8F%B6%E7%BA%A7%E6%95%B0"><span class="toc-text">2.傅里叶级数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E5%82%85%E9%87%8C%E5%8F%B6%E5%8F%98%E6%8D%A2"><span class="toc-text">3.傅里叶变换</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-%E5%BA%94%E7%94%A8"><span class="toc-text">4.应用</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%A3%B0%E9%9F%B3"><span class="toc-text">- 声音</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9B%BE%E5%83%8F"><span class="toc-text">- 图像</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-OpenCV-%EF%BC%8CNumpy%E4%B8%AD%E7%9A%84%E6%93%8D%E4%BD%9C%E4%B8%80%E4%B8%8B"><span class="toc-text">5.OpenCV ，Numpy中的操作一下</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#numpy%E4%B8%AD%E6%93%8D%E4%BD%9C"><span class="toc-text">-numpy中操作</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#OpenCV%E4%B8%AD%E6%93%8D%E4%BD%9C"><span class="toc-text">OpenCV中操作</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BD%8E%E9%80%9A%E6%BB%A4%E6%B3%A2"><span class="toc-text">低通滤波</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%AB%98%E9%80%9A%E6%BB%A4%E6%B3%A2"><span class="toc-text">高通滤波</span></a></li></ol></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%82%85%E9%87%8C%E5%8F%B6%E5%8F%98%E6%8D%A2%E7%9A%84%E7%90%86%E8%A7%A3"><span class="toc-text">1.傅里叶变换的理解</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E5%82%85%E9%87%8C%E5%8F%B6%E7%BA%A7%E6%95%B0"><span class="toc-text">2.傅里叶级数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E5%82%85%E9%87%8C%E5%8F%B6%E5%8F%98%E6%8D%A2"><span class="toc-text">3.傅里叶变换</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BA%94%E7%94%A8"><span class="toc-text">应用</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%A3%B0%E9%9F%B3"><span class="toc-text">- 声音</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9B%BE%E5%83%8F"><span class="toc-text">- 图像</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-OpenCV-%EF%BC%8CNumpy%E4%B8%AD%E6%93%8D%E4%BD%9C%E4%B8%80%E4%B8%8B"><span class="toc-text">5.OpenCV ，Numpy中操作一下</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#numpy%E4%B8%AD%E6%93%8D%E4%BD%9C"><span class="toc-text">-numpy中操作</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#OpenCV%E4%B8%AD%E6%93%8D%E4%BD%9C"><span class="toc-text">OpenCV中操作</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BD%8E%E9%80%9A%E6%BB%A4%E6%B3%A2"><span class="toc-text">低通滤波</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%AB%98%E9%80%9A%E6%BB%A4%E6%B3%A2"><span class="toc-text">高通滤波</span></a></li></ol></li></ol>
     </div>
   </section>
 
