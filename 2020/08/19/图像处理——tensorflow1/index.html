@@ -644,8 +644,7 @@ tf.case(张量名, dtype=数据类型)">
 
 <h4 id="4、对应标签和数据"><a href="#4、对应标签和数据" class="headerlink" title="4、对应标签和数据"></a>4、对应标签和数据</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">features = tf.constant([<span class="number">12</span>, <span class="number">23</span>, <span class="number">10</span> ,<span class="number">17</span>])     <span class="comment">#获取数据</span></span><br><span class="line">labels = tf.constant([<span class="number">0</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">0</span>])       <span class="comment">#获取标签</span></span><br><span class="line">dataset = tf.data.Dataset.from_tensor_slices((features,labels))</span><br><span class="line">print(dataset)</span><br><span class="line"><span class="keyword">for</span> element <span class="keyword">in</span> dataset：</span><br><span class="line">    print(element)</span><br></pre></td></tr></table></figure>
 
-<p>####　5、求导运算</p>
-<p>with结构记录计算过程，gradient求出张量的梯度</p>
+<h4 id="5、求导运算"><a href="#5、求导运算" class="headerlink" title="5、求导运算"></a>5、求导运算</h4><p>with结构记录计算过程，gradient求出张量的梯度</p>
 <blockquote>
 <p>with tf.GradientTape() as tape:</p>
 <p>若干计算过程</p>
@@ -664,8 +663,7 @@ tf.case(张量名, dtype=数据类型)">
 </blockquote>
 <h4 id="8、tf-one-hot-待转换数据，depth-几分类"><a href="#8、tf-one-hot-待转换数据，depth-几分类" class="headerlink" title="8、tf.one_hot(待转换数据，depth=几分类)"></a>8、tf.one_hot(待转换数据，depth=几分类)</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">classes = <span class="number">3</span></span><br><span class="line">labels = tf.constant([<span class="number">1</span>,<span class="number">0</span>,<span class="number">2</span>])</span><br><span class="line">output = tf.one_hot(labels, depth = classes)</span><br><span class="line">print(output)</span><br></pre></td></tr></table></figure>
 
-<p>####　9、tf.nn.softmax</p>
-<p>tf.nn.softmax能把n个分类的n个输出转换成0到1之间的概率值</p>
+<h4 id="9、tf-nn-softmax"><a href="#9、tf-nn-softmax" class="headerlink" title="9、tf.nn.softmax"></a>9、tf.nn.softmax</h4><p>tf.nn.softmax能把n个分类的n个输出转换成0到1之间的概率值</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">y = tf.constant([<span class="number">1.01</span>, <span class="number">2.01</span>, <span class="number">-0.66</span>])     <span class="comment">#定义一些数值</span></span><br><span class="line">y_pro = tf.nn.softmax(y)      <span class="comment">#转换成标准概率</span></span><br><span class="line">print(<span class="string">&quot;result, y_pro is &quot;</span>,y_pro)</span><br></pre></td></tr></table></figure>
 
 <h4 id="10、tf-argmax"><a href="#10、tf-argmax" class="headerlink" title="10、tf.argmax"></a>10、tf.argmax</h4><p>返回张量最大值得索引，tf.argmax(张量名，axis=操作轴)</p>
@@ -759,7 +757,7 @@ tf.case(张量名, dtype=数据类型)">
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-08-20T09:22:15+08:00">
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-08-20T09:33:17+08:00">
   <a class='notlink'>
     <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
     <p>更新于：2020年8月20日</p>
@@ -964,7 +962,7 @@ from skl...</p>
 
 
     <div class='content'>
-        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0"><span class="toc-text">常用函数</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1%E3%80%81%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2"><span class="toc-text">1、类型转换</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2%E3%80%81%E7%90%86%E8%A7%A3axis"><span class="toc-text">2、理解axis</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3%E3%80%81%E8%BF%90%E7%AE%97"><span class="toc-text">3、运算</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4%E3%80%81%E5%AF%B9%E5%BA%94%E6%A0%87%E7%AD%BE%E5%92%8C%E6%95%B0%E6%8D%AE"><span class="toc-text">4、对应标签和数据</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#6%E3%80%81enumerate"><span class="toc-text">6、enumerate</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#7%E3%80%81tf-one-hot-%E7%8B%AC%E7%83%AD%E7%BC%96%E7%A0%81"><span class="toc-text">7、tf.one_hot      独热编码</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#8%E3%80%81tf-one-hot-%E5%BE%85%E8%BD%AC%E6%8D%A2%E6%95%B0%E6%8D%AE%EF%BC%8Cdepth-%E5%87%A0%E5%88%86%E7%B1%BB"><span class="toc-text">8、tf.one_hot(待转换数据，depth&#x3D;几分类)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#10%E3%80%81tf-argmax"><span class="toc-text">10、tf.argmax</span></a></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0"><span class="toc-text">常用函数</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1%E3%80%81%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2"><span class="toc-text">1、类型转换</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2%E3%80%81%E7%90%86%E8%A7%A3axis"><span class="toc-text">2、理解axis</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3%E3%80%81%E8%BF%90%E7%AE%97"><span class="toc-text">3、运算</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4%E3%80%81%E5%AF%B9%E5%BA%94%E6%A0%87%E7%AD%BE%E5%92%8C%E6%95%B0%E6%8D%AE"><span class="toc-text">4、对应标签和数据</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5%E3%80%81%E6%B1%82%E5%AF%BC%E8%BF%90%E7%AE%97"><span class="toc-text">5、求导运算</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#6%E3%80%81enumerate"><span class="toc-text">6、enumerate</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#7%E3%80%81tf-one-hot-%E7%8B%AC%E7%83%AD%E7%BC%96%E7%A0%81"><span class="toc-text">7、tf.one_hot      独热编码</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#8%E3%80%81tf-one-hot-%E5%BE%85%E8%BD%AC%E6%8D%A2%E6%95%B0%E6%8D%AE%EF%BC%8Cdepth-%E5%87%A0%E5%88%86%E7%B1%BB"><span class="toc-text">8、tf.one_hot(待转换数据，depth&#x3D;几分类)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#9%E3%80%81tf-nn-softmax"><span class="toc-text">9、tf.nn.softmax</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#10%E3%80%81tf-argmax"><span class="toc-text">10、tf.argmax</span></a></li></ol></li></ol>
     </div>
   </section>
 
