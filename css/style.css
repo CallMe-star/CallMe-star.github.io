@@ -4238,7 +4238,7 @@ article .readmore {
   font-size: 0.875rem;
 }
 .cover-wrapper .cover .cover-body .logo {
-  max-height: 120px;
+  max-height: 250px;
   max-width: calc(100% - 4 * 16px);
 }
 @media screen and (min-height: 1024px) {
