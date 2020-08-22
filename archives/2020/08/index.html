@@ -544,9 +544,167 @@
         
           
         
+          
+        
       
     
     
+      
+        
+          <div class='post-wrapper'>
+            <article class="post white-box shadow reveal no-title">
+  
+
+
+  <section class='meta'>
+    
+      
+      
+      <div class="meta" id="header-meta">
+        
+          
+  <h2 class="title">
+    <a href="/callme-star.github.io/2020/08/21/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%E2%80%94%E2%80%94tensorflow3/">
+      2020年8月21日
+    </a>
+  </h2>
+
+
+        
+        <div class='new-meta-box'>
+          
+            
+          
+            
+              
+<div class='new-meta-item author'>
+  <a class='author' target="_blank" href="https://blog.csdn.net/m0_46439571" rel="nofollow noopener">
+    <img no-lazy src="https://cdn.jsdelivr.net/gh/CallMe-star/picbed/pai11.jpg">
+    <p>CallMe_star</p>
+  </a>
+</div>
+
+            
+          
+            
+              
+
+            
+          
+            
+              <div class="new-meta-item date">
+  <a class='notlink'>
+    <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
+    <p>发布于：2020年8月21日</p>
+  </a>
+</div>
+
+            
+          
+            
+              
+
+            
+          
+            
+              
+  <div class="new-meta-item browse valine">
+    <a class='notlink'>
+      <i class="fas fa-eye fa-fw" aria-hidden="true"></i>
+      
+      <span id="/callme-star.github.io/2020/08/21/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%E2%80%94%E2%80%94tensorflow3/" class="leancloud_visitors" data-flag-title="">
+      <p>
+        <span class="leancloud-visitors-count"></span>
+      </p>
+      </span>
+    </a>
+  </div>
+
+
+            
+          
+            
+              
+<div class="new-meta-item comments-count">
+  
+  <a href="/callme-star.github.io/2020/08/21/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%E2%80%94%E2%80%94tensorflow3/#comments">
+    <i class="fas fa-comment-dots fa-fw"></i>
+    <span class="valine-comment-count" data-xid="/callme-star.github.io/2020/08/21/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%E2%80%94%E2%80%94tensorflow3/">0</span>
+    <span class="leancloud-comments-count">&nbsp;</span>
+  </a>
+</div>
+
+
+            
+          
+            
+              
+
+            
+          
+        </div>
+        
+          <hr>
+        
+      </div>
+    
+  </section>
+
+
+  <section class="article typo">
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="学习目标"><a href="#学习目标" class="headerlink" title="学习目标"></a>学习目标</h3><ul>
+<li>预备知识</li>
+<li>神经复杂度</li>
+<li>指数衰减学习率</li>
+<li>激活函数</li>
+<li>损失减数</li>
+<li>欠拟合和过拟合</li>
+<li>正则化减少过拟合</li>
+<li>优化器更新网络参数</li>
+</ul>
+<h4 id="预备知识"><a href="#预备知识" class="headerlink" title="预备知识"></a>预备知识</h4><ul>
+<li><p>tf.where()</p>
+<p>tf.where(条件语句，真返回A，假返回B)</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">a = tf.constant([<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">1</span>,<span class="number">1</span>])</span><br><span class="line">b = tf.constant([<span class="number">0</span>,<span class="number">1</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>])</span><br><span class="line">c = tf.where(tf.greater(a,b),a,b)    <span class="comment">#若a&gt;b,返回a对应位置的元素，否则返回b对应位置的元素</span></span><br><span class="line">print(c)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>tf.random.RandomState.rand()</p>
+<p>tf.random.RandomState.rand(维度)</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpya <span class="keyword">as</span> np</span><br><span class="line">rdm = np.random.RandomState(seed=<span class="number">1</span>)    <span class="comment">#seed相同生成的随机数相同</span></span><br><span class="line">a = rdm.rand()      <span class="comment">#返回一个随机标量</span></span><br><span class="line">b = rdm.rand(<span class="number">2</span>,<span class="number">3</span>)      <span class="comment">#返回一个两行三列的随机矩阵</span></span><br><span class="line">print(a)</span><br><span class="line">print(b)</span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ul>
+<ul>
+<li><p>tf.vstack()</p>
+<p>将两个数组按垂直方向叠加</p>
+<p>np.vstack(数组1，数组2)</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line">a = np.array([<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>])</span><br><span class="line">b = np.array([<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>])</span><br><span class="line">c = vstack(<span class="string">&#x27;c为：&#x27;</span>，c)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>np.mgrid[]  , .ravel()  , np.c_[]</p>
+<p>用来制表</p>
+<p>np.mgrid[起始值，结束值，步长]</p>
+<p>x.ravel()</p>
+<p>将x变为一维数组，把变量拉直</p>
+<p>np.c_[数组1， 数组2]</p>
+<p>将两个数组进行配对，补成一个大数组</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line">x,y = np.mgrid[<span class="number">1</span>:<span class="number">3</span>:<span class="number">1</span>, <span class="number">2</span>:<span class="number">4</span>:<span class="number">0.5</span>]</span><br><span class="line">grid = np.c_[x.ravel(),y.ravelz()]</span><br><span class="line">print(x)</span><br><span class="line">print(y)</span><br><span class="line">print(grid)</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h4 id="复杂度学习率"><a href="#复杂度学习率" class="headerlink" title="复杂度学习率"></a>复杂度学习率</h4>
+      
+    </div>
+    
+      
+    
+  </section>
+</article>
+
+          </div>
+        
       
         
           <div class='post-wrapper'>
@@ -1501,7 +1659,7 @@
         
       
     
-    <a target="_blank" rel="noopener" href='https://www.upyun.com/league/'><img src='https://cdn.jsdelivr.net/gh/CallMe-star/picbed@master/%E5%8F%88%E6%8B%8D%E4%BA%91_logo5.png'  style='width:60px;height:30px'/></a>
+    <a target="_blank" rel="noopener" href='https://www.upyun.com/?utm_source=lianmeng&utm_medium=referral/'><img src='https://cdn.jsdelivr.net/gh/CallMe-star/picbed@master/%E5%8F%88%E6%8B%8D%E4%BA%91_logo5.png'  style='width:60px;height:30px'/></a>
   </footer>
 
 
