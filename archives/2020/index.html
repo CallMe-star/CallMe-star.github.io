@@ -694,7 +694,38 @@
 
 </li>
 </ul>
-<h4 id="复杂度学习率"><a href="#复杂度学习率" class="headerlink" title="复杂度学习率"></a>复杂度学习率</h4>
+<h4 id="复杂度学习率"><a href="#复杂度学习率" class="headerlink" title="复杂度学习率"></a>复杂度学习率</h4><p>在上节课中我们发现<br>$$<br>在式子中：w_{t+1} = w_t-lr*\frac{\partial loss}{\partial w_t}<br>$$</p>
+<p>$$<br>损失函数: loss = (w+1)^2<br>$$</p>
+<p>$$<br>\frac{\partial loss}{\partial w} = 2w+2<br>$$</p>
+<p>参数w初始为5，学习率为若是太小则整个过程更新太慢，如果太大就会越过极值点，导致最后结果不收敛，在极值点附近跳跃。</p>
+<p>在应用中可以通过<strong>指数衰减学习率</strong>来实现：</p>
+<blockquote>
+<p>指数衰减学习率：先用较大的学习率，快速得到较优解，然后逐步减小学习率，使模型在训练后期稳定</p>
+</blockquote>
+<p>$$<br>指数衰减学习率 = 初始学习率*学习率衰减率^{(当前轮次/多少轮衰减一次)}<br>$$</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">epoch = <span class="number">40</span></span><br><span class="line">lr_base = <span class="number">0.2</span>      <span class="comment">#初始学习率</span></span><br><span class="line">lr_decay = <span class="number">0.99</span>    <span class="comment">#学习率衰减率</span></span><br><span class="line">lr_step = <span class="number">1</span>        <span class="comment">#多少轮衰减一次 </span></span><br><span class="line"><span class="keyword">for</span> epoch <span class="keyword">in</span> range(epoch):</span><br><span class="line">  lr = lr_base *lr_decay**(epoch / lr _step)</span><br><span class="line">  <span class="keyword">with</span> tf.Gradient() <span class="keyword">as</span> tape:</span><br><span class="line">    loss = tf.square(w+<span class="number">1</span>)</span><br><span class="line">  grads = tape.gradient(loss, w)</span><br><span class="line">  w.assign_sub(lr*grads)</span><br><span class="line">  print(<span class="string">&quot;after %s epoch, w is %f, loss is %5f, lr = %f&quot;</span> </span><br><span class="line">        % (epoch, w.numpy(), loss(), lr)</span><br></pre></td></tr></table></figure>
+
+<h4 id="激活函数"><a href="#激活函数" class="headerlink" title="激活函数"></a>激活函数</h4><p> 下面介绍几种常用的激活函数</p>
+<ol>
+<li>sigmoid函数</li>
+<li>tanh</li>
+<li>Relu</li>
+<li>Leaky Relu</li>
+</ol>
+<blockquote>
+<p>对初学者的建议：</p>
+<ul>
+<li><p>首选relu函数</p>
+</li>
+<li><p>学习率设置较小值</p>
+</li>
+<li><p>输入特征标准化，即让输入特征满足以零为均值，1为标准差的正态分布</p>
+</li>
+<li><p>$$<br>初始函数中心化，即让随机生成的参数满足以零为均值，\sqrt{\frac{2}{当前输入特征个数}}为标准差的正态分布<br>$$</p>
+</li>
+</ul>
+</blockquote>
+
       
     </div>
     
