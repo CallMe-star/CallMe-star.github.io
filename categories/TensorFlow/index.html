@@ -5,6 +5,8 @@
   <!-- SEO相关 -->
   
     
+      <meta name="robots" content="noindex,follow">
+    
   
   <!-- 渲染优化 -->
   <meta name="renderer" content="webkit">
@@ -16,13 +18,9 @@
 
   <!-- 页面元数据 -->
   
-  <title>tensorflow第二节 - CallMe_star</title>
-  
-    <meta name="keywords" content="图像处理笔记">
+  <title>分类：TensorFlow - CallMe_star</title>
   
 
-  
-    <meta name="description" content="鸢尾花分类三种鸢尾花，有四种特征，四个数据同时输入，权重共有3*4=12组, [1,4]✖️[4,3]">
   
 
   <!-- feed -->
@@ -81,7 +79,7 @@
   
   
   <div class="cover-wrapper">
-    <cover class='cover post' style="display: none;">
+    <cover class='cover ' style="display: none;">
       <div class='cover-body'>
   <div class='a'>
     
@@ -492,8 +490,8 @@
  
  
 <div id="pjax-data" style="display: none"> 
-  <div id="pjax-ispage">true</div> 
-  <div id="pjax-pageTitle">tensorflow第二节</div> 
+  <div id="pjax-ispage">false</div> 
+  <div id="pjax-pageTitle"></div> 
   <div id="pjax-enable-cover">true</div> 
   <div id="pjax-comment-path">none</div> 
   <div id="pjax-comment-placeholder">none</div> 
@@ -525,12 +523,29 @@
       
       
 
+
 <div class='l_main'>
   
-
-  
-    <article id="post" class="post white-box reveal shadow article-type-post" itemscope itemprop="blogPost">
+    
       
+  <section class="post-list ">
+    
+      
+        
+          
+        
+          
+        
+          
+        
+      
+    
+    
+      
+        
+          <div class='post-wrapper'>
+            <article class="post white-box shadow reveal ">
+  
 
 
   <section class='meta'>
@@ -540,11 +555,103 @@
       <div class="meta" id="header-meta">
         
           
-  <h1 class="title">
-    <a href="/callme-star.github.io/2020/08/19/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%E2%80%94%E2%80%94tensorflow2/">
+  <h2 class="title">
+    <a href="/callme-star.github.io/2020/08/21/tensorflow3/">
+      tensorflow第三节
+    </a>
+  </h2>
+
+
+        
+        <div class='new-meta-box'>
+          
+            
+          
+            
+              
+<div class='new-meta-item author'>
+  <a class='author' target="_blank" href="https://blog.csdn.net/m0_46439571" rel="nofollow noopener">
+    <img no-lazy src="https://cdn.jsdelivr.net/gh/CallMe-star/picbed/pai11.jpg">
+    <p>CallMe_star</p>
+  </a>
+</div>
+
+            
+          
+            
+              <div class="new-meta-item date">
+  <a class='notlink'>
+    <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
+    <p>发布于：2020年8月21日</p>
+  </a>
+</div>
+
+            
+          
+            
+              
+  
+  <div class='new-meta-item category'>
+    <a href='/callme-star.github.io/categories/TensorFlow/' rel="nofollow">
+      <i class="fas fa-folder-open fa-fw" aria-hidden="true"></i>
+      <p>TensorFlow</p>
+    </a>
+  </div>
+
+
+            
+          
+        </div>
+        
+          <hr>
+        
+      </div>
+    
+  </section>
+
+
+  <section class="article typo">
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="学习目标"><a href="#学习目标" class="headerlink" title="学习目标"></a>学习目标</h3><ul>
+<li><p>预备知识</p>
+</li>
+<li><p>神经复杂度</p>
+</li>
+<li><p>指数衰减学习率</p>
+      
+    </div>
+    
+      
+        <a class= "readmore" href="/callme-star.github.io/2020/08/21/tensorflow3/">
+          阅读全文 <i class="fas fa-chevron-right"></i>
+        </a>
+      
+    
+  </section>
+</article>
+
+          </div>
+        
+      
+        
+          <div class='post-wrapper'>
+            <article class="post white-box shadow reveal ">
+  
+
+
+  <section class='meta'>
+    
+      
+      
+      <div class="meta" id="header-meta">
+        
+          
+  <h2 class="title">
+    <a href="/callme-star.github.io/2020/08/19/tensorflow2/">
       tensorflow第二节
     </a>
-  </h1>
+  </h2>
 
 
         
@@ -577,9 +684,9 @@
               
   
   <div class='new-meta-item category'>
-    <a href='/callme-star.github.io/categories/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%E7%AC%94%E8%AE%B0/' rel="nofollow">
+    <a href='/callme-star.github.io/categories/TensorFlow/' rel="nofollow">
       <i class="fas fa-folder-open fa-fw" aria-hidden="true"></i>
-      <p>图像处理笔记</p>
+      <p>TensorFlow</p>
     </a>
   </div>
 
@@ -595,295 +702,123 @@
   </section>
 
 
-      <section class="article typo">
-        <div class="article-entry" itemprop="articleBody">
+  <section class="article typo">
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="鸢尾花分类"><a href="#鸢尾花分类" class="headerlink" title="鸢尾花分类"></a>鸢尾花分类</h3><p>三种鸢尾花，有四种特征，四个数据同时输入，权重共有3*4=12组, [1,4]✖️[4,3]</p>
+      
+    </div>
+    
+      
+        <a class= "readmore" href="/callme-star.github.io/2020/08/19/tensorflow2/">
+          阅读全文 <i class="fas fa-chevron-right"></i>
+        </a>
+      
+    
+  </section>
+</article>
+
+          </div>
+        
+      
+        
+          <div class='post-wrapper'>
+            <article class="post white-box shadow reveal ">
+  
+
+
+  <section class='meta'>
+    
+      
+      
+      <div class="meta" id="header-meta">
+        
           
+  <h2 class="title">
+    <a href="/callme-star.github.io/2020/08/19/tensorflow1/">
+      tensorflow第一节
+    </a>
+  </h2>
+
+
+        
+        <div class='new-meta-box'>
           
-          <h3 id="鸢尾花分类"><a href="#鸢尾花分类" class="headerlink" title="鸢尾花分类"></a>鸢尾花分类</h3><p>三种鸢尾花，有四种特征，四个数据同时输入，权重共有3*4=12组, [1,4]✖️[4,3]</p>
-<a id="more"></a>
-
-<h4 id="鸢尾花数据读入"><a href="#鸢尾花数据读入" class="headerlink" title="鸢尾花数据读入"></a>鸢尾花数据读入</h4><p>从sklearn包dataset读入数据集，语法为：</p>
-<blockquote>
-<p>from sklearn.datasets import load_iris</p>
-<p>x_data = datasets.load_isis().data</p>
-<p>y_data = datasets.load_isis().target</p>
-</blockquote>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn <span class="keyword">import</span> datasets</span><br><span class="line"><span class="keyword">from</span> pandas <span class="keyword">import</span> DataFrame</span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"></span><br><span class="line">x_data = datasets.load_isis().data    <span class="comment">#.data返回数据集的输入特征</span></span><br><span class="line">y_data = datasets.load_isis().target      <span class="comment"># 。target返回数据集的所有标签</span></span><br><span class="line">print(x_data)</span><br><span class="line">print(y_data)</span><br><span class="line"></span><br><span class="line">x_data = DataFrame(x_data,columes=[<span class="string">&quot;花萼长&quot;</span>，<span class="string">&quot;花萼宽&quot;</span>，<span class="string">&quot;花瓣长&quot;</span>，<span class="string">&quot;花瓣宽&quot;</span>])   <span class="comment"># 将数据转换成表格形式</span></span><br><span class="line">pd.set_option(<span class="string">&#x27;display.unicode.east_asian_width&#x27;</span>,<span class="literal">True</span>)   <span class="comment">#设置列名对齐</span></span><br><span class="line">print(<span class="string">&quot;x_data add index: \n&quot;</span>,x_data)</span><br><span class="line">x_data[<span class="string">&#x27;类别&#x27;</span>] = y_data    <span class="comment">#新增加一列，标签为类别，数据为y_data</span></span><br><span class="line">print(<span class="string">&quot;x_data add a colum: \n&quot;</span>,x_data)</span><br></pre></td></tr></table></figure>
-
-<p>在运行过程中会提示我们缺少数据包，然后我们用python自带的pip下载安装即可（比如：pip install sklearn）</p>
-<h4 id="神经网络实现鸢尾花分类"><a href="#神经网络实现鸢尾花分类" class="headerlink" title="神经网络实现鸢尾花分类"></a>神经网络实现鸢尾花分类</h4><blockquote>
-<p>1、准备数据</p>
-</blockquote>
-<ul>
-<li>数据集读入</li>
-<li>数据集乱序</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">np.random.seed(<span class="number">116</span>)    <span class="comment">#使用相同的seed使输入特征标签一一对应</span></span><br><span class="line">np.random.shuffle（x_data）</span><br><span class="line">np.random.seed(<span class="number">116</span>)</span><br><span class="line">np.random.shuffle(y_data)</span><br><span class="line">tf.random.set_seed(<span class="number">116</span>)</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><p>数据集分出永不相见的训练集和测试集</p>
-<p>训练集为前120行，测试集为最后30行</p>
-</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">x_train = x_data[:<span class="number">-30</span>]</span><br><span class="line">y_train = y_data[:<span class="number">-30</span>]</span><br><span class="line">x_test = x_data[<span class="number">-30</span>:]</span><br><span class="line">y_test = y_data[<span class="number">-30</span>:]</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><p>配成【输入特征， 标签】对，每次喂入一小撮（batch）</p>
-<p>每32组数据打包成一个batch</p>
-</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">train_db = tf.data.Dataset.from_tensor_slice((x_train,y_train)).batch(<span class="number">32</span>)</span><br><span class="line">test_db = tf.data.Dataset.from_tensor_slice((x_train,y_train)).batch(<span class="number">32</span>)</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>搭建网络</p>
-</blockquote>
-<p>定义神经网络中所有可训练参数</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">w1 = tf.Variable(tf.random.truncated_normal([<span class="number">4</span>,<span class="number">3</span>],stddev = <span class="number">0</span>, seed =<span class="number">1</span>))</span><br><span class="line">b1 = tf.Variable(tf.random.truncated_normal([<span class="number">3</span>],stddev=<span class="number">0.1</span>,seed=<span class="number">1</span>))</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>参数优化</p>
-</blockquote>
-<p>嵌套循环迭代，with结构更新参数，显示当前loss</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> epoch <span class="keyword">in</span> range(epoch):   <span class="comment">#数据集级别迭代</span></span><br><span class="line">  <span class="keyword">for</span> step,(x_train,y_train) <span class="keyword">in</span> enumerate(train_db):</span><br><span class="line">    <span class="keyword">with</span> tf.GradientTape() <span class="keyword">as</span> tape:     <span class="comment">#记录梯度信息</span></span><br><span class="line">      <span class="comment">#向前传播过程计算y</span></span><br><span class="line">      <span class="comment">#计算总的loss</span></span><br><span class="line">      y = tf.matmul(x_train,w1)+b1     <span class="comment">#神经网络乘加运算</span></span><br><span class="line">      y = tf.nn.softmax(y)    <span class="comment">#使输出y符和概率分布，此操作后和独热码同量级</span></span><br><span class="line">      y_ = tf.one_hot(y_train，depth = <span class="number">3</span>)  <span class="comment">#将标签转换为独热码形式</span></span><br><span class="line">      loss = tf.reduce_mean(tf.quare(y_-y))</span><br><span class="line">      loss_all += loss.numpy()</span><br><span class="line">    grads = tap.gradient(loss.[w1,b1])    <span class="comment">#计算loss对各个参数的梯度</span></span><br><span class="line">    <span class="comment">#实现梯度的更新：w1=w1-lr*w1_grad, b1= b1-lr*b_grad</span></span><br><span class="line">    w1.assign_sub(lr*grads[<span class="number">0</span>])     <span class="comment">#参数自更新</span></span><br><span class="line">    b1.assign_sub(lr*grads[<span class="number">1</span>])     <span class="comment">#其中的lr是学习率</span></span><br><span class="line">  print(<span class="string">&quot;Epoch &#123;&#125;,loss:&#123;&#125;&quot;</span>.format(epoch,loss_all/<span class="number">4</span>))</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>测试效果</p>
-</blockquote>
-<p>计算当前参数向前传播后的准确率，显示当前acc</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> x_test,y_test <span class="keyword">in</span> test_db:</span><br><span class="line">  y = tf.matmul(h,w)+b      <span class="comment">#y为预测结果</span></span><br><span class="line">  y = tf.nn.softmax(y)       <span class="comment">#是结果符合概率分布</span></span><br><span class="line">  pred= tf.argmax(y,axis=<span class="number">1</span>)    <span class="comment">#返回y中最大值的索引，即预测的分类</span></span><br><span class="line">  pred= tf.case(pred,dtype=y_type.dtype)    <span class="comment">#调整数据类型，与标签一致 </span></span><br><span class="line">  correct = tf.cast(tf.equal(pred,y_test),dtype = tf.int32)</span><br><span class="line">  correct = tf.reduce_sum(correct)     <span class="comment">#将每个batch的correct数加起来</span></span><br><span class="line">  total_correct += int(correct)    <span class="comment">#将所有batch中的correct数加起来</span></span><br><span class="line">  total_number +=x_test.shape[<span class="number">0</span>]</span><br><span class="line">acc = total_correct/total_number</span><br><span class="line">print(<span class="string">&quot;test_acc:&quot;</span>, acc)</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>acc/loss 可视化</p>
-</blockquote>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">plt.title(<span class="string">&quot;acc curve&quot;</span>)  <span class="comment">#图片标题</span></span><br><span class="line">plt.xlabel(<span class="string">&quot;epoch&quot;</span>)   <span class="comment"># x轴名字</span></span><br><span class="line">plt,ylabel(<span class="string">&quot;acc&quot;</span>)      <span class="comment">#y轴名字</span></span><br><span class="line">plt.plot(test_acc,label=<span class="string">&quot;$Accuracy$&quot;</span>)    <span class="comment">#逐点画出test_acc值并连线</span></span><br><span class="line">plt.legend()</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
-
-<p>本文先对代码的整个大体流程有一个感性的认识，详细过程，下面会有讲解！</p>
-
+            
           
-            <div class='article_footer'>
+            
               
-                
-  
-    
-    
-
-
-
-  
-
-  
-    
-    
-
-
-
-  
-
-  
-    
-    
-
-<section class="widget copyright  desktop mobile">
-  <div class='content'>
-    
-      <blockquote>
-        
-          
-            <p>博客内容遵循 署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0) 协议</p>
-
-          
-        
-          
-            <p>本文的永久链接是：<a target="_blank" rel="noopener" href="https://www.starclouds.top/">https://www.starclouds.top/</a></p>
-
-          
-        
-      </blockquote>
-    
-  </div>
-</section>
-
-  
-
-  
-    
-    
-
-<section class="widget qrcode  desktop mobile">
-  
-
-  <div class='content article-entry'>
-    
-      
-        <div class='fancybox'><img src='https://cdn.jsdelivr.net/gh/CallMe-star/picbed@master/erweimamma.jpg'
-        
-          height='86px'
-        ></div>
-      
-    
-      
-        <div class='fancybox'><img src='https://cdn.jsdelivr.net/gh/CallMe-star/picbed@master/WechatIMG18.png'
-        
-          height='86px'
-        ></div>
-      
-    
-  </div>
-</section>
-
-  
-
-
-              
-            </div>
-          
-        </div>
-        
-          
-
-
-  <section class='meta' id="footer-meta">
-    <div class='new-meta-box'>
-      
-        
-          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-08-20T09:23:12+08:00">
-  <a class='notlink'>
-    <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
-    <p>更新于：2020年8月20日</p>
+<div class='new-meta-item author'>
+  <a class='author' target="_blank" href="https://blog.csdn.net/m0_46439571" rel="nofollow noopener">
+    <img no-lazy src="https://cdn.jsdelivr.net/gh/CallMe-star/picbed/pai11.jpg">
+    <p>CallMe_star</p>
   </a>
 </div>
 
-        
-      
-        
+            
           
-  
-  <div class="new-meta-item meta-tags"><a class="tag" href="/callme-star.github.io/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%E7%AC%94%E8%AE%B0/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>图像处理笔记</p></a></div>
-
-
-        
-      
-        
-          
-  <div class="new-meta-item share -mob-share-list">
-  <div class="-mob-share-list share-body">
-    
-      
-        <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer noopener"
-          
-          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2020/08/19/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%E2%80%94%E2%80%94tensorflow2/&title=tensorflow第二节 - CallMe_star&summary=鸢尾花分类三种鸢尾花，有四种特征，四个数据同时输入，权重共有3*4=12组, [1,4]✖️[4,3]"
-          
-          >
-          
-            <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qq.png">
-          
-        </a>
-      
-    
-      
-        <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer noopener"
-          
-          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://yoursite.com/2020/08/19/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%E2%80%94%E2%80%94tensorflow2/&title=tensorflow第二节 - CallMe_star&summary=鸢尾花分类三种鸢尾花，有四种特征，四个数据同时输入，权重共有3*4=12组, [1,4]✖️[4,3]"
-          
-          >
-          
-            <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qzone.png">
-          
-        </a>
-      
-    
-      
-        <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer noopener"
-          
-          target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2020/08/19/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%E2%80%94%E2%80%94tensorflow2/&title=tensorflow第二节 - CallMe_star&summary=鸢尾花分类三种鸢尾花，有四种特征，四个数据同时输入，权重共有3*4=12组, [1,4]✖️[4,3]"
-          
-          >
-          
-            <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/weibo.png">
-          
-        </a>
-      
-    
-  </div>
+            
+              <div class="new-meta-item date">
+  <a class='notlink'>
+    <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
+    <p>发布于：2020年8月19日</p>
+  </a>
 </div>
 
+            
+          
+            
+              
+  
+  <div class='new-meta-item category'>
+    <a href='/callme-star.github.io/categories/TensorFlow/' rel="nofollow">
+      <i class="fas fa-folder-open fa-fw" aria-hidden="true"></i>
+      <p>TensorFlow</p>
+    </a>
+  </div>
 
 
+            
+          
+        </div>
         
-      
-    </div>
+          <hr>
+        
+      </div>
+    
   </section>
 
 
-        
-        
-          <div class="prev-next">
-            
-              <a class='prev' href='/callme-star.github.io/2020/08/21/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%E2%80%94%E2%80%94tensorflow3/'>
-                <p class='title'><i class="fas fa-chevron-left" aria-hidden="true"></i></p>
-                <p class='content'>学习目标
-预备知识
-神经复杂度
-指数衰减学习率
-激活函数
-损失减数
-欠拟合和过拟合
-正则化减少过拟合
-优化器更新网络参数
+  <section class="article typo">
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="常用函数"><a href="#常用函数" class="headerlink" title="常用函数"></a>常用函数</h3><h4 id="1、类型转换"><a href="#1、类型转换" class="headerlink" title="1、类型转换"></a>1、类型转换</h4><ul>
+<li>强制tensor转换为该数据类型</li>
+</ul>
+<p>tf.case(张量名, dtype=数据类型)</p>
+      
+    </div>
+    
+      
+        <a class= "readmore" href="/callme-star.github.io/2020/08/19/tensorflow1/">
+          阅读全文 <i class="fas fa-chevron-right"></i>
+        </a>
+      
+    
+  </section>
+</article>
 
-预备知识
-tf.where()
-tf.where(条件语句，真返回A，...</p>
-              </a>
-            
-            
-              <a class='next' href='/callme-star.github.io/2020/08/19/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%E2%80%94%E2%80%94tensorflow1/'>
-                <p class='title'>tensorflow第一节<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
-                <p class='content'>常用函数1、类型转换
-强制tensor转换为该数据类型
-
-tf.case(张量名, dtype=数据类型)
-
-
-
-计算张量维度上元素的最小值
-
-tf.reduce_min(张量名)
-
-计算张量维...</p>
-              </a>
-            
           </div>
         
-      </section>
-    </article>
-  
-
+      
+    
+  </section>
   
     
-
-  <article class="post white-box reveal comments shadow">
-    <section class="article typo">
-      <p ct><i class='fas fa-comments'></i> 评论</p>
-      
-      <section id="comments">
-        <div id="valine_container" class="valine_thread">
-  <i class="fas fa-cog fa-spin fa-fw fa-2x"></i>
-</div>
-
-      </section>
-    </section>
-  </article>
-
-
-  
-
-
-
-
-<!-- 根据页面mathjax变量决定是否加载MathJax数学公式js -->
-
-  <script>
+    <!-- 根据主题中的设置决定是否在archive中针对摘要部分的MathJax公式加载mathjax.js文件 -->
+    
+    
+      <script>
   // https://github.com/theme-next/hexo-theme-next/blob/master/layout/_third-party/math/mathjax.swig
   if (typeof MathJax === 'undefined') {
     window.MathJax = {
@@ -935,33 +870,147 @@ tf.reduce_min(张量名)
   }
 </script>
 
+    
 
+  
+
+
+    
+  
 
 </div>
 <aside class='l_side'>
   
   
+    
+    
+
+<section class="widget blogger shadow desktop mobile">
+  <div class='content'>
+    
+      
+        <a class='avatar flat-box rectangle' href='/callme-star.github.io/about/'>
+          <img no-lazy src='https://cdn.jsdelivr.net/gh/CallMe-star/picbed/pai11.jpg'/>
+        </a>
+      
+    
+    
+      <div class='text'>
+        
+        
+        
+          <p><span id="jinrishici-sentence">CallMe_star</span></p>
+          <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
+        
+      </div>
+    
+    
+      <div class="social-wrapper">
+        
+          
+            <a href="https://twitter.com/CallMe_starstar"
+              class="social fab fa-twitter flat-btn"
+              target="_blank"
+              rel="external nofollow noopener noreferrer">
+            </a>
+          
+        
+          
+            <a href="mailto:qinggang372422@gmail.com"
+              class="social fas fa-envelope flat-btn"
+              target="_blank"
+              rel="external nofollow noopener noreferrer">
+            </a>
+          
+        
+          
+            <a href="https://github.com/CallMe-star/"
+              class="social fab fa-github flat-btn"
+              target="_blank"
+              rel="external nofollow noopener noreferrer">
+            </a>
+          
+        
+          
+            <a href="https://www.instagram.com/callme_starstar/"
+              class="social fab fa-instagram flat-btn"
+              target="_blank"
+              rel="external nofollow noopener noreferrer">
+            </a>
+          
+        
+      </div>
+    
+  </div>
+</section>
+
+  
 
   
     
     
+  
 
-
-
-  <section class="widget toc-wrapper shadow desktop mobile" id="toc-div" >
+  <section class="widget category shadow desktop">
     
   <header>
     
-      <i class="fas fa-list fa-fw" aria-hidden="true"></i><span class='name'>本文目录</span>
+      <a href='/blog/categories/'><i class="fas fa-folder-open fa-fw" aria-hidden="true"></i><span class='name'>文章分类</span></a>
     
   </header>
 
 
     <div class='content'>
-        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%B8%A2%E5%B0%BE%E8%8A%B1%E5%88%86%E7%B1%BB"><span class="toc-text">鸢尾花分类</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%B8%A2%E5%B0%BE%E8%8A%B1%E6%95%B0%E6%8D%AE%E8%AF%BB%E5%85%A5"><span class="toc-text">鸢尾花数据读入</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%AE%9E%E7%8E%B0%E9%B8%A2%E5%B0%BE%E8%8A%B1%E5%88%86%E7%B1%BB"><span class="toc-text">神经网络实现鸢尾花分类</span></a></li></ol></li></ol>
+      <ul class="entry navigation">
+        
+          <li><a class="flat-box"
+            title="/callme-star.github.io/categories/TensorFlow/" href="/callme-star.github.io/categories/TensorFlow/"
+            id="callme-stargithubiocategoriesTensorFlow"
+            ><div class='name'>TensorFlow</div><div class='badge'>(3)</div></a></li>
+        
+          <li><a class="flat-box"
+            title="/callme-star.github.io/categories/java%E7%AC%94%E8%AE%B0/" href="/callme-star.github.io/categories/java%E7%AC%94%E8%AE%B0/"
+            id="callme-stargithubiocategoriesjavaE7AC94E8AEB0"
+            ><div class='name'>java笔记</div><div class='badge'>(3)</div></a></li>
+        
+          <li><a class="flat-box"
+            title="/callme-star.github.io/categories/matlab/" href="/callme-star.github.io/categories/matlab/"
+            id="callme-stargithubiocategoriesmatlab"
+            ><div class='name'>matlab</div><div class='badge'>(1)</div></a></li>
+        
+          <li><a class="flat-box"
+            title="/callme-star.github.io/categories/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%E7%AC%94%E8%AE%B0/" href="/callme-star.github.io/categories/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%E7%AC%94%E8%AE%B0/"
+            id="callme-stargithubiocategoriesE59BBEE5838FE5A484E79086E7AC94E8AEB0"
+            ><div class='name'>图像处理笔记</div><div class='badge'>(3)</div></a></li>
+        
+      </ul>
     </div>
   </section>
 
+
+  
+
+  
+    
+    
+  
+
+  <section class="widget tagcloud shadow desktop mobile">
+    
+  <header>
+    
+      <a href='/blog/tags/'><i class="fas fa-tags fa-fw" aria-hidden="true"></i><span class='name'>热门标签</span></a>
+    
+  </header>
+
+
+    <div class='content'>
+      <a href="/callme-star.github.io/tags/TensorFlow/" style="font-size: 24px; color: #555">TensorFlow</a> <a href="/callme-star.github.io/tags/java%E7%AC%94%E8%AE%B0/" style="font-size: 24px; color: #555">java笔记</a> <a href="/callme-star.github.io/tags/matlab/" style="font-size: 14px; color: #999">matlab</a> <a href="/callme-star.github.io/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%E7%AC%94%E8%AE%B0/" style="font-size: 24px; color: #555">图像处理笔记</a>
+    </div>
+  </section>
+
+
+  
 
   
 

@@ -16,9 +16,18 @@
 
   <!-- 页面元数据 -->
   
-  <title>CallMe_star</title>
+  <title>tensorflow第三节 - CallMe_star</title>
+  
+    <meta name="keywords" content="TensorFlow">
   
 
+  
+    <meta name="description" content="学习目标
+预备知识
+
+神经复杂度
+
+指数衰减学习率">
   
 
   <!-- feed -->
@@ -488,8 +497,8 @@
  
  
 <div id="pjax-data" style="display: none"> 
-  <div id="pjax-ispage">false</div> 
-  <div id="pjax-pageTitle"></div> 
+  <div id="pjax-ispage">true</div> 
+  <div id="pjax-pageTitle">tensorflow第三节</div> 
   <div id="pjax-enable-cover">true</div> 
   <div id="pjax-comment-path">none</div> 
   <div id="pjax-comment-placeholder">none</div> 
@@ -537,8 +546,8 @@
         
           
   <h1 class="title">
-    <a href="/callme-star.github.io/2020/08/21/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%E2%80%94%E2%80%94tensorflow3/">
-      2020年8月21日
+    <a href="/callme-star.github.io/2020/08/21/tensorflow3/">
+      tensorflow第三节
     </a>
   </h1>
 
@@ -560,11 +569,6 @@
             
           
             
-              
-
-            
-          
-            
               <div class="new-meta-item date">
   <a class='notlink'>
     <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
@@ -576,6 +580,14 @@
           
             
               
+  
+  <div class='new-meta-item category'>
+    <a href='/callme-star.github.io/categories/TensorFlow/' rel="nofollow">
+      <i class="fas fa-folder-open fa-fw" aria-hidden="true"></i>
+      <p>TensorFlow</p>
+    </a>
+  </div>
+
 
             
           
@@ -593,14 +605,23 @@
           
           
           <h3 id="学习目标"><a href="#学习目标" class="headerlink" title="学习目标"></a>学习目标</h3><ul>
-<li>预备知识</li>
-<li>神经复杂度</li>
-<li>指数衰减学习率</li>
-<li>激活函数</li>
-<li>损失减数</li>
-<li>欠拟合和过拟合</li>
-<li>正则化减少过拟合</li>
-<li>优化器更新网络参数</li>
+<li><p>预备知识</p>
+</li>
+<li><p>神经复杂度</p>
+</li>
+<li><p>指数衰减学习率</p>
+<a id="more"></a>
+</li>
+<li><p>激活函数</p>
+</li>
+<li><p>损失减数</p>
+</li>
+<li><p>欠拟合和过拟合</p>
+</li>
+<li><p>正则化减少过拟合</p>
+</li>
+<li><p>优化器更新网络参数</p>
+</li>
 </ul>
 <h4 id="预备知识"><a href="#预备知识" class="headerlink" title="预备知识"></a>预备知识</h4><ul>
 <li><p>tf.where()</p>
@@ -645,10 +666,26 @@
 
 <h4 id="激活函数"><a href="#激活函数" class="headerlink" title="激活函数"></a>激活函数</h4><p> 下面介绍几种常用的激活函数</p>
 <ol>
-<li>sigmoid函数</li>
-<li>tanh</li>
-<li>Relu</li>
-<li>Leaky Relu</li>
+<li><p>sigmoid函数<br>$$<br>f(x)= \frac{1}{1+e^{-x}}<br>$$<br>特点:①因为需要反向求导，会造成梯度消失问题，使得参数无法更新</p>
+<p>​        ②输出非0均值，收敛慢</p>
+<p>​        ③幂运算复杂，训练时间长</p>
+</li>
+<li><p>tanh<br>$$<br>f(x) = \frac{1-e^{-2x}}{1+e^{-2x}}<br>$$<br>特点：①输出是0均值</p>
+<p>​            ②易造成梯度消失</p>
+<p>​            ③幂运算复杂，训练时间长</p>
+</li>
+<li><p>Relu<br>$$<br>f(x) = max(x,0)\<br>$$</p>
+<p>$$<br>=\begin{cases}<br>0, x&lt;0\<br>x, x&gt;=0<br>\end{cases}<br>$$<br>优点：</p>
+<p>①解决了梯度消失问题（在正区间）</p>
+<p>②只需判断输入是否大于零，计算速度快</p>
+<p>③收敛速度远快于sigmoid和tanh</p>
+<p>缺点：</p>
+<p>①输出非零均值，收敛慢</p>
+<p>②某些神经元可能永远不会被激活，导致相应参数永远不更新</p>
+</li>
+<li><p>Leaky Relu</p>
+<p>是对Relu在负区间上的改进<br>$$<br>f(x) = max(ax,x)<br>$$<br>理论上来讲，leaky  relu有relu的所有优点，外加不会产生死神经元的问题，但是实际操作中，并没有完全证明他总是好于relu</p>
+</li>
 </ol>
 <blockquote>
 <p>对初学者的建议：</p>
@@ -662,6 +699,41 @@
 <li><p>$$<br>初始函数中心化，即让随机生成的参数满足以零为均值，\sqrt{\frac{2}{当前输入特征个数}}为标准差的正态分布<br>$$</p>
 </li>
 </ul>
+</blockquote>
+<h4 id="损失函数"><a href="#损失函数" class="headerlink" title="损失函数"></a>损失函数</h4><p><strong>损失函数</strong>用来评价模型的<strong>预测值</strong>和<strong>真实值</strong>不一样的程度，损失函数越好，通常模型的性能越好。不同的模型用的损失函数一般也不一样。</p>
+<p><strong>损失函数</strong>分为<strong>经验风险损失函数</strong>和<strong>结构风险损失函数</strong>。经验风险损失函数指预测结果和实际结果的差别，结构风险损失函数是指经验风险损失函数加上正则项。</p>
+<ul>
+<li><p>均方误差：<br>$$<br>MSE(y_均-y) = \frac{\sum_{i = 1}^{n}(y-y_均)^2}{n}<br>$$<br>loss_mean = tf.reduce_mean(tf.sqare(y-y_))</p>
+</li>
+<li><p>自定义损失函数<br>$$<br>loss(y_均,y) = \begin{cases}<br>profit*(y_均 - y), y&lt;y_均\<br>cost*(y-y_均)， y&gt;y_均<br>\end{cases}<br>$$</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Loss = tf.reduce_sum(tf.where:(tf,greater(y,y_均),cost(y,y_均), profit(y,y_均)))</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>交叉熵损失函数</p>
+<p>交叉熵损失函数CE表征两个概率分布之间的距离，原本的公式<br>$$<br>H（y_均，y） = -\sum{y_均*lny}<br>$$<br>tensorflow有直接的公式：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tf.losses.categorical_crossentropy(y_均,y)</span><br></pre></td></tr></table></figure>
+
+<p>一般我们要经过softmax函数然后计算y与y_的交叉熵损失函数</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">tf.nn.softmax_cross_entropy_with_logits(y_,y)</span><br><span class="line"><span class="comment">#下面用两种方式都进行运算</span></span><br><span class="line">y_ = np.array([[<span class="number">1</span>,<span class="number">0</span>,<span class="number">0</span>],[<span class="number">0</span>,<span class="number">0</span>,<span class="number">1</span>],[<span class="number">1</span>,<span class="number">0</span>,<span class="number">0</span>],[<span class="number">0</span>,<span class="number">1</span>,<span class="number">0</span>]])</span><br><span class="line">y = np.array([[<span class="number">12</span>,<span class="number">3</span>,<span class="number">2</span>],[<span class="number">3</span>,<span class="number">10</span>,<span class="number">1</span>],[<span class="number">1</span>,<span class="number">2</span>,<span class="number">5</span>],[<span class="number">4</span>,<span class="number">6.5</span>,<span class="number">1.2</span>],[<span class="number">3</span>,<span class="number">6</span>,<span class="number">1</span>]])</span><br><span class="line"></span><br><span class="line">y_pro = tf.nn.softmax(y)</span><br><span class="line">loss_ce1 = tf.losses.categorical_crossentropy(y_,y_pro)</span><br><span class="line"></span><br><span class="line">loss_se2 = tf.nn.softmax_cross_entropy_with_logits(y_,y)</span><br><span class="line"></span><br><span class="line">print(<span class="string">&#x27;分布计算的结果&#x27;</span>, loss_se1)</span><br><span class="line">print(<span class="string">&#x27;结合计算的结果&#x27;</span>, loss_se2)</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h4 id="欠拟合和过拟合"><a href="#欠拟合和过拟合" class="headerlink" title="欠拟合和过拟合"></a>欠拟合和过拟合</h4><p>欠拟合图像不能有效表示出坐标点，而过拟合因为对一种情况过于细节，在另外的样本来临可能会很不准确，存在一个泛化性差的特点。</p>
+<ul>
+<li><p>欠拟合的解决方法：</p>
+<p>①增加输入特征项</p>
+<p>②增加网络参数</p>
+<p>③减少正则化参数</p>
+</li>
+<li><p>过拟合的解决方法：</p>
+<p>①数据清洗</p>
+<p>②增大训练集</p>
+<p>③采用正则化</p>
+<p>④增大正则化参数</p>
+</li>
+</ul>
+<blockquote>
+<p>正则化缓解过拟合：</p>
+<p>正则化在损失函数中引入模型复杂度指标，利用给w加权值，强化了训练数据的噪声（一般不正则化b，只对权重正则化）<br>$$<br>loss = loss(y与y_均) +　REGULARIZER*loss(w)<br>$$<br>其中的REGULARIZER给出了w在总loss中的比例，即正则化的权重。</p>
 </blockquote>
 
           
@@ -751,10 +823,10 @@
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-08-23T00:22:12+08:00">
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-08-25T09:57:44+08:00">
   <a class='notlink'>
     <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
-    <p>更新于：2020年8月23日</p>
+    <p>更新于：2020年8月25日</p>
   </a>
 </div>
 
@@ -762,11 +834,9 @@
       
         
           
+  
+  <div class="new-meta-item meta-tags"><a class="tag" href="/callme-star.github.io/tags/TensorFlow/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>TensorFlow</p></a></div>
 
-        
-      
-        
-          
 
         
       
@@ -778,7 +848,12 @@
       
         <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2020/08/21/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%E2%80%94%E2%80%94tensorflow3/&title= - CallMe_star&summary="
+          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2020/08/21/tensorflow3/&title=tensorflow第三节 - CallMe_star&summary=学习目标
+预备知识
+
+神经复杂度
+
+指数衰减学习率"
           
           >
           
@@ -790,7 +865,12 @@
       
         <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://yoursite.com/2020/08/21/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%E2%80%94%E2%80%94tensorflow3/&title= - CallMe_star&summary="
+          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://yoursite.com/2020/08/21/tensorflow3/&title=tensorflow第三节 - CallMe_star&summary=学习目标
+预备知识
+
+神经复杂度
+
+指数衰减学习率"
           
           >
           
@@ -802,7 +882,12 @@
       
         <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2020/08/21/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%E2%80%94%E2%80%94tensorflow3/&title= - CallMe_star&summary="
+          target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2020/08/21/tensorflow3/&title=tensorflow第三节 - CallMe_star&summary=学习目标
+预备知识
+
+神经复杂度
+
+指数衰减学习率"
           
           >
           
@@ -826,8 +911,13 @@
         
           <div class="prev-next">
             
+              <a class='prev' href='/callme-star.github.io/2020/08/25/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%E2%80%94%E2%80%94%E5%9B%BE%E5%83%8F%E5%88%86%E5%89%B2/'>
+                <p class='title'><i class="fas fa-chevron-left" aria-hidden="true"></i>图像分割</p>
+                <p class='content'></p>
+              </a>
             
-              <a class='next' href='/callme-star.github.io/2020/08/19/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%E2%80%94%E2%80%94tensorflow2/'>
+            
+              <a class='next' href='/callme-star.github.io/2020/08/19/tensorflow2/'>
                 <p class='title'>tensorflow第二节<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
                 <p class='content'>鸢尾花分类三种鸢尾花，有四种特征，四个数据同时输入，权重共有3*4=12组, [1,4]✖️[4,3]
 
@@ -867,6 +957,59 @@ from skl...</p>
 
 <!-- 根据页面mathjax变量决定是否加载MathJax数学公式js -->
 
+  <script>
+  // https://github.com/theme-next/hexo-theme-next/blob/master/layout/_third-party/math/mathjax.swig
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = 'https://cdn.jsdelivr.net/npm/mathjax@3.0/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    // 文章章节标题不能为 “MathJax” ，否则会报错。
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+
 
 </div>
 <aside class='l_side'>
@@ -889,7 +1032,7 @@ from skl...</p>
 
 
     <div class='content'>
-        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AD%A6%E4%B9%A0%E7%9B%AE%E6%A0%87"><span class="toc-text">学习目标</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%A2%84%E5%A4%87%E7%9F%A5%E8%AF%86"><span class="toc-text">预备知识</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%A4%8D%E6%9D%82%E5%BA%A6%E5%AD%A6%E4%B9%A0%E7%8E%87"><span class="toc-text">复杂度学习率</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%BF%80%E6%B4%BB%E5%87%BD%E6%95%B0"><span class="toc-text">激活函数</span></a></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AD%A6%E4%B9%A0%E7%9B%AE%E6%A0%87"><span class="toc-text">学习目标</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%A2%84%E5%A4%87%E7%9F%A5%E8%AF%86"><span class="toc-text">预备知识</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%A4%8D%E6%9D%82%E5%BA%A6%E5%AD%A6%E4%B9%A0%E7%8E%87"><span class="toc-text">复杂度学习率</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%BF%80%E6%B4%BB%E5%87%BD%E6%95%B0"><span class="toc-text">激活函数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%8D%9F%E5%A4%B1%E5%87%BD%E6%95%B0"><span class="toc-text">损失函数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%AC%A0%E6%8B%9F%E5%90%88%E5%92%8C%E8%BF%87%E6%8B%9F%E5%90%88"><span class="toc-text">欠拟合和过拟合</span></a></li></ol></li></ol>
     </div>
   </section>
 

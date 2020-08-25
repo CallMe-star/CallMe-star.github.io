@@ -558,13 +558,17 @@
         
           
         
+          
+        
+          
+        
       
     
     
       
         
           <div class='post-wrapper'>
-            <article class="post white-box shadow reveal no-title">
+            <article class="post white-box shadow reveal ">
   
 
 
@@ -576,8 +580,8 @@
         
           
   <h2 class="title">
-    <a href="/callme-star.github.io/2020/08/21/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%E2%80%94%E2%80%94tensorflow3/">
-      2020年8月21日
+    <a href="/callme-star.github.io/2020/08/25/matlab%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C1/">
+      matlab基础操作第一节
     </a>
   </h2>
 
@@ -599,15 +603,10 @@
             
           
             
-              
-
-            
-          
-            
               <div class="new-meta-item date">
   <a class='notlink'>
     <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
-    <p>发布于：2020年8月21日</p>
+    <p>发布于：2020年8月25日</p>
   </a>
 </div>
 
@@ -615,42 +614,14 @@
           
             
               
-
-            
-          
-            
-              
-  <div class="new-meta-item browse valine">
-    <a class='notlink'>
-      <i class="fas fa-eye fa-fw" aria-hidden="true"></i>
-      
-      <span id="/callme-star.github.io/2020/08/21/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%E2%80%94%E2%80%94tensorflow3/" class="leancloud_visitors" data-flag-title="">
-      <p>
-        <span class="leancloud-visitors-count"></span>
-      </p>
-      </span>
+  
+  <div class='new-meta-item category'>
+    <a href='/callme-star.github.io/categories/matlab/' rel="nofollow">
+      <i class="fas fa-folder-open fa-fw" aria-hidden="true"></i>
+      <p>matlab</p>
     </a>
   </div>
 
-
-            
-          
-            
-              
-<div class="new-meta-item comments-count">
-  
-  <a href="/callme-star.github.io/2020/08/21/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%E2%80%94%E2%80%94tensorflow3/#comments">
-    <i class="fas fa-comment-dots fa-fw"></i>
-    <span class="valine-comment-count" data-xid="/callme-star.github.io/2020/08/21/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%E2%80%94%E2%80%94tensorflow3/">0</span>
-    <span class="leancloud-comments-count">&nbsp;</span>
-  </a>
-</div>
-
-
-            
-          
-            
-              
 
             
           
@@ -666,78 +637,7 @@
   <section class="article typo">
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="学习目标"><a href="#学习目标" class="headerlink" title="学习目标"></a>学习目标</h3><ul>
-<li>预备知识</li>
-<li>神经复杂度</li>
-<li>指数衰减学习率</li>
-<li>激活函数</li>
-<li>损失减数</li>
-<li>欠拟合和过拟合</li>
-<li>正则化减少过拟合</li>
-<li>优化器更新网络参数</li>
-</ul>
-<h4 id="预备知识"><a href="#预备知识" class="headerlink" title="预备知识"></a>预备知识</h4><ul>
-<li><p>tf.where()</p>
-<p>tf.where(条件语句，真返回A，假返回B)</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">a = tf.constant([<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">1</span>,<span class="number">1</span>])</span><br><span class="line">b = tf.constant([<span class="number">0</span>,<span class="number">1</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>])</span><br><span class="line">c = tf.where(tf.greater(a,b),a,b)    <span class="comment">#若a&gt;b,返回a对应位置的元素，否则返回b对应位置的元素</span></span><br><span class="line">print(c)</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>tf.random.RandomState.rand()</p>
-<p>tf.random.RandomState.rand(维度)</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpya <span class="keyword">as</span> np</span><br><span class="line">rdm = np.random.RandomState(seed=<span class="number">1</span>)    <span class="comment">#seed相同生成的随机数相同</span></span><br><span class="line">a = rdm.rand()      <span class="comment">#返回一个随机标量</span></span><br><span class="line">b = rdm.rand(<span class="number">2</span>,<span class="number">3</span>)      <span class="comment">#返回一个两行三列的随机矩阵</span></span><br><span class="line">print(a)</span><br><span class="line">print(b)</span><br></pre></td></tr></table></figure>
-
-
-
-</li>
-</ul>
-<ul>
-<li><p>tf.vstack()</p>
-<p>将两个数组按垂直方向叠加</p>
-<p>np.vstack(数组1，数组2)</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line">a = np.array([<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>])</span><br><span class="line">b = np.array([<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>])</span><br><span class="line">c = vstack(<span class="string">&#x27;c为：&#x27;</span>，c)</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>np.mgrid[]  , .ravel()  , np.c_[]</p>
-<p>用来制表</p>
-<p>np.mgrid[起始值，结束值，步长]</p>
-<p>x.ravel()</p>
-<p>将x变为一维数组，把变量拉直</p>
-<p>np.c_[数组1， 数组2]</p>
-<p>将两个数组进行配对，补成一个大数组</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line">x,y = np.mgrid[<span class="number">1</span>:<span class="number">3</span>:<span class="number">1</span>, <span class="number">2</span>:<span class="number">4</span>:<span class="number">0.5</span>]</span><br><span class="line">grid = np.c_[x.ravel(),y.ravelz()]</span><br><span class="line">print(x)</span><br><span class="line">print(y)</span><br><span class="line">print(grid)</span><br></pre></td></tr></table></figure>
-
-</li>
-</ul>
-<h4 id="复杂度学习率"><a href="#复杂度学习率" class="headerlink" title="复杂度学习率"></a>复杂度学习率</h4><p>在上节课中我们发现<br>$$<br>在式子中：w_{t+1} = w_t-lr*\frac{\partial loss}{\partial w_t}<br>$$</p>
-<p>$$<br>损失函数: loss = (w+1)^2<br>$$</p>
-<p>$$<br>\frac{\partial loss}{\partial w} = 2w+2<br>$$</p>
-<p>参数w初始为5，学习率为若是太小则整个过程更新太慢，如果太大就会越过极值点，导致最后结果不收敛，在极值点附近跳跃。</p>
-<p>在应用中可以通过<strong>指数衰减学习率</strong>来实现：</p>
-<blockquote>
-<p>指数衰减学习率：先用较大的学习率，快速得到较优解，然后逐步减小学习率，使模型在训练后期稳定</p>
-</blockquote>
-<p>$$<br>指数衰减学习率 = 初始学习率*学习率衰减率^{(当前轮次/多少轮衰减一次)}<br>$$</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">epoch = <span class="number">40</span></span><br><span class="line">lr_base = <span class="number">0.2</span>      <span class="comment">#初始学习率</span></span><br><span class="line">lr_decay = <span class="number">0.99</span>    <span class="comment">#学习率衰减率</span></span><br><span class="line">lr_step = <span class="number">1</span>        <span class="comment">#多少轮衰减一次 </span></span><br><span class="line"><span class="keyword">for</span> epoch <span class="keyword">in</span> range(epoch):</span><br><span class="line">  lr = lr_base *lr_decay**(epoch / lr _step)</span><br><span class="line">  <span class="keyword">with</span> tf.Gradient() <span class="keyword">as</span> tape:</span><br><span class="line">    loss = tf.square(w+<span class="number">1</span>)</span><br><span class="line">  grads = tape.gradient(loss, w)</span><br><span class="line">  w.assign_sub(lr*grads)</span><br><span class="line">  print(<span class="string">&quot;after %s epoch, w is %f, loss is %5f, lr = %f&quot;</span> </span><br><span class="line">        % (epoch, w.numpy(), loss(), lr)</span><br></pre></td></tr></table></figure>
-
-<h4 id="激活函数"><a href="#激活函数" class="headerlink" title="激活函数"></a>激活函数</h4><p> 下面介绍几种常用的激活函数</p>
-<ol>
-<li>sigmoid函数</li>
-<li>tanh</li>
-<li>Relu</li>
-<li>Leaky Relu</li>
-</ol>
-<blockquote>
-<p>对初学者的建议：</p>
-<ul>
-<li><p>首选relu函数</p>
-</li>
-<li><p>学习率设置较小值</p>
-</li>
-<li><p>输入特征标准化，即让输入特征满足以零为均值，1为标准差的正态分布</p>
-</li>
-<li><p>$$<br>初始函数中心化，即让随机生成的参数满足以零为均值，\sqrt{\frac{2}{当前输入特征个数}}为标准差的正态分布<br>$$</p>
-</li>
-</ul>
-</blockquote>
-
+        
       
     </div>
     
@@ -763,7 +663,182 @@
         
           
   <h2 class="title">
-    <a href="/callme-star.github.io/2020/08/19/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%E2%80%94%E2%80%94tensorflow2/">
+    <a href="/callme-star.github.io/2020/08/25/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%E2%80%94%E2%80%94%E5%9B%BE%E5%83%8F%E5%88%86%E5%89%B2/">
+      图像分割
+    </a>
+  </h2>
+
+
+        
+        <div class='new-meta-box'>
+          
+            
+          
+            
+              
+<div class='new-meta-item author'>
+  <a class='author' target="_blank" href="https://blog.csdn.net/m0_46439571" rel="nofollow noopener">
+    <img no-lazy src="https://cdn.jsdelivr.net/gh/CallMe-star/picbed/pai11.jpg">
+    <p>CallMe_star</p>
+  </a>
+</div>
+
+            
+          
+            
+              <div class="new-meta-item date">
+  <a class='notlink'>
+    <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
+    <p>发布于：2020年8月25日</p>
+  </a>
+</div>
+
+            
+          
+            
+              
+  
+  <div class='new-meta-item category'>
+    <a href='/callme-star.github.io/categories/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%E7%AC%94%E8%AE%B0/' rel="nofollow">
+      <i class="fas fa-folder-open fa-fw" aria-hidden="true"></i>
+      <p>图像处理笔记</p>
+    </a>
+  </div>
+
+
+            
+          
+        </div>
+        
+          <hr>
+        
+      </div>
+    
+  </section>
+
+
+  <section class="article typo">
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+      
+    </div>
+    
+      
+    
+  </section>
+</article>
+
+          </div>
+        
+      
+        
+          <div class='post-wrapper'>
+            <article class="post white-box shadow reveal ">
+  
+
+
+  <section class='meta'>
+    
+      
+      
+      <div class="meta" id="header-meta">
+        
+          
+  <h2 class="title">
+    <a href="/callme-star.github.io/2020/08/21/tensorflow3/">
+      tensorflow第三节
+    </a>
+  </h2>
+
+
+        
+        <div class='new-meta-box'>
+          
+            
+          
+            
+              
+<div class='new-meta-item author'>
+  <a class='author' target="_blank" href="https://blog.csdn.net/m0_46439571" rel="nofollow noopener">
+    <img no-lazy src="https://cdn.jsdelivr.net/gh/CallMe-star/picbed/pai11.jpg">
+    <p>CallMe_star</p>
+  </a>
+</div>
+
+            
+          
+            
+              <div class="new-meta-item date">
+  <a class='notlink'>
+    <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
+    <p>发布于：2020年8月21日</p>
+  </a>
+</div>
+
+            
+          
+            
+              
+  
+  <div class='new-meta-item category'>
+    <a href='/callme-star.github.io/categories/TensorFlow/' rel="nofollow">
+      <i class="fas fa-folder-open fa-fw" aria-hidden="true"></i>
+      <p>TensorFlow</p>
+    </a>
+  </div>
+
+
+            
+          
+        </div>
+        
+          <hr>
+        
+      </div>
+    
+  </section>
+
+
+  <section class="article typo">
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="学习目标"><a href="#学习目标" class="headerlink" title="学习目标"></a>学习目标</h3><ul>
+<li><p>预备知识</p>
+</li>
+<li><p>神经复杂度</p>
+</li>
+<li><p>指数衰减学习率</p>
+      
+    </div>
+    
+      
+        <a class= "readmore" href="/callme-star.github.io/2020/08/21/tensorflow3/">
+          阅读全文 <i class="fas fa-chevron-right"></i>
+        </a>
+      
+    
+  </section>
+</article>
+
+          </div>
+        
+      
+        
+          <div class='post-wrapper'>
+            <article class="post white-box shadow reveal ">
+  
+
+
+  <section class='meta'>
+    
+      
+      
+      <div class="meta" id="header-meta">
+        
+          
+  <h2 class="title">
+    <a href="/callme-star.github.io/2020/08/19/tensorflow2/">
       tensorflow第二节
     </a>
   </h2>
@@ -799,9 +874,9 @@
               
   
   <div class='new-meta-item category'>
-    <a href='/callme-star.github.io/categories/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%E7%AC%94%E8%AE%B0/' rel="nofollow">
+    <a href='/callme-star.github.io/categories/TensorFlow/' rel="nofollow">
       <i class="fas fa-folder-open fa-fw" aria-hidden="true"></i>
-      <p>图像处理笔记</p>
+      <p>TensorFlow</p>
     </a>
   </div>
 
@@ -825,7 +900,7 @@
     </div>
     
       
-        <a class= "readmore" href="/callme-star.github.io/2020/08/19/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%E2%80%94%E2%80%94tensorflow2/">
+        <a class= "readmore" href="/callme-star.github.io/2020/08/19/tensorflow2/">
           阅读全文 <i class="fas fa-chevron-right"></i>
         </a>
       
@@ -850,7 +925,7 @@
         
           
   <h2 class="title">
-    <a href="/callme-star.github.io/2020/08/19/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%E2%80%94%E2%80%94tensorflow1/">
+    <a href="/callme-star.github.io/2020/08/19/tensorflow1/">
       tensorflow第一节
     </a>
   </h2>
@@ -886,9 +961,9 @@
               
   
   <div class='new-meta-item category'>
-    <a href='/callme-star.github.io/categories/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%E7%AC%94%E8%AE%B0/' rel="nofollow">
+    <a href='/callme-star.github.io/categories/TensorFlow/' rel="nofollow">
       <i class="fas fa-folder-open fa-fw" aria-hidden="true"></i>
-      <p>图像处理笔记</p>
+      <p>TensorFlow</p>
     </a>
   </div>
 
@@ -915,7 +990,7 @@
     </div>
     
       
-        <a class= "readmore" href="/callme-star.github.io/2020/08/19/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%E2%80%94%E2%80%94tensorflow1/">
+        <a class= "readmore" href="/callme-star.github.io/2020/08/19/tensorflow1/">
           阅读全文 <i class="fas fa-chevron-right"></i>
         </a>
       
@@ -1519,14 +1594,24 @@
       <ul class="entry navigation">
         
           <li><a class="flat-box"
+            title="/callme-star.github.io/categories/TensorFlow/" href="/callme-star.github.io/categories/TensorFlow/"
+            id="callme-stargithubiocategoriesTensorFlow"
+            ><div class='name'>TensorFlow</div><div class='badge'>(3)</div></a></li>
+        
+          <li><a class="flat-box"
             title="/callme-star.github.io/categories/java%E7%AC%94%E8%AE%B0/" href="/callme-star.github.io/categories/java%E7%AC%94%E8%AE%B0/"
             id="callme-stargithubiocategoriesjavaE7AC94E8AEB0"
             ><div class='name'>java笔记</div><div class='badge'>(3)</div></a></li>
         
           <li><a class="flat-box"
+            title="/callme-star.github.io/categories/matlab/" href="/callme-star.github.io/categories/matlab/"
+            id="callme-stargithubiocategoriesmatlab"
+            ><div class='name'>matlab</div><div class='badge'>(1)</div></a></li>
+        
+          <li><a class="flat-box"
             title="/callme-star.github.io/categories/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%E7%AC%94%E8%AE%B0/" href="/callme-star.github.io/categories/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%E7%AC%94%E8%AE%B0/"
             id="callme-stargithubiocategoriesE59BBEE5838FE5A484E79086E7AC94E8AEB0"
-            ><div class='name'>图像处理笔记</div><div class='badge'>(4)</div></a></li>
+            ><div class='name'>图像处理笔记</div><div class='badge'>(3)</div></a></li>
         
       </ul>
     </div>
@@ -1550,7 +1635,7 @@
 
 
     <div class='content'>
-      <a href="/callme-star.github.io/tags/java%E7%AC%94%E8%AE%B0/" style="font-size: 14px; color: #999">java笔记</a> <a href="/callme-star.github.io/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%E7%AC%94%E8%AE%B0/" style="font-size: 24px; color: #555">图像处理笔记</a>
+      <a href="/callme-star.github.io/tags/TensorFlow/" style="font-size: 24px; color: #555">TensorFlow</a> <a href="/callme-star.github.io/tags/java%E7%AC%94%E8%AE%B0/" style="font-size: 24px; color: #555">java笔记</a> <a href="/callme-star.github.io/tags/matlab/" style="font-size: 14px; color: #999">matlab</a> <a href="/callme-star.github.io/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%E7%AC%94%E8%AE%B0/" style="font-size: 24px; color: #555">图像处理笔记</a>
     </div>
   </section>
 
