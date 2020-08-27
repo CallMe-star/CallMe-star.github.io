@@ -16,9 +16,13 @@
 
   <!-- 页面元数据 -->
   
-  <title>福利图 - CallMe_star</title>
+  <title>matlab基础操作第二节 - CallMe_star</title>
+  
+    <meta name="keywords" content="matlab">
   
 
+  
+    <meta name="description" content="一、形态学操作&lt;1&gt;形态学基础">
   
 
   <!-- feed -->
@@ -77,7 +81,7 @@
   
   
   <div class="cover-wrapper">
-    <cover class='cover page' style="display: none;">
+    <cover class='cover post' style="display: none;">
       <div class='cover-body'>
   <div class='a'>
     
@@ -488,8 +492,8 @@
  
  
 <div id="pjax-data" style="display: none"> 
-  <div id="pjax-ispage">false</div> 
-  <div id="pjax-pageTitle"></div> 
+  <div id="pjax-ispage">true</div> 
+  <div id="pjax-pageTitle">matlab基础操作第二节</div> 
   <div id="pjax-enable-cover">true</div> 
   <div id="pjax-comment-path">none</div> 
   <div id="pjax-comment-placeholder">none</div> 
@@ -525,7 +529,7 @@
   
 
   
-    <article id="page" class="post white-box reveal shadow article-type-page" itemscope itemprop="blogPost">
+    <article id="post" class="post white-box reveal shadow article-type-post" itemscope itemprop="blogPost">
       
 
 
@@ -537,8 +541,8 @@
         
           
   <h1 class="title">
-    <a href="/callme-star.github.io/%E7%A6%8F%E5%88%A9%E5%9B%BE/index.html">
-      福利图
+    <a href="/callme-star.github.io/2020/08/26/matlab%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C2/">
+      matlab基础操作第二节
     </a>
   </h1>
 
@@ -560,15 +564,10 @@
             
           
             
-              
-
-            
-          
-            
               <div class="new-meta-item date">
   <a class='notlink'>
     <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
-    <p>发布于：2020年8月16日</p>
+    <p>发布于：2020年8月26日</p>
   </a>
 </div>
 
@@ -576,6 +575,14 @@
           
             
               
+  
+  <div class='new-meta-item category'>
+    <a href='/callme-star.github.io/categories/matlab/' rel="nofollow">
+      <i class="fas fa-folder-open fa-fw" aria-hidden="true"></i>
+      <p>matlab</p>
+    </a>
+  </div>
+
 
             
           
@@ -592,16 +599,106 @@
         <div class="article-entry" itemprop="articleBody">
           
           
-          <h4 id="风景图"><a href="#风景图" class="headerlink" title="风景图"></a>风景图</h4><div class="gallery stretch" col='2'>
-              <p><img src="https://cdn.jsdelivr.net/gh/CallMe-star/picbed@master/malaixiya.jpg"><br><img src="https://cdn.jsdelivr.net/gh/CallMe-star/picbed@master/WechatIMG451.jpeg"><br><img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper/landscape/10A0FCE5-36A1-4AD0-8CF0-019259A89E03.jpeg"><br><img src="https://cdn.jsdelivr.net/gh/CallMe-star/picbed@master/maerdaifu1.jpg"><br><img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper/abstract/B951AE18-D431-417F-B3FE-A382403FF21B.jpeg"><br><img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper/landscape/AEB33F9D-7294-4CF1-B8C5-3020748A9D45.jpeg"><br><img src="https://cdn.jsdelivr.net/gh/CallMe-star/picbed@master/background.jpg"><img src="https://cdn.jsdelivr.net/gh/CallMe-star/picbed@master/daifu.jpg"></p>
-            </div>
+          <h2 id="一、形态学操作"><a href="#一、形态学操作" class="headerlink" title="一、形态学操作"></a>一、形态学操作</h2><h3 id="lt-1-gt-形态学基础"><a href="#lt-1-gt-形态学基础" class="headerlink" title="&lt;1&gt;形态学基础"></a>&lt;1&gt;形态学基础</h3><a id="more"></a>
 
-<h4 id="动漫"><a href="#动漫" class="headerlink" title="动漫"></a>动漫</h4><div class="gallery stretch" col='2'>
-              <p><img src="https://cdn.jsdelivr.net/gh/CallMe-star/picbed@master/dongman1.jpg"><br><img src="https://cdn.jsdelivr.net/gh/CallMe-star/picbed@master/6.jpg"><br><img src="https://cdn.jsdelivr.net/gh/CallMe-star/picbed@master/5.jpg"><br><img src="https://cdn.jsdelivr.net/gh/CallMe-star/picbed@master/4.jpg"><br><img src="https://cdn.jsdelivr.net/gh/CallMe-star/picbed@master/3.jpg"><br><img src="https://cdn.jsdelivr.net/gh/CallMe-star/picbed@master/2.jpg"><br><img src="https://cdn.jsdelivr.net/gh/CallMe-star/picbed@master/12.jpg"><img src="https://cdn.jsdelivr.net/gh/CallMe-star/picbed@master/11.jpg"><img src="https://cdn.jsdelivr.net/gh/CallMe-star/picbed@master/10.jpg"><img src="https://cdn.jsdelivr.net/gh/CallMe-star/picbed@master/9.jpg"><img src="https://cdn.jsdelivr.net/gh/CallMe-star/picbed@master/14.jpg"><img src="https://cdn.jsdelivr.net/gh/CallMe-star/picbed@master/13.png"></p>
-            </div>
+<p>上节记录了怎么用fspecial做滤波器（也就是掩膜），这次我们要生成的叫结构元素SE</p>
+<p>主要用来构建形态学运算中的结构元素，使用的语法为strel(shape,parameters)。shape为形状参数，即设置什么样的结构元素；parameters为控制形状参数大小方向的参数。</p>
+<p>就像上一节的滤波器我们也可以手动绘制，这一节的结构元素我们一样可以绘制，但是太过麻烦,下面举例子做一个正45°，长度为6的结构元素</p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">SE = [<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">1</span>;<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">1</span>,<span class="number">0</span>;<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">1</span>,<span class="number">0</span>,<span class="number">0</span>;<span class="number">0</span>,<span class="number">0</span>,<span class="number">1</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>;<span class="number">0</span>,<span class="number">1</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>;<span class="number">1</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>;]</span><br><span class="line">SE =</span><br><span class="line"></span><br><span class="line">     <span class="number">0</span>     <span class="number">0</span>     <span class="number">0</span>     <span class="number">0</span>     <span class="number">0</span>     <span class="number">1</span></span><br><span class="line">     <span class="number">0</span>     <span class="number">0</span>     <span class="number">0</span>     <span class="number">0</span>     <span class="number">1</span>     <span class="number">0</span></span><br><span class="line">     <span class="number">0</span>     <span class="number">0</span>     <span class="number">0</span>     <span class="number">1</span>     <span class="number">0</span>     <span class="number">0</span></span><br><span class="line">     <span class="number">0</span>     <span class="number">0</span>     <span class="number">1</span>     <span class="number">0</span>     <span class="number">0</span>     <span class="number">0</span></span><br><span class="line">     <span class="number">0</span>     <span class="number">1</span>     <span class="number">0</span>     <span class="number">0</span>     <span class="number">0</span>     <span class="number">0</span></span><br><span class="line">     <span class="number">1</span>     <span class="number">0</span>     <span class="number">0</span>     <span class="number">0</span>     <span class="number">0</span>     <span class="number">0</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
-<h4 id="汽车"><a href="#汽车" class="headerlink" title="汽车"></a>汽车</h4><div class="gallery stretch" col='2'>
-              <p><img src="https://cdn.jsdelivr.net/gh/CallMe-star/picbed@master/falali.jpg"><br><img src="https://cdn.jsdelivr.net/gh/CallMe-star/picbed@master/maikailun.jpg"><br><img src="https://cdn.jsdelivr.net/gh/CallMe-star/picbed@master/bujiadi.jpg"><img src="https://cdn.jsdelivr.net/gh/CallMe-star/picbed@master/benchiyinijan.jpg"><img src="https://cdn.jsdelivr.net/gh/CallMe-star/picbed@master/lanbojini.jpg"><img src="https://cdn.jsdelivr.net/gh/CallMe-star/picbed@master/lykan_hyper.jpg"></p>
+<p>这样自己写太麻烦了，matlab为我们提供了一个函数，采用strel()函数则能够快速地构建如上所示的结构元素。</p>
+<p>使用方法：</p>
+<p>SE = strel(‘arbitrary’,NHOOD)</p>
+<p>SE = strel(‘arbitrary’,NHOOD,HEIGHT)</p>
+<p>SE = strel(‘ball’,R,H,N)</p>
+<p>SE = strel(‘diamond’,R)</p>
+<p>SE = strel(‘disk’,R,N)</p>
+<p>SE = strel(‘line’,LEN,DEG)</p>
+<p>SE = strel(‘octagon’,R)</p>
+<p>SE = strel(‘pair’,OFFSET)</p>
+<p>SE = strel(‘periodicline’,P,V)</p>
+<p>SE = strel(‘rectangle’,MN)</p>
+<p>SE = strel(‘square’,W)</p>
+<p>可以构建出各种形状的结构元素。</p>
+<h3 id="lt-2-gt-下面我们开始用结构元素对图像进行膨胀腐蚀操作。"><a href="#lt-2-gt-下面我们开始用结构元素对图像进行膨胀腐蚀操作。" class="headerlink" title="&lt;2&gt;下面我们开始用结构元素对图像进行膨胀腐蚀操作。"></a>&lt;2&gt;下面我们开始用结构元素对图像进行膨胀腐蚀操作。</h3><figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">img = imread(<span class="string">&#x27;.......jpg&#x27;</span>);</span><br><span class="line">SE = strel(<span class="string">&#x27;ball&#x27;</span>,<span class="number">20</span>);</span><br><span class="line">dst1 = imdilate(img, SE);</span><br><span class="line">dst2 = imerode(img, SE);</span><br><span class="line"><span class="built_in">figure</span>,imshow(dst1);</span><br><span class="line"><span class="built_in">figure</span>,imshow(dst2);</span><br></pre></td></tr></table></figure>
+
+<h3 id="lt-3-gt-顶帽变换，底帽变换"><a href="#lt-3-gt-顶帽变换，底帽变换" class="headerlink" title="&lt;3&gt;顶帽变换，底帽变换"></a>&lt;3&gt;顶帽变换，底帽变换</h3>
+          
+            <div class='article_footer'>
+              
+                
+  
+    
+    
+
+
+
+  
+
+  
+    
+    
+
+
+
+  
+
+  
+    
+    
+
+<section class="widget copyright  desktop mobile">
+  <div class='content'>
+    
+      <blockquote>
+        
+          
+            <p>博客内容遵循 署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0) 协议</p>
+
+          
+        
+          
+            <p>本文的永久链接是：<a target="_blank" rel="noopener" href="https://www.starclouds.top/">https://www.starclouds.top/</a></p>
+
+          
+        
+      </blockquote>
+    
+  </div>
+</section>
+
+  
+
+  
+    
+    
+
+<section class="widget qrcode  desktop mobile">
+  
+
+  <div class='content article-entry'>
+    
+      
+        <div class='fancybox'><img src='https://cdn.jsdelivr.net/gh/CallMe-star/picbed@master/erweimamma.jpg'
+        
+          height='86px'
+        ></div>
+      
+    
+      
+        <div class='fancybox'><img src='https://cdn.jsdelivr.net/gh/CallMe-star/picbed@master/WechatIMG18.png'
+        
+          height='86px'
+        ></div>
+      
+    
+  </div>
+</section>
+
+  
+
+
+              
             </div>
           
         </div>
@@ -613,10 +710,10 @@
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-08-25T11:06:59+08:00">
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-08-26T23:50:04+08:00">
   <a class='notlink'>
     <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
-    <p>更新于：2020年8月25日</p>
+    <p>更新于：2020年8月26日</p>
   </a>
 </div>
 
@@ -624,11 +721,9 @@
       
         
           
+  
+  <div class="new-meta-item meta-tags"><a class="tag" href="/callme-star.github.io/tags/matlab/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>matlab</p></a></div>
 
-        
-      
-        
-          
 
         
       
@@ -640,7 +735,7 @@
       
         <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/%E7%A6%8F%E5%88%A9%E5%9B%BE/index.html&title=福利图 - CallMe_star&summary="
+          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2020/08/26/matlab%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C2/&title=matlab基础操作第二节 - CallMe_star&summary=一、形态学操作&lt;1&gt;形态学基础"
           
           >
           
@@ -652,7 +747,7 @@
       
         <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://yoursite.com/%E7%A6%8F%E5%88%A9%E5%9B%BE/index.html&title=福利图 - CallMe_star&summary="
+          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://yoursite.com/2020/08/26/matlab%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C2/&title=matlab基础操作第二节 - CallMe_star&summary=一、形态学操作&lt;1&gt;形态学基础"
           
           >
           
@@ -664,7 +759,7 @@
       
         <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/%E7%A6%8F%E5%88%A9%E5%9B%BE/index.html&title=福利图 - CallMe_star&summary="
+          target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2020/08/26/matlab%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C2/&title=matlab基础操作第二节 - CallMe_star&summary=一、形态学操作&lt;1&gt;形态学基础"
           
           >
           
@@ -685,6 +780,20 @@
 
 
         
+        
+          <div class="prev-next">
+            
+            
+              <a class='next' href='/callme-star.github.io/2020/08/25/matlab%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C1/'>
+                <p class='title'>matlab基础操作第一节<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
+                <p class='content'>一、图像的读入与显示123img = imread(&#x27;图像在本地的地址.jpg&#x27;);figure(1),imshow(img);
+
+
+
+以上就完成了最基本的图像读入与显示工作...</p>
+              </a>
+            
+          </div>
         
       </section>
     </article>
@@ -714,6 +823,59 @@
 
 <!-- 根据页面mathjax变量决定是否加载MathJax数学公式js -->
 
+  <script>
+  // https://github.com/theme-next/hexo-theme-next/blob/master/layout/_third-party/math/mathjax.swig
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = 'https://cdn.jsdelivr.net/npm/mathjax@3.0/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    // 文章章节标题不能为 “MathJax” ，否则会报错。
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+
 
 </div>
 <aside class='l_side'>
@@ -736,7 +898,7 @@
 
 
     <div class='content'>
-        <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%A3%8E%E6%99%AF%E5%9B%BE"><span class="toc-text">风景图</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8A%A8%E6%BC%AB"><span class="toc-text">动漫</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%B1%BD%E8%BD%A6"><span class="toc-text">汽车</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E5%BD%A2%E6%80%81%E5%AD%A6%E6%93%8D%E4%BD%9C"><span class="toc-text">一、形态学操作</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#lt-1-gt-%E5%BD%A2%E6%80%81%E5%AD%A6%E5%9F%BA%E7%A1%80"><span class="toc-text">&lt;1&gt;形态学基础</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#lt-2-gt-%E4%B8%8B%E9%9D%A2%E6%88%91%E4%BB%AC%E5%BC%80%E5%A7%8B%E7%94%A8%E7%BB%93%E6%9E%84%E5%85%83%E7%B4%A0%E5%AF%B9%E5%9B%BE%E5%83%8F%E8%BF%9B%E8%A1%8C%E8%86%A8%E8%83%80%E8%85%90%E8%9A%80%E6%93%8D%E4%BD%9C%E3%80%82"><span class="toc-text">&lt;2&gt;下面我们开始用结构元素对图像进行膨胀腐蚀操作。</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#lt-3-gt-%E9%A1%B6%E5%B8%BD%E5%8F%98%E6%8D%A2%EF%BC%8C%E5%BA%95%E5%B8%BD%E5%8F%98%E6%8D%A2"><span class="toc-text">&lt;3&gt;顶帽变换，底帽变换</span></a></li></ol></li></ol>
     </div>
   </section>
 
