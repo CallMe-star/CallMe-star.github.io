@@ -22,8 +22,9 @@
   
 
   
-    <meta name="description" content="图像处理——傅里叶
-1.傅里叶变换的理解傅里叶变换的相关数学公式目前还没有搞懂，先不整那个东西，我们主要是研究傅里叶变换的一些思想和应用。这个思想起源于牛顿研究那个三棱镜，白光透过棱镜之后会被分解为七种颜色的光，这些光叠加又能形成白光，所以说可以把一种事物分解成好几种事物的加和。">
+    <meta name="description" content="
+图像处理——傅里叶
+">
   
 
   <!-- feed -->
@@ -600,10 +601,12 @@
         <div class="article-entry" itemprop="articleBody">
           
           
-          <p>图像处理——傅里叶</p>
-<h3 id="1-傅里叶变换的理解"><a href="#1-傅里叶变换的理解" class="headerlink" title="1.傅里叶变换的理解"></a>1.傅里叶变换的理解</h3><p>傅里叶变换的相关数学公式目前还没有搞懂，先不整那个东西，我们主要是研究傅里叶变换的一些思想和应用。这个思想起源于牛顿研究那个三棱镜，白光透过棱镜之后会被分解为七种颜色的光，这些光叠加又能形成白光，所以说可以把一种事物分解成好几种事物的加和。</p>
+          <blockquote>
+<p>图像处理——傅里叶</p>
+</blockquote>
 <a id="more"></a>
 
+<h3 id="1-傅里叶变换的理解"><a href="#1-傅里叶变换的理解" class="headerlink" title="1.傅里叶变换的理解"></a>1.傅里叶变换的理解</h3><p>傅里叶变换的相关数学公式目前还没有搞懂，先不整那个东西，我们主要是研究傅里叶变换的一些思想和应用。这个思想起源于牛顿研究那个三棱镜，白光透过棱镜之后会被分解为七种颜色的光，这些光叠加又能形成白光，所以说可以把一种事物分解成好几种事物的加和。</p>
 <p>后来傅里叶就提出了**<em>傅里叶级数**</em>，一个等幅度不同频或者等频不同幅的波形可以由一组正弦波余弦波的加和得到（原话：任何连续周期信号可以由一组适当的正弦曲线组合而成）</p>
 <h3 id="2-傅里叶级数"><a href="#2-傅里叶级数" class="headerlink" title="2.傅里叶级数"></a>2.傅里叶级数</h3><p>可以这么理解：原图像相当于在时间域中的一个曲线，坐标图是个二维坐标系，横轴是时间，纵轴是幅值的一个曲线，我们通过傅里叶变换可以把这条曲线变成多条正余弦函数相加的形式：傅里叶变换之后形成的是一个三维坐标系，他的x轴是频率（w），y轴是相位（因为每个正余弦函数的起点不同，有的是从零点开始，有的不是，这个曲线开始的那个幅值就是相位，相位就是后公式中的φ），z轴是振幅高度，。这样可以把一个图像从空间域转换到频率域，因为两者等价，所以可以逆变换回去。但这个傅里叶级数只能针对周期型函数才能拆分成多个正余弦函数相加，所以后来有了傅里叶变换。<br>$$<br>f(t) = \frac{a_n}{2}+\sum a_n*sin（nwt+φ_n）<br>$$</p>
 <h3 id="3-傅里叶变换"><a href="#3-傅里叶变换" class="headerlink" title="3.傅里叶变换"></a>3.傅里叶变换</h3><p>其中推导公式中用到了欧拉公式，<br>$$<br>cos(x)+i*sin(x) = e^{ix}\<br>$$<br>$$<br>x = wt<br>$$</p>
@@ -752,10 +755,10 @@
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-08-19T10:00:44+08:00">
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-08-28T17:01:03+08:00">
   <a class='notlink'>
     <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
-    <p>更新于：2020年8月19日</p>
+    <p>更新于：2020年8月28日</p>
   </a>
 </div>
 
@@ -777,8 +780,9 @@
       
         <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2020/08/10/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%E2%80%94%E2%80%94%E5%82%85%E9%87%8C%E5%8F%B6%E5%8F%98%E6%8D%A2/&title=傅里叶变换 - CallMe_star&summary=图像处理——傅里叶
-1.傅里叶变换的理解傅里叶变换的相关数学公式目前还没有搞懂，先不整那个东西，我们主要是研究傅里叶变换的一些思想和应用。这个思想起源于牛顿研究那个三棱镜，白光透过棱镜之后会被分解为七种颜色的光，这些光叠加又能形成白光，所以说可以把一种事物分解成好几种事物的加和。"
+          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2020/08/10/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%E2%80%94%E2%80%94%E5%82%85%E9%87%8C%E5%8F%B6%E5%8F%98%E6%8D%A2/&title=傅里叶变换 - CallMe_star&summary=
+图像处理——傅里叶
+"
           
           >
           
@@ -790,8 +794,9 @@
       
         <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://yoursite.com/2020/08/10/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%E2%80%94%E2%80%94%E5%82%85%E9%87%8C%E5%8F%B6%E5%8F%98%E6%8D%A2/&title=傅里叶变换 - CallMe_star&summary=图像处理——傅里叶
-1.傅里叶变换的理解傅里叶变换的相关数学公式目前还没有搞懂，先不整那个东西，我们主要是研究傅里叶变换的一些思想和应用。这个思想起源于牛顿研究那个三棱镜，白光透过棱镜之后会被分解为七种颜色的光，这些光叠加又能形成白光，所以说可以把一种事物分解成好几种事物的加和。"
+          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://yoursite.com/2020/08/10/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%E2%80%94%E2%80%94%E5%82%85%E9%87%8C%E5%8F%B6%E5%8F%98%E6%8D%A2/&title=傅里叶变换 - CallMe_star&summary=
+图像处理——傅里叶
+"
           
           >
           
@@ -803,8 +808,9 @@
       
         <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2020/08/10/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%E2%80%94%E2%80%94%E5%82%85%E9%87%8C%E5%8F%B6%E5%8F%98%E6%8D%A2/&title=傅里叶变换 - CallMe_star&summary=图像处理——傅里叶
-1.傅里叶变换的理解傅里叶变换的相关数学公式目前还没有搞懂，先不整那个东西，我们主要是研究傅里叶变换的一些思想和应用。这个思想起源于牛顿研究那个三棱镜，白光透过棱镜之后会被分解为七种颜色的光，这些光叠加又能形成白光，所以说可以把一种事物分解成好几种事物的加和。"
+          target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2020/08/10/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%E2%80%94%E2%80%94%E5%82%85%E9%87%8C%E5%8F%B6%E5%8F%98%E6%8D%A2/&title=傅里叶变换 - CallMe_star&summary=
+图像处理——傅里叶
+"
           
           >
           
@@ -830,18 +836,25 @@
             
               <a class='prev' href='/callme-star.github.io/2020/08/18/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%E2%80%94%E2%80%94%E7%89%B9%E5%BE%81%E7%82%B9%E6%A3%80%E6%B5%8Bsift/'>
                 <p class='title'><i class="fas fa-chevron-left" aria-hidden="true"></i>理解边缘检测sift</p>
-                <p class='content'>图像处理——sift理解
+                <p class='content'>
+图像处理——sift理解
+
+
+
 通俗的大致理解
-首先，理解同一幅图像在不同的空间中有不同的表达方式。比如在RGB空间中，图像中的像素点可以用颜色值(r,g,b)来表示；在灰度空间中，图像中的像素点可以...</p>
+首先，理解同一幅图像在不同的空间中有不同的表达方式。比如在RGB空间中，图像中的像素点可以用颜色值(r,g,b)来表示；在灰度空间中，图像中的像...</p>
               </a>
             
             
               <a class='next' href='/callme-star.github.io/2020/08/10/%E5%AD%A6%E4%B9%A0java%E7%AC%AC%E4%B8%89%E5%A4%A9%E2%80%94%E2%80%94%E8%AF%AD%E8%A8%80%E7%B1%BB%E5%9E%8B/'>
                 <p class='title'>学习java第三天——语言类型<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
-                <p class='content'>解释型语言解释型语言的典型：python、JavaScript、Ruby等。
+                <p class='content'>
+认识各种语言的类型
 
 
-解释型语言的特点，我理解的就是解释一句跑一句子，如果下边语句有错误，并不会影响上边语句的执行。要想写小的程序，基...</p>
+
+解释型语言解释型语言的典型：python、JavaScript、Ruby等。
+解释型语言的特点，我理解的就是解释一句跑一句子，如果下边语句有错误，并不会影响上边语句的...</p>
               </a>
             
           </div>
@@ -1088,8 +1101,8 @@
           }
           shuffle(imgs);
         }
-        if ('.cover') {
-          $('.cover').backstretch(
+        if ('') {
+          $('').backstretch(
             imgs,
           {
             duration: "20000",
@@ -1447,8 +1460,8 @@
         pjax_fancybox();
         
           
-          if ('.cover') {
-            $('.cover').backstretch("resize");
+          if ('') {
+            $('').backstretch("resize");
           } else {
             $.backstretch("resize");
           }

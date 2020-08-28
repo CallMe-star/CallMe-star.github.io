@@ -22,9 +22,9 @@
   
 
   
-    <meta name="description" content="图像处理——sift理解
-通俗的大致理解
-首先，理解同一幅图像在不同的空间中有不同的表达方式。比如在RGB空间中，图像中的像素点可以用颜色值(r,g,b)来表示；在灰度空间中，图像中的像素点可以用灰度值来表示。类似的，你可以把梯度图像认为是图像在梯度空间中的一种表达，图像中的像素点可以用梯度方向来表示，即，梯度图...">
+    <meta name="description" content="
+图像处理——sift理解
+">
   
 
   <!-- feed -->
@@ -601,14 +601,16 @@
         <div class="article-entry" itemprop="articleBody">
           
           
-          <p>图像处理——sift理解</p>
-<h3 id="通俗的大致理解"><a href="#通俗的大致理解" class="headerlink" title="通俗的大致理解"></a>通俗的大致理解</h3><ol>
-<li>首先，理解同一幅<strong>图像在不同的空间中有不同的表达方式</strong>。比如在RGB空间中，图像中的像素点可以用颜色值(r,g,b)来表示；在灰度空间中，图像中的像素点可以用灰度值来表示。类似的，你可以把梯度图像认为是图像在<strong>梯度空间</strong>中的一种表达，图像中的像素点可以<strong>用梯度方向</strong>来表示，即，梯度图像中的像素点表达的是该点的梯度方向（而不是灰度值/颜色值）。</li>
-</ol>
+          <blockquote>
+<p>图像处理——sift理解</p>
+</blockquote>
 <a id="more"></a>
 
-<ol>
-<li>其次，理解图像的<strong>灰度直方图是什么</strong>。图像的灰度直方图就是把<strong>灰度图像中灰度值分别为0,1,…,255的像素的个数统计起来</strong>，得到的一个一维向量。类似的，图像的梯度直方图就是把<strong>梯度图像中梯度方向分别为0°到360°的像素的个数统计起来</strong>，得到一个一维向量。</li>
+<h3 id="通俗的大致理解"><a href="#通俗的大致理解" class="headerlink" title="通俗的大致理解"></a>通俗的大致理解</h3><ol>
+<li><p>首先，理解同一幅<strong>图像在不同的空间中有不同的表达方式</strong>。比如在RGB空间中，图像中的像素点可以用颜色值(r,g,b)来表示；在灰度空间中，图像中的像素点可以用灰度值来表示。类似的，你可以把梯度图像认为是图像在<strong>梯度空间</strong>中的一种表达，图像中的像素点可以<strong>用梯度方向</strong>来表示，即，梯度图像中的像素点表达的是该点的梯度方向（而不是灰度值/颜色值）。</p>
+</li>
+<li><p>其次，理解图像的<strong>灰度直方图是什么</strong>。图像的灰度直方图就是把<strong>灰度图像中灰度值分别为0,1,…,255的像素的个数统计起来</strong>，得到的一个一维向量。类似的，图像的梯度直方图就是把<strong>梯度图像中梯度方向分别为0°到360°的像素的个数统计起来</strong>，得到一个一维向量。</p>
+</li>
 </ol>
 <p>SIFT是什么？简单来说就是图像中某个局部区域（如16*16像素的一个区域）对应的梯度直方图，这就是最简单直观的理解。当然，SIFT还包括各种细节，如量化，尺度金字塔、旋转不变性、局部归一化等，这些东西很多博客上都有“教科书般”的介绍。</p>
 <p>SURF是什么？SURF本身不是什么新的descriptor，而是对SIFT实现上的加速，核心点在于采用<strong>积分图</strong>对计算加速。</p>
@@ -794,10 +796,10 @@
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-08-18T22:48:02+08:00">
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-08-28T17:00:47+08:00">
   <a class='notlink'>
     <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
-    <p>更新于：2020年8月18日</p>
+    <p>更新于：2020年8月28日</p>
   </a>
 </div>
 
@@ -819,9 +821,8 @@
       
         <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2020/08/18/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%E2%80%94%E2%80%94%E7%89%B9%E5%BE%81%E7%82%B9%E6%A3%80%E6%B5%8Bsift/&title=理解边缘检测sift - CallMe_star&summary=图像处理——sift理解
-通俗的大致理解
-首先，理解同一幅图像在不同的空间中有不同的表达方式。比如在RGB空间中，图像中的像素点可以用颜色值(r,g,b)来表示；在灰度空间中，图像中的像素点可以用灰度值来表示。类似的，你可以把梯度图像认为是图像在梯度空间中的一种表达，图像中的像素点可以用梯度方向来表示，即，梯度图像中的像素点表达的是该点的梯度方向（而不是灰度值/颜色值）。
+          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2020/08/18/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%E2%80%94%E2%80%94%E7%89%B9%E5%BE%81%E7%82%B9%E6%A3%80%E6%B5%8Bsift/&title=理解边缘检测sift - CallMe_star&summary=
+图像处理——sift理解
 "
           
           >
@@ -834,9 +835,8 @@
       
         <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://yoursite.com/2020/08/18/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%E2%80%94%E2%80%94%E7%89%B9%E5%BE%81%E7%82%B9%E6%A3%80%E6%B5%8Bsift/&title=理解边缘检测sift - CallMe_star&summary=图像处理——sift理解
-通俗的大致理解
-首先，理解同一幅图像在不同的空间中有不同的表达方式。比如在RGB空间中，图像中的像素点可以用颜色值(r,g,b)来表示；在灰度空间中，图像中的像素点可以用灰度值来表示。类似的，你可以把梯度图像认为是图像在梯度空间中的一种表达，图像中的像素点可以用梯度方向来表示，即，梯度图像中的像素点表达的是该点的梯度方向（而不是灰度值/颜色值）。
+          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://yoursite.com/2020/08/18/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%E2%80%94%E2%80%94%E7%89%B9%E5%BE%81%E7%82%B9%E6%A3%80%E6%B5%8Bsift/&title=理解边缘检测sift - CallMe_star&summary=
+图像处理——sift理解
 "
           
           >
@@ -849,9 +849,8 @@
       
         <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2020/08/18/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%E2%80%94%E2%80%94%E7%89%B9%E5%BE%81%E7%82%B9%E6%A3%80%E6%B5%8Bsift/&title=理解边缘检测sift - CallMe_star&summary=图像处理——sift理解
-通俗的大致理解
-首先，理解同一幅图像在不同的空间中有不同的表达方式。比如在RGB空间中，图像中的像素点可以用颜色值(r,g,b)来表示；在灰度空间中，图像中的像素点可以用灰度值来表示。类似的，你可以把梯度图像认为是图像在梯度空间中的一种表达，图像中的像素点可以用梯度方向来表示，即，梯度图像中的像素点表达的是该点的梯度方向（而不是灰度值/颜色值）。
+          target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2020/08/18/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%E2%80%94%E2%80%94%E7%89%B9%E5%BE%81%E7%82%B9%E6%A3%80%E6%B5%8Bsift/&title=理解边缘检测sift - CallMe_star&summary=
+图像处理——sift理解
 "
           
           >
@@ -878,25 +877,29 @@
             
               <a class='prev' href='/callme-star.github.io/2020/08/19/tensorflow1/'>
                 <p class='title'><i class="fas fa-chevron-left" aria-hidden="true"></i>tensorflow第一节</p>
-                <p class='content'>常用函数1、类型转换
+                <p class='content'>
+先学习一下tensorflow的相关的基本函数
+
+
+
+常用函数1、类型转换
 强制tensor转换为该数据类型
 
 tf.case(张量名, dtype=数据类型)
 
-
-
 计算张量维度上元素的最小值
-
-tf.reduce_min(张量名)
-
-计算张量维...</p>
+...</p>
               </a>
             
             
               <a class='next' href='/callme-star.github.io/2020/08/10/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%E2%80%94%E2%80%94%E5%82%85%E9%87%8C%E5%8F%B6%E5%8F%98%E6%8D%A2/'>
                 <p class='title'>傅里叶变换<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
-                <p class='content'>图像处理——傅里叶
-1.傅里叶变换的理解傅里叶变换的相关数学公式目前还没有搞懂，先不整那个东西，我们主要是研究傅里叶变换的一些思想和应用。这个思想起源于牛顿研究那个三棱镜，白光透过棱镜之后会被分...</p>
+                <p class='content'>
+图像处理——傅里叶
+
+
+
+1.傅里叶变换的理解傅里叶变换的相关数学公式目前还没有搞懂，先不整那个东西，我们主要是研究傅里叶变换的一些思想和应用。这个思想起源于牛顿研究那个三棱镜，白光透过棱镜之...</p>
               </a>
             
           </div>
@@ -1090,8 +1093,8 @@ tf.reduce_min(张量名)
           }
           shuffle(imgs);
         }
-        if ('.cover') {
-          $('.cover').backstretch(
+        if ('') {
+          $('').backstretch(
             imgs,
           {
             duration: "20000",
@@ -1449,8 +1452,8 @@ tf.reduce_min(张量名)
         pjax_fancybox();
         
           
-          if ('.cover') {
-            $('.cover').backstretch("resize");
+          if ('') {
+            $('').backstretch("resize");
           } else {
             $.backstretch("resize");
           }

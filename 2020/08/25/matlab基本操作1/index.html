@@ -22,7 +22,9 @@
   
 
   
-    <meta name="description" content="一、图像的读入与显示123img = imread(&#x27;图像在本地的地址.jpg&#x27;);figure(1),imshow(img);">
+    <meta name="description" content="
+记录基本你的matlab对图像的操作以及简单地函数调用对图像简单处理
+">
   
 
   <!-- feed -->
@@ -599,9 +601,12 @@
         <div class="article-entry" itemprop="articleBody">
           
           
-          <h2 id="一、图像的读入与显示"><a href="#一、图像的读入与显示" class="headerlink" title="一、图像的读入与显示"></a>一、图像的读入与显示</h2><figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">img = imread(<span class="string">&#x27;图像在本地的地址.jpg&#x27;</span>);</span><br><span class="line"><span class="built_in">figure</span>(<span class="number">1</span>),</span><br><span class="line">imshow(img);</span><br></pre></td></tr></table></figure>
-
+          <blockquote>
+<p>记录基本你的matlab对图像的操作以及简单地函数调用对图像简单处理</p>
+</blockquote>
 <a id="more"></a>
+
+<h2 id="一、图像的读入与显示"><a href="#一、图像的读入与显示" class="headerlink" title="一、图像的读入与显示"></a>一、图像的读入与显示</h2><figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">img = imread(<span class="string">&#x27;图像在本地的地址.jpg&#x27;</span>);</span><br><span class="line"><span class="built_in">figure</span>(<span class="number">1</span>),</span><br><span class="line">imshow(img);</span><br></pre></td></tr></table></figure>
 
 <p>以上就完成了最基本的图像读入与显示工作。但是为了操作简便我们经常不会对一个彩色图像进行处理，因为彩色图想有三个通道，会增加计算的复杂程度，所以我们第一步就是要对图像进行处理转换为灰度图像（简单地理解就是黑色和白色两种色彩的图像，只不过图像的黑和白的程度被细分成了256种不同程度的颜色）洗面我们来操作一下：</p>
 <figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">img = imread(<span class="string">&#x27;图像在本地的地址.jpg&#x27;</span>);</span><br><span class="line">img1 = rgb2gray(img);</span><br></pre></td></tr></table></figure>
@@ -733,10 +738,10 @@
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-08-26T20:43:18+08:00">
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-08-28T16:46:42+08:00">
   <a class='notlink'>
     <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
-    <p>更新于：2020年8月26日</p>
+    <p>更新于：2020年8月28日</p>
   </a>
 </div>
 
@@ -758,7 +763,9 @@
       
         <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2020/08/25/matlab%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C1/&title=matlab基础操作第一节 - CallMe_star&summary=一、图像的读入与显示123img = imread(&#x27;图像在本地的地址.jpg&#x27;);figure(1),imshow(img);"
+          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2020/08/25/matlab%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C1/&title=matlab基础操作第一节 - CallMe_star&summary=
+记录基本你的matlab对图像的操作以及简单地函数调用对图像简单处理
+"
           
           >
           
@@ -770,7 +777,9 @@
       
         <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://yoursite.com/2020/08/25/matlab%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C1/&title=matlab基础操作第一节 - CallMe_star&summary=一、图像的读入与显示123img = imread(&#x27;图像在本地的地址.jpg&#x27;);figure(1),imshow(img);"
+          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://yoursite.com/2020/08/25/matlab%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C1/&title=matlab基础操作第一节 - CallMe_star&summary=
+记录基本你的matlab对图像的操作以及简单地函数调用对图像简单处理
+"
           
           >
           
@@ -782,7 +791,9 @@
       
         <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2020/08/25/matlab%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C1/&title=matlab基础操作第一节 - CallMe_star&summary=一、图像的读入与显示123img = imread(&#x27;图像在本地的地址.jpg&#x27;);figure(1),imshow(img);"
+          target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2020/08/25/matlab%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C1/&title=matlab基础操作第一节 - CallMe_star&summary=
+记录基本你的matlab对图像的操作以及简单地函数调用对图像简单处理
+"
           
           >
           
@@ -808,23 +819,28 @@
             
               <a class='prev' href='/callme-star.github.io/2020/08/26/matlab%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C2/'>
                 <p class='title'><i class="fas fa-chevron-left" aria-hidden="true"></i>matlab基础操作第二节</p>
-                <p class='content'>一、形态学操作&lt;1&gt;形态学基础
+                <p class='content'>
+记录matlab形态学操作及绘图操作
 
-上节记录了怎么用fspecial做滤波器（也就是掩膜），这次我们要生成的叫结构元素SE
-主要用来构建形态学运算中的结构元素，使用的语法为strel(...</p>
+
+
+一、形态学操作&lt;1&gt;形态学基础​                                                    ...</p>
               </a>
             
             
               <a class='next' href='/callme-star.github.io/2020/08/25/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%E2%80%94%E2%80%94%E5%9B%BE%E5%83%8F%E5%88%86%E5%89%B2/'>
                 <p class='title'>图像分割<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
-                <p class='content'>一、图像分割分类按着先进程度分
+                <p class='content'>
+我对图像分割的初级认识（现在的图像分割基本概况）
+
+
+
+一、图像分割分类按着先进程度分
 传统分割方法
 
 ①阈值分割
 
-
-
-阈值法的基本思想是基于图像的灰度特征来计算一个或多个灰度阈值，并将图像中每个像素的灰度值与阈值作比较，最后将像素根据比较结果分到...</p>
+阈值法的基本思想是基于图像的灰度特征来计算一个或多个灰度阈值，并将图像中每...</p>
               </a>
             
           </div>
@@ -1071,8 +1087,8 @@
           }
           shuffle(imgs);
         }
-        if ('.cover') {
-          $('.cover').backstretch(
+        if ('') {
+          $('').backstretch(
             imgs,
           {
             duration: "20000",
@@ -1430,8 +1446,8 @@
         pjax_fancybox();
         
           
-          if ('.cover') {
-            $('.cover').backstretch("resize");
+          if ('') {
+            $('').backstretch("resize");
           } else {
             $.backstretch("resize");
           }
