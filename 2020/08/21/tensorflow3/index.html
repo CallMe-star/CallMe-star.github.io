@@ -736,6 +736,22 @@
 <p>正则化缓解过拟合：</p>
 <p>正则化在损失函数中引入模型复杂度指标，利用给w加权值，强化了训练数据的噪声（一般不正则化b，只对权重正则化）<br>$$<br>loss = loss(y与y_均) +　REGULARIZER*loss(w)<br>$$<br>其中的REGULARIZER给出了w在总loss中的比例，即正则化的权重。</p>
 </blockquote>
+<h4 id="优化器"><a href="#优化器" class="headerlink" title="优化器"></a>优化器</h4><p>待优化参数w，损失函数loss，学习率lr，每迭代一个batch，t表示当前batch迭代的总次数<br>$$<br>计算t时刻的损失函数关于当前参数的梯度g_t=\bigtriangledown loss = \frac{\partial loss}{\partial(w_t)}<br>$$</p>
+<p>$$<br>计算t时刻一阶动量m_t和二阶动量V_t<br>$$</p>
+<p>$$<br>计算t时刻下降梯度：\eta = lr * m_t/\sqrt{V_t}<br>$$</p>
+<p>$$<br>计算t+1时刻参数：w_{t+1} = w_t-\eta_t = w_t - lr * m_t/\sqrt{V_t}<br>$$</p>
+<blockquote>
+<p>一阶动量是跟梯度相关的函数</p>
+<p>二阶动量是跟梯度的平方相关的函数</p>
+</blockquote>
+<p>下面搜索几种优化器使用即可</p>
+<ol>
+<li>SGD</li>
+<li>SGDM（含momentum 的SGD）</li>
+<li>Adagrad（SGD增加二阶动量）</li>
+<li>RMSProp（SGD增加二阶动量）</li>
+<li>Adam（结合SGDM和RMSProp）</li>
+</ol>
 
           
             <div class='article_footer'>
@@ -824,10 +840,10 @@
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-08-31T08:46:21+08:00">
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-09-15T23:54:02+08:00">
   <a class='notlink'>
     <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
-    <p>更新于：2020年8月31日</p>
+    <p>更新于：2020年9月15日</p>
   </a>
 </div>
 
@@ -1035,7 +1051,7 @@ tensorflow实战，实现鸢尾花的分类
 
 
     <div class='content'>
-        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AD%A6%E4%B9%A0%E7%9B%AE%E6%A0%87"><span class="toc-text">学习目标</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%A2%84%E5%A4%87%E7%9F%A5%E8%AF%86"><span class="toc-text">预备知识</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%A4%8D%E6%9D%82%E5%BA%A6%E5%AD%A6%E4%B9%A0%E7%8E%87"><span class="toc-text">复杂度学习率</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%BF%80%E6%B4%BB%E5%87%BD%E6%95%B0"><span class="toc-text">激活函数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%8D%9F%E5%A4%B1%E5%87%BD%E6%95%B0"><span class="toc-text">损失函数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%AC%A0%E6%8B%9F%E5%90%88%E5%92%8C%E8%BF%87%E6%8B%9F%E5%90%88"><span class="toc-text">欠拟合和过拟合</span></a></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AD%A6%E4%B9%A0%E7%9B%AE%E6%A0%87"><span class="toc-text">学习目标</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%A2%84%E5%A4%87%E7%9F%A5%E8%AF%86"><span class="toc-text">预备知识</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%A4%8D%E6%9D%82%E5%BA%A6%E5%AD%A6%E4%B9%A0%E7%8E%87"><span class="toc-text">复杂度学习率</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%BF%80%E6%B4%BB%E5%87%BD%E6%95%B0"><span class="toc-text">激活函数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%8D%9F%E5%A4%B1%E5%87%BD%E6%95%B0"><span class="toc-text">损失函数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%AC%A0%E6%8B%9F%E5%90%88%E5%92%8C%E8%BF%87%E6%8B%9F%E5%90%88"><span class="toc-text">欠拟合和过拟合</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BC%98%E5%8C%96%E5%99%A8"><span class="toc-text">优化器</span></a></li></ol></li></ol>
     </div>
   </section>
 
