@@ -643,7 +643,7 @@
 <p>validation_freq每迭代20次数据集验证一次准确率</p>
 </blockquote>
 <p>④summary打印出网络结构和参数统计</p>
-<h3 id="显示数据集"><a href="#显示数据集" class="headerlink" title="显示数据集"></a>显示数据集</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">100</span>):</span><br><span class="line">  plt.imshow(x_train[i])</span><br><span class="line">  plt.show()</span><br><span class="line">print(<span class="string">&quot;x_train[0]:/n&quot;</span>, x_train[<span class="number">0</span>])   <span class="comment">#输出的是数据集第一个元素的矩阵（是一个灰度图像或者三通道彩色图想，色彩范围在0—255之间）</span></span><br><span class="line">print(<span class="string">&quot;x_test.shape&quot;</span>, x_test.shape)  <span class="comment">#输出测试集的形状（三维的矩阵）</span></span><br></pre></td></tr></table></figure>
+<h3 id="显示数据集"><a href="#显示数据集" class="headerlink" title="显示数据集"></a>显示数据集</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">100</span>):</span><br><span class="line">  plt.imshow(x_train[i])</span><br><span class="line">  plt.show()</span><br><span class="line">print(<span class="string">&quot;x_train[0]:\n&quot;</span>, x_train[<span class="number">0</span>])   <span class="comment">#输出的是数据集第一个元素的矩阵（是一个灰度图像或者三通道彩色图想，色彩范围在0—255之间）</span></span><br><span class="line">print(<span class="string">&quot;x_test.shape\n&quot;</span>, x_test.shape)  <span class="comment">#输出测试集的形状（三维的矩阵）</span></span><br></pre></td></tr></table></figure>
 
 
           
@@ -733,7 +733,7 @@
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-09-19T21:42:00+08:00">
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-09-19T21:51:54+08:00">
   <a class='notlink'>
     <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
     <p>更新于：2020年9月19日</p>
