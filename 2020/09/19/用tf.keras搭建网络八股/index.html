@@ -627,10 +627,11 @@
 <p>①model = tf.keras.models.Sequential([网络结构])      我们需要在sequential中搭建网络结构</p>
 <blockquote>
 <p>tf.keras.layers.Dense(3, activation=’softmax’, kernel_regularizer=tf.keras.l2())</p>
-<p>3为神经元个数activation</p>
+<p>3为神经元个数</p>
+<p>activation为激活函数</p>
 <p>kernels_regularizer为正则化方法</p>
 </blockquote>
-<p>②model.compile(opeimizer = tf.keras.optimizers.GSD(lr = 0.1), loss = tf.keras.losses.SparseCategoricalCrossentropy(from_logits=False),metrics=[‘sparse_categorical_accuracy’])</p>
+<p>②model.compile(opeimizer=tf.keras.optimizers.GSD(lr=0.1), loss=tf.keras.losses.SparseCategoricalCrossentropy(from_logits=False),metrics=[‘sparse_categorical_accuracy’])</p>
 <blockquote>
 <p>models.compile中配置训练方法</p>
 <p>optimizer是优化器</p>
@@ -733,10 +734,10 @@
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-09-19T21:51:54+08:00">
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-09-20T16:35:43+08:00">
   <a class='notlink'>
     <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
-    <p>更新于：2020年9月19日</p>
+    <p>更新于：2020年9月20日</p>
   </a>
 </div>
 
@@ -811,6 +812,13 @@
         
         
           <div class="prev-next">
+            
+              <a class='prev' href='/callme-star.github.io/2020/09/20/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%E2%80%94%E2%80%94%E8%87%AA%E5%88%B6%E6%95%B0%E6%8D%AE%E9%9B%86/'>
+                <p class='title'><i class="fas fa-chevron-left" aria-hidden="true"></i></p>
+                <p class='content'>自制数据集并应用在曹健老师的视频课程中有两种读入数据集的方法，一种是在线下载直接调用；一种是在本地自制数据集，用于自己本领域的数据处理。
+首先简单看一下在线读取数据的代码
+1234567mini...</p>
+              </a>
             
             
               <a class='next' href='/callme-star.github.io/2020/08/26/matlab%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C2/'>
